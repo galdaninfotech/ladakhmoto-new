@@ -1,0 +1,415 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-animate";
+
+
+/* Dark mode variant */
+@custom-variant dark (&:is([data-theme='dark'] *));
+
+@theme {
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-oswald: var(--font-oswald);
+
+  --animate-accordion-down: accordion-down 0.5s ease-out;
+  --animate-accordion-up: accordion-up 0.5s ease-out;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-on: var(--accent-on);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+}
+
+/* -----------------------------------
+   COLOR VARIABLES (Teal + #ff5300)
+----------------------------------- */
+:root {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+
+  --primary: #00786f;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f3f3f3;
+  --secondary-foreground: #222222;
+
+  --accent: #f9b900;
+  --accent-foreground: #ffffff;
+  --accent-on: #524929;
+
+  --muted: #f5f5f5;
+  --muted-foreground: #6b6b6b;
+
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+
+  --border: #e5e5e5;
+  --input: #efefef;
+  --ring: #00786f;
+
+  --success: #3bb273;
+  --warning: #ffb742;
+  --error: #cc3b3b;
+
+  --radius: 0.5rem;
+}
+
+/* DARK MODE */
+[data-theme="dark"] {
+  --background: #050b1c;
+  --foreground: #e2e8f0;
+
+  --primary: #0d9488;
+  --primary-foreground: #ffffff;
+
+  --secondary: #1e293b;
+  --secondary-foreground: #f8fafc;
+  
+  --accent: #f9b900;
+  --accent-foreground: #ffffff;
+  --accent-on: #ffffff;
+
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+
+  --card: #0f172a;
+  --card-foreground: #f8fafc;
+
+  --popover: #0f172a;
+  --popover-foreground: #f8fafc;
+
+  --border: #334155;
+  --input: #1e293b;
+  --ring: #0d9488;
+
+  --success: #4cd48a;
+  --warning: #ffb742;
+  --error: #ff6b6b;
+}
+
+/* -----------------------------------
+   BASE STYLES (Tailwind v4 compatible)
+----------------------------------- */
+@layer base {
+  *, ::before, ::after {
+    border-color: var(--border);
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "Oswald", san-serif;
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  h1 { font-size: 2.75rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+
+  a {
+    color: var(--primary);
+    transition: color .2s ease;
+  }
+
+  a:hover {
+    color: var(--accent);
+  }
+  
+}
+
+/* -----------------------------------
+   HTML FADE-IN
+----------------------------------- */
+html {
+  opacity: 1;
+}
+
+/* -----------------------------------
+   FOCUS STYLES (v4 compatible)
+----------------------------------- */
+a,
+input,
+button {
+  outline: none;
+}
+a:focus-visible,
+input:focus-visible,
+button:focus-visible {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 40%, transparent),
+    0 0 0 4px var(--background);
+}
+
+/* Optional baseline grid */
+.baseline-grid {
+  background-image: linear-gradient(to bottom, rgba(255,0,0,.15) 1px, transparent 1px);
+  background-size: 100% 8px;
+}
+
+
+/* Richtext Styles */
+.prose :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  color: var(--primary);
+  margin-top: 2em;
+  margin-bottom: 1em;
+  font-size: 1.1em;
+  font-weight: 500;
+  line-height: 1.33333;
+}
+.prose :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  color: var(--foreground);
+  font-size: 0.9em;
+}
+
+
+/* TODO: Move this style to the location where the element is located  */
+/* SCROLLSPY */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 71px; /* EXACT height of sticky header (55px + py-2 padding) */
+}
+
+/* Accordion Animations */
+@keyframes accordion-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+/* TODO: Move this style to tours  */
+.sub-headings h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.5em;
+    padding-bottom: 15px;
+    position: relative;
+    letter-spacing: 2px;
+}
+.sub-headings h2:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 7px;
+    height: 4px;
+    width: 55px;
+    background-color: var(--accent);
+}
+.sub-headings h2:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 8px;
+    height: 1px;
+    width: 80%;
+    max-maxWidth: 120px;
+    background-color: var(--accent);
+}
+
+
+/* TODO: Move this style to home  */
+/* Intro Heading */
+.intro h1:after,
+.intro h2:after {
+    content: "";
+    display: block;
+    background: url(/images/bg-title-1.webp) no-repeat center;
+    background-size: contain;
+    width: 100%;
+    height: 35px;
+    margin-top: 5px;
+}
+
+
+
+/*  */
+.payload-richtext ul li {
+  font-size: 12.8px;
+}
+
+@utility scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility clip-path-holiday {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+/* 
+   Decorative mask for the hero bottom jagged edge.
+   Uses luminance mode because the image is black and white.
+   Filled with theme background color to transition into the next section.
+*/
+@utility hero-bottom-mask {
+  mask-image: url(/images/mountain-header.webp);
+  -webkit-mask-image: url(/images/mountain-header.webp);
+  mask-mode: luminance;
+  -webkit-mask-mode: luminance;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center bottom;
+  -webkit-mask-position: center bottom;
+  background-color: var(--background);
+}
+
+/* 
+   Decorative mask for the footer top jagged edge.
+   Uses luminance mode to interpret the black and white image correctly.
+   Filled with theme background color to create a transition from the section above.
+*/
+@utility footer-top-mask {
+  mask-image: url(/images/mountain-footer.webp);
+  -webkit-mask-image: url(/images/mountain-footer.webp);
+  mask-mode: luminance;
+  -webkit-mask-mode: luminance;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center top;
+  -webkit-mask-position: center top;
+  background-color: var(--background);
+}
+/* NEWLY ADDED STYLES FROM Header/index.module.css */
+.header {
+  /* Default base class */
+}
+
+.headerMarginNone {
+  margin-bottom: 0px;
+}
+
+.headerMarginHome {
+  margin-bottom: 0px;
+}
+
+.headerMarginDefault {
+  margin-bottom: 440px;
+}
+
+
+
+/* Footer */
+.footer {
+    position: relative;
+    background: #515151;
+}
+
+[data-theme="dark"] .footer {
+    background: #020617;
+}
+
+.footer:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    top: -2px;
+    left: 0;
+    height: 60px;
+    z-index: 2;
+}
+.footer h3 {
+    font-size: 1rem;
+    line-height: 32px;
+    color: #ffffff;
+    margin-bottom: 24px;
+    /* font-family: 'Oswald', serif; */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer ul li a {
+    color: #d3d1d1;
+}
+.footer ul li a:hover {
+    color: var(--primary);
+}
+
+
+.footer .copy-right-area {
+    background: rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    padding: 12px;
+    font-size: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .footer .copy-right-area {
+    background: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.4);
+}
+
+
+
+/* src/heros/HighImpact/CarouselContent.tsx */
+.brand-badge
+{
+  display:inline-block;
+  font-size:1.1rem;
+  background: rgb(235,235,236);
+  background: linear-gradient(90deg, rgb(252, 175, 8) 0%, rgb(241, 165, 2) 26%, rgb(246, 212, 140) 58%, rgb(244, 167, 0) 100%);
+  transform: skew(-15deg);
+  padding:0.3rem 1.4rem;
+  
+  /*Shadow*/
+  webkit-box-shadow: 0.2rem 0.2rem 0px 0.1rem rgb(255, 255, 255);
+  -moz-box-shadow: 0.2rem 0.2rem 0px 0.1rem rgb(255, 255, 255);
+  box-shadow: 0.2rem 0.2rem 0px -1px rgb(255, 255, 255);
+}
+

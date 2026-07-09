@@ -1,0 +1,18 @@
+{
+  "general": {
+    "vimMode": false,
+    "previewFeatures": true,
+    "enablePromptCompletion": true,
+    "checkpointing": {
+      "enabled": true
+    }
+  },
+  "ui": {
+    "showStatusInTitle": true,
+    "hideBanner": true,
+    "showMemoryUsage": false
+  },
+  "ide": {
+    "enabled": true
+  }
+}

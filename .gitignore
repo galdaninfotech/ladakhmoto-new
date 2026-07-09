@@ -1,0 +1,19 @@
+build
+dist / media
+node_modules
+.DS_Store
+.env
+.next
+.vercel
+tsconfig.tsbuildinfo
+
+# Payload default media upload directory
+public/media/
+
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

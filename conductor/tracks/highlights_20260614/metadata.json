@@ -1,0 +1,8 @@
+{
+  "track_id": "highlights_20260614",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-06-14T12:00:00Z",
+  "updated_at": "2026-06-14T12:00:00Z",
+  "description": "Create a new collection called \"Highlights\". It should have title, intro, description, and an image gallery as fields. Integrate it with tour collections."
+}

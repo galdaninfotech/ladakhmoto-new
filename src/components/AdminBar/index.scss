@@ -1,0 +1,14 @@
+@import '~@payloadcms/ui/scss';
+
+.admin-bar {
+  @include small-break {
+    display: none;
+  }
+
+  .payload-admin-bar {
+    background-color: transparent !important;
+    padding: 0 !important;
+    position: relative !important;
+    z-index: unset !important;
+  }
+}

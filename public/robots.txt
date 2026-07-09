@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ladakhmoto.com
+
+# Sitemaps
+Sitemap: https://ladakhmoto.com/sitemap.xml

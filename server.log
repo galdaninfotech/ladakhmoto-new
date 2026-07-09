@@ -1,0 +1,41 @@
+
+> @1.0.0 dev /Users/tsewangnorboo/Documents/tw4-web-ladakhmoto-1-main
+> cross-env NODE_OPTIONS=--no-deprecation next dev
+
+[32m✔[0m [33mConsole Ninja[0m extension is connected to [33mNext.js[0m, see [36mhttps://tinyurl.com/2vt8jxzw[0m
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.31.174:3000
+- Environments: .env
+- Experiments (use with caution):
+  ✓ optimizeCss
+
+✓ Starting...
+⚠ Console Ninja Turbopack support is a PRO feature, [33mcurrently available to community users while in preview[0m
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+✓ Ready in 1381ms
+○ Compiling /admin/[[...segments]] ...
+Image with src "http://localhost:3000/api/media/file/manali-leh-with-umlingla-slide.webp?v=2026-03-09T06%3A06%3A52.038Z" is using quality "85" which is not configured in images.qualities [75]. Please update your config to [75, 85].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "http://localhost:3000/api/media/file/manali-leh-with-umlingla-overview.webp?v=2026-03-09T06%3A06%3A51.430Z" is using quality "90" which is not configured in images.qualities [75]. Please update your config to [75, 90].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "http://localhost:3000/api/media/file/riding-gears.webp?v=2026-03-09T06%3A05%3A14.917Z" is using quality "90" which is not configured in images.qualities [75]. Please update your config to [75, 90].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+⨯ upstream image http://localhost:3000/api/media/file/manali-leh-with-umlingla-slide.webp?v=2026-03-09T06%3A06%3A52.038Z resolved to private ip ["::1","127.0.0.1"]
+⨯ upstream image http://localhost:3000/api/media/file/manali-leh-with-umlingla-overview.webp?v=2026-03-09T06%3A06%3A51.430Z resolved to private ip ["::1","127.0.0.1"]
+⨯ upstream image http://localhost:3000/api/media/file/riding-gears.webp?v=2026-03-09T06%3A05%3A14.917Z resolved to private ip ["::1","127.0.0.1"]
+ GET /admin/collections/mcp-tokens/1/ 200 in 25.2s (compile: 9.5s, proxy.ts: 3ms, render: 15.6s)
+ GET /admin/ 200 in 25.4s (compile: 9.6s, proxy.ts: 128ms, render: 15.7s)
+ GET /bike-tours/manali-leh-with-umlingla/ 200 in 25.3s (compile: 14.8s, proxy.ts: 8ms, generate-params: 9.0s, render: 10.4s)
+ GET /api/payload-preferences/collection-mcp-tokens/ 200 in 5.1s (compile: 5.0s, render: 83ms)
+ POST /api/users/ 200 in 5.1s (compile: 5.0s, render: 104ms)
+ GET /firebase-messaging-sw.js 404 in 9.5s (compile: 9.0s, proxy.ts: 7ms, generate-params: 8.6s, render: 473ms)
+⨯ Error: No response is returned from route handler '[project]/src/app/(payload)/api/[...slug]/route.ts'. Ensure you return a `Response` or a `NextResponse` in all branches of your handler.
+    at ignore-listed frames
+ GET /api/mcp/ 500 in 247ms (compile: 20ms, render: 227ms)
+⨯ Error: No response is returned from route handler '[project]/src/app/(payload)/api/[...slug]/route.ts'. Ensure you return a `Response` or a `NextResponse` in all branches of your handler.
+    at ignore-listed frames
+ POST /api/mcp/ 500 in 127ms (compile: 13ms, render: 113ms)
+ GET /.well-known/oauth-protected-resource/api/mcp 404 in 3.2s (compile: 52ms, proxy.ts: 4ms, generate-params: 5ms, render: 3.2s)
+ GET /.well-known/oauth-protected-resource 404 in 2.3s (compile: 13ms, proxy.ts: 2ms, generate-params: 436µs, render: 2.3s)
+ GET /.well-known/oauth-authorization-server 404 in 1670ms (compile: 14ms, proxy.ts: 4ms, generate-params: 36µs, render: 1652ms)

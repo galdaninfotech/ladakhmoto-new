@@ -1,0 +1,37 @@
+{
+  "mcpServers": {
+    "firebase": {
+      "command": "npx",
+      "args": ["-y", "firebase-tools@latest", "experimental:mcp", "--only", "auth,firestore"]
+    },
+    "Github": {
+      "command": "",
+      "args": []
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@anthropic-ai/mcp-playwright@latest"]
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstreamapi/context7-mcp@latest"]
+    },
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": {
+        "FIRECRAWL_API_KEY": "your-key-here"
+      }
+    },
+    "LadakhMotoPayload": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "http://127.0.0.1:3000/api/mcp",
+        "--header",
+        "Authorization: Bearer 70f84ed5-5026-4267-aff1-8e2bcea3db0a"
+      ]
+    }
+  }
+}
