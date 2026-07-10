@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Instagram, Facebook, Twitter, Mail } from 'lucide-react'
 import { Media } from '@/components/Media'
 import type { Media as MediaType } from '@/payload-types'
 
@@ -105,40 +105,84 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
               style={{ width: `${100 / visibleCount}%` }}
               className="shrink-0 p-2 py-4"
             >
-              <figure className="group relative overflow-hidden min-w-[200px] max-h-[310px] w-full bg-black text-white text-center shadow-[0_0_15px_rgba(0,0,0,0.2)] border border-border dark:bg-card font-oswald">
+              <div className="group relative overflow-hidden w-full h-[380px] bg-black rounded-[2px] transition-all duration-500">
+                {/* Background Avatar Image */}
                 {typeof member.avatar === 'object' && member.avatar !== null && (
-                  <div className="relative h-[220px] w-full overflow-hidden bg-neutral-900/80 opacity-90 transition-all duration-450 ease-in-out group-hover:opacity-25">
+                  <div className="absolute inset-0 w-full h-full overflow-hidden">
                     <Media
                       resource={member.avatar}
                       alt={`${member.name}`}
                       fill
-                      pictureClassName="absolute inset-0"
-                      imgClassName="h-full w-full object-fit"
+                      pictureClassName="absolute inset-0 w-full h-full"
+                      imgClassName="h-full w-full object-cover transition-all duration-700 ease-in-out scale-100 group-hover:scale-[1.7] group-hover:translate-x-[-12%] group-hover:translate-y-[4%]"
                     />
                   </div>
                 )}
-                <Link href="/our-team" className="absolute inset-0 z-1 text-base">
-                  <figcaption className="absolute top-[45%] left-[7%] right-[7%] bottom-[35%] border border-white/30 border-t-0 border-x border-b transition-all duration-450 ease-in-out group-hover:top-[7%] group-hover:bottom-[7%]">
-                    <div className="overflow-hidden -translate-y-1/2 transition-all duration-450 ease-in-out">
-                      <h3
-                        className="relative table mx-auto px-[6px] w-auto uppercase font-normal text-white text-base
-                        before:absolute before:block before:w-[1000%] before:h-[3px] before:content-[''] before:bg-white/30 before:top-1/2 before:left-[-1000%]
-                        after:absolute after:block after:w-[1000%] after:h-[3px] after:content-[''] after:bg-white/30 after:top-1/2 after:right-[-1000%]"
-                      >
-                        {member.name}
-                      </h3>
-                    </div>
-                    <div className="hidden absolute top-1/2 w-full px-5 m-0 opacity-0 -translate-y-1/2 transition-all duration-450 ease-in-out group-hover:opacity-100 group-hover:delay-350">
-                      <p className="text-[0.9em] font-medium text-white/80">
-                        Some Description Go Here
-                      </p>
-                      <h4 className="text-xs text-shadow-white text-shadow-lg mt-2 inline-block text-white">
-                        {member.designation}
-                      </h4>
-                    </div>
-                  </figcaption>
-                </Link>
-              </figure>
+
+                {/* Dark Overlay for Text Readability */}
+                <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/20 to-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10" />
+
+                {/* Inner Outline Frame */}
+                <div className="absolute inset-[8px] rounded-[2px] border border-transparent group-hover:border-white/40 transition-all duration-1000 ease-in-out pointer-events-none z-20" />
+
+                {/* Name & Designation */}
+                <div className="absolute top-6 left-6 right-6 text-left z-20 pointer-events-none">
+                  <h3 className="font-oswald text-2xl font-bold uppercase tracking-wider text-white opacity-0 group-hover:opacity-100 transition-all duration-700 transform -translate-y-2 group-hover:translate-y-0">
+                    {member.name}
+                  </h3>
+                  <p className="font-sans text-[11px] uppercase tracking-widest text-accent mt-1 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100 transform -translate-y-2 group-hover:translate-y-0">
+                    {member.designation}
+                  </p>
+                  <p className="font-sans text-[11px] text-white mt-1 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-500 transform -translate-y-2 group-hover:translate-y-0">
+                    {member.designation}
+                  </p>
+                </div>
+
+                {/* Horizontal Social Links */}
+                <div className="absolute left-6 bottom-6 flex flex-row space-x-4 items-center z-30 pointer-events-auto opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200 transform translate-y-2 group-hover:translate-y-0">
+                  <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:text-accent transition-colors duration-300"
+                    aria-label={`${member.name}'s Instagram`}
+                  >
+                    <Instagram className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="https://facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:text-accent transition-colors duration-300"
+                    aria-label={`${member.name}'s Facebook`}
+                  >
+                    <Facebook className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="https://twitter.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:text-accent transition-colors duration-300"
+                    aria-label={`${member.name}'s Twitter`}
+                  >
+                    <Twitter className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="mailto:info@ladakhmoto.com"
+                    className="text-white/80 hover:text-accent transition-colors duration-300"
+                    aria-label={`Email ${member.name}`}
+                  >
+                    <Mail className="h-5 w-5" />
+                  </a>
+                </div>
+
+                {/* Clickable Card Background Link */}
+                <Link
+                  href="/our-team"
+                  className="absolute inset-0 z-10"
+                  aria-label={`View profile of ${member.name}`}
+                />
+              </div>
             </div>
           ))}
         </motion.div>
