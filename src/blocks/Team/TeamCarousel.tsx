@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Instagram, Facebook, Twitter, Mail } from 'lucide-react'
@@ -21,6 +21,7 @@ interface TeamCarouselProps {
 export function TeamCarousel({ members }: TeamCarouselProps) {
   const [index, setIndex] = useState(0)
   const [visibleCount, setVisibleCount] = useState(4)
+  const isPausedRef = useRef(false)
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,6 +41,7 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
   }, [])
 
   const maxIndex = Math.max(0, members.length - visibleCount)
+  const showControls = members.length > visibleCount
 
   // Ensure index is within boundaries after resize
   useEffect(() => {
@@ -47,6 +49,38 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
       setIndex(maxIndex)
     }
   }, [maxIndex, index])
+
+  useEffect(() => {
+    if (!showControls) return
+
+    if (typeof window !== 'undefined') {
+      if ((window as any).carouselIntervalId) {
+        clearInterval((window as any).carouselIntervalId)
+      }
+      if (typeof (window as any).carouselSequenceStep !== 'number') {
+        ;(window as any).carouselSequenceStep = -1
+      }
+      ;(window as any).carouselIntervalId = setInterval(() => {
+        ;(window as any).carouselSequenceStep = (((window as any).carouselSequenceStep + 1) % 3)
+        window.dispatchEvent(
+          new CustomEvent('carousel-sequence-slide', {
+            detail: { step: (window as any).carouselSequenceStep },
+          }),
+        )
+      }, 4000)
+    }
+
+    const handleSequence = (e: Event) => {
+      if (isPausedRef.current) return
+      const customEvent = e as CustomEvent<{ step: number }>
+      if (customEvent.detail.step === 2) {
+        setIndex((prev) => (prev === maxIndex ? 0 : prev + 1))
+      }
+    }
+
+    window.addEventListener('carousel-sequence-slide', handleSequence)
+    return () => window.removeEventListener('carousel-sequence-slide', handleSequence)
+  }, [maxIndex, showControls])
 
   const handlePrev = () => {
     setIndex((prev) => (prev === 0 ? maxIndex : prev - 1))
@@ -56,10 +90,22 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
     setIndex((prev) => (prev === maxIndex ? 0 : prev + 1))
   }
 
-  const showControls = members.length > visibleCount
-
   return (
-    <div className="relative w-full select-none">
+    <div
+      className="relative w-full select-none"
+      onMouseEnter={() => {
+        isPausedRef.current = true
+      }}
+      onMouseLeave={() => {
+        isPausedRef.current = false
+      }}
+      onTouchStart={() => {
+        isPausedRef.current = true
+      }}
+      onTouchEnd={() => {
+        isPausedRef.current = false
+      }}
+    >
       {showControls && (
         <div className="flex justify-end items-center space-x-1 -mb-1 px-2">
           <button
