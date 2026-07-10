@@ -100,43 +100,92 @@ export const seed = async ({
 
     payload.create({
       collection: 'users',
-      data: { name: 'Phunchok Rigzin', email: 'phunchok-rigzin@gmail.com', password: 'rigzin', designation: 'Tour Leader', avatar: mediaMap['phunchok-rigzin.webp'], },
+      data: {
+        name: 'Phunchok Rigzin',
+        email: 'phunchok-rigzin@gmail.com',
+        password: 'rigzin',
+        designation: 'Tour Leader',
+        avatar: mediaMap['phunchok-rigzin.webp'],
+        bio: 'Phuntsog Rigzin is the Founder and Lead Tour Leader at Ladakhmoto, with over 12 years of experience leading motorcycle expeditions across Ladakh and the Himalayas. His deep local knowledge and passion for adventure help create safe, authentic, and unforgettable riding experiences.',
+      },
       context: req.context, // Pass context through
     }),
 
     payload.create({
       collection: 'users',
-      data: { name: 'Stanzin Paljor', email: 'stanzin-paljor@gmail.com', password: 'paljor', designation: 'Marshal', avatar: mediaMap['stanzin-paljor.webp'], },
+      data: {
+        name: 'Stanzin Paljor',
+        email: 'stanzin-paljor@gmail.com',
+        password: 'paljor',
+        designation: 'Marshal',
+        avatar: mediaMap['stanzin-paljor.webp'],
+        bio: 'Stanzin Paljor is a Tour Leader and Marshal with over 10 years of experience guiding motorcycle tours across Ladakh and the Himalayas. His extensive route knowledge and calm leadership make him a trusted guide on every expedition.',
+      },
       context: req.context, // Pass context through
     }),
 
     payload.create({
       collection: 'users',
-      data: { name: 'Jigmet Namdol', email: 'jigmet-namdol@gmail.com', password: 'namdol', designation: 'Marshal', avatar: mediaMap['jigmet-namdol.webp'], },
+      data: {
+        name: 'Jigmet Namdol',
+        email: 'jigmet-namdol@gmail.com',
+        password: 'namdol',
+        designation: 'Marshal',
+        avatar: mediaMap['jigmet-namdol.webp'],
+        bio: 'Namdol (Jimmy) is a Tour Leader and Marshal with over 7 years of experience leading motorcycle adventures in Ladakh. His riding expertise and commitment to rider safety help ensure smooth and enjoyable journeys.',
+      },
       context: req.context, // Pass context through
     }),
 
     payload.create({
       collection: 'users',
-      data: { name: 'Jigmet Rigzin', email: 'jigmet-rigzin@gmail.com', password: 'rigzin', designation: 'Operation', avatar: mediaMap['jigmet-rigzin.webp'], },
+      data: {
+        name: 'Jigmet Rigzin',
+        email: 'jigmet-rigzin@gmail.com',
+        password: 'rigzin',
+        designation: 'Operation',
+        avatar: mediaMap['jigmet-rigzin.webp'],
+        bio: 'Jigmet Rigzin is a key member of the Operations team, bringing over 6 years of experience in tour logistics and expedition support. His attention to detail helps ensure every tour runs efficiently behind the scenes.',
+      },
       context: req.context, // Pass context through
     }),
 
     payload.create({
       collection: 'users',
-      data: { name: 'Nubu Jr.', email: 'nubu-jr@gmail.com', password: 'nubu', designation: 'Operation', avatar: mediaMap['nubu-jr.webp'], },
+      data: {
+        name: 'Nubu Jr.',
+        email: 'nubu-jr@gmail.com',
+        password: 'nubu',
+        designation: 'Operation',
+        avatar: mediaMap['nubu-jr.webp'],
+        bio: 'Nubu Jr is a Marshal and Backup Support team member with over 5 years of experience assisting motorcycle expeditions across Ladakh. His dependable support helps keep riders comfortable, safe, and well-supported throughout the journey.',
+      },
       context: req.context, // Pass context through
     }),
 
     payload.create({
       collection: 'users',
-      data: { name: 'Begi', email: 'begi@gmail.com', password: 'begi', designation: 'Marshal', avatar: mediaMap['begi.webp'], },
+      data: {
+        name: 'Begi',
+        email: 'begi@gmail.com',
+        password: 'begi',
+        designation: 'Marshal',
+        avatar: mediaMap['begi.webp'],
+        bio: 'Begi is a Marshal and Mechanic with over 5 years of experience maintaining motorcycles on challenging Himalayan routes. His technical expertise helps keep every expedition running smoothly and safely.',
+      },
       context: req.context, // Pass context through
     }),
 
     payload.create({
       collection: 'users',
-      data: { name: 'Tsewang', email: 'tsewang@gmail.com', password: 'tsewang', designation: 'Operation', avatar: mediaMap['tsewang.webp'], },
+      data: {
+        name: 'Tsewang',
+        email: 'tsewang@gmail.com',
+        password: 'tsewang',
+        designation: 'Operation',
+        avatar: mediaMap['tsewang.webp'],
+        bio: 'Tsewang is part of the Operations and Mechanical Support team, with over 4 years of experience in tour operations and motorcycle maintenance. His reliable support ensures every adventure is well-organised and worry-free.',
+      },
       context: req.context, // Pass context through
     }),
   ])

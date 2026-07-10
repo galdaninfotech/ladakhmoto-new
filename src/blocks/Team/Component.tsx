@@ -14,6 +14,7 @@ async function TeamComponent() {
       avatar: true,
       name: true,
       designation: true,
+      bio: true,
     },
     where: {
       name: {

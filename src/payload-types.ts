@@ -501,6 +501,7 @@ export interface User {
   name?: string | null;
   designation?: ('Admin' | 'Tour Leader' | 'Marshal' | 'Operation') | null;
   active?: boolean | null;
+  bio?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -2165,6 +2166,7 @@ export interface UsersSelect<T extends boolean = true> {
   name?: T;
   designation?: T;
   active?: T;
+  bio?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

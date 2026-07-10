@@ -6,6 +6,7 @@ import * as migration_20260619_020623_alter_hero_fields from './20260619_020623_
 import * as migration_20260619_074104_add_highlights_field_to_footer from './20260619_074104_add_highlights_field_to_footer';
 import * as migration_20260627_043232_add_offerurl_field_hero_slides from './20260627_043232_add_offerurl_field_hero_slides';
 import * as migration_20260708_123354_add_categories_to_tours from './20260708_123354_add_categories_to_tours';
+import * as migration_20260710_031433_add_bio_to_users from './20260710_031433_add_bio_to_users';
 
 export const migrations = [
   {
@@ -46,6 +47,11 @@ export const migrations = [
   {
     up: migration_20260708_123354_add_categories_to_tours.up,
     down: migration_20260708_123354_add_categories_to_tours.down,
-    name: '20260708_123354_add_categories_to_tours'
+    name: '20260708_123354_add_categories_to_tours',
+  },
+  {
+    up: migration_20260710_031433_add_bio_to_users.up,
+    down: migration_20260710_031433_add_bio_to_users.down,
+    name: '20260710_031433_add_bio_to_users'
   },
 ];

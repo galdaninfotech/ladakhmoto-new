@@ -11,6 +11,7 @@ export type TeamMember = {
   avatar?: number | MediaType | null | undefined
   name?: string | null | undefined
   designation?: 'Admin' | 'Tour Leader' | 'Marshal' | 'Operation' | null | undefined
+  bio?: string | null | undefined
 }
 
 interface TeamCarouselProps {
@@ -134,7 +135,7 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
                     {member.designation}
                   </p>
                   <p className="font-sans text-[11px] text-white mt-1 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-500 transform -translate-y-2 group-hover:translate-y-0">
-                    {member.designation}
+                    {member.bio}
                   </p>
                 </div>
 

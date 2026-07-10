@@ -52,6 +52,10 @@ export const Users: CollectionConfig = {
       type: 'checkbox',
       defaultValue: false,
     },
+    {
+      name: 'bio',
+      type: 'textarea',
+    },
   ],
   timestamps: true,
 }
