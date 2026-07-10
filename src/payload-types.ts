@@ -229,6 +229,7 @@ export interface Page {
     | TeamBlock
     | ContactFormBlock
     | HotelsBlock
+    | HighlightsBlock
   )[];
   meta?: {
     title?: string | null;
@@ -971,6 +972,16 @@ export interface HotelsBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'hotelsBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HighlightsBlock".
+ */
+export interface HighlightsBlock {
+  enabled?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'highlightsBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1830,6 +1841,7 @@ export interface PagesSelect<T extends boolean = true> {
         team?: T | TeamBlockSelect<T>;
         contactForm?: T | ContactFormBlockSelect<T>;
         hotelsBlock?: T | HotelsBlockSelect<T>;
+        highlightsBlock?: T | HighlightsBlockSelect<T>;
       };
   meta?:
     | T
@@ -2028,6 +2040,15 @@ export interface ContactFormBlockSelect<T extends boolean = true> {
  * via the `definition` "HotelsBlock_select".
  */
 export interface HotelsBlockSelect<T extends boolean = true> {
+  enabled?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HighlightsBlock_select".
+ */
+export interface HighlightsBlockSelect<T extends boolean = true> {
   enabled?: T;
   id?: T;
   blockName?: T;

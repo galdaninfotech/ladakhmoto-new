@@ -8,6 +8,7 @@ import * as migration_20260627_043232_add_offerurl_field_hero_slides from './202
 import * as migration_20260708_123354_add_categories_to_tours from './20260708_123354_add_categories_to_tours';
 import * as migration_20260710_031433_add_bio_to_users from './20260710_031433_add_bio_to_users';
 import * as migration_20260710_034334_add_hotels_block_to_pages from './20260710_034334_add_hotels_block_to_pages';
+import * as migration_20260710_044605_add_highlights_block_to_pages from './20260710_044605_add_highlights_block_to_pages';
 
 export const migrations = [
   {
@@ -58,6 +59,11 @@ export const migrations = [
   {
     up: migration_20260710_034334_add_hotels_block_to_pages.up,
     down: migration_20260710_034334_add_hotels_block_to_pages.down,
-    name: '20260710_034334_add_hotels_block_to_pages'
+    name: '20260710_034334_add_hotels_block_to_pages',
+  },
+  {
+    up: migration_20260710_044605_add_highlights_block_to_pages.up,
+    down: migration_20260710_044605_add_highlights_block_to_pages.down,
+    name: '20260710_044605_add_highlights_block_to_pages'
   },
 ];

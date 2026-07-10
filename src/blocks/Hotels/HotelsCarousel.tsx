@@ -82,17 +82,17 @@ export function HotelsCarousel({ hotels }: HotelsCarouselProps) {
         <div className="flex justify-end items-center space-x-1 -mb-1 px-2">
           <button
             onClick={handlePrev}
-            className="flex h-8 w-8 items-center justify-center rounded-xs bg-primary text-white backdrop-blur-md transition-all hover:bg-accent hover:text-white hover:scale-105 border border-white/10 cursor-pointer shadow-lg"
+            className="flex h-8 w-8 items-center justify-center rounded-xs bg-gray-300 backdrop-blur-md transition-all hover:bg-accent hover:scale-105 border border-white/10 cursor-pointer shadow-lg"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="h-6 w-6 text-accent" />
+            <ChevronLeft className="h-6 w-6 text-gray-400 hover:text-white" />
           </button>
           <button
             onClick={handleNext}
-            className="flex h-8 w-8 items-center justify-center rounded-xs bg-primary text-white backdrop-blur-md transition-all hover:bg-accent hover:text-white hover:scale-105 border border-white/10 cursor-pointer shadow-lg"
+            className="flex h-8 w-8 items-center justify-center rounded-xs bg-gray-300 backdrop-blur-md transition-all hover:bg-accent hover:scale-105 border border-white/10 cursor-pointer shadow-lg"
             aria-label="Next slide"
           >
-            <ChevronRight className="h-6 w-6 text-accent" />
+            <ChevronRight className="h-6 w-6 text-gray-400 hover:text-white" />
           </button>
         </div>
       )}
@@ -218,7 +218,7 @@ export function HotelsCarousel({ hotels }: HotelsCarouselProps) {
               key={i}
               onClick={() => setIndex(i)}
               className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                index === i ? 'w-6 bg-white' : 'w-2 bg-white/30 hover:bg-white/50'
+                index === i ? 'w-6 bg-gray-500' : 'w-2 bg-gray-500/30 hover:bg-gray-500/50'
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />

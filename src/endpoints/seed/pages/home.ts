@@ -192,6 +192,12 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
         enabled: true,
         title: null,
         blockName: null,
+        blockType: 'highlightsBlock',
+      },
+      {
+        enabled: true,
+        title: null,
+        blockName: null,
         blockType: 'hotelsBlock',
       },
       {

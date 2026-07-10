@@ -17,6 +17,7 @@ import UltimateAdventuresComponent from '@/blocks/UltimateAdventures/Component';
 import TeamComponent from '@/blocks/Team/Component';
 import { ContactForm } from '@/blocks/ContactForm/Component';
 import HotelsComponent from '@/blocks/Hotels/Component';
+import HighlightsComponent from '@/blocks/Highlights/Component';
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -33,6 +34,7 @@ const blockComponents = {
   team: TeamComponent,
   contactForm: ContactForm,
   hotelsBlock: HotelsComponent,
+  highlightsBlock: HighlightsComponent,
 }
 
 export const RenderBlocks: React.FC<{
