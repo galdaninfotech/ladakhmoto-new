@@ -36,6 +36,7 @@ const Sidebar: React.FC<IconsDataType> = () => {
 
       <div className="lg:mt-28.5 font-oswald">
         <h2 className='font-oswald font-normal text-[1.2rem] text-foreground uppercase tracking-[2px] mb-4'>Book With Confidence!</h2>
+        <div className="stripe-line"></div>
         <div className="space-y-2">
           <div className="text-sm text-muted-foreground flex gap-x-2"><LMDoneSqaure className='text-success size-3.5 mt-0.5' />No-Hassle Best Price Guarantee</div>
           <div className="text-sm text-muted-foreground flex gap-x-2"><LMDoneSqaure className='text-success size-3.5 mt-0.5' />Local Operator</div>
@@ -94,8 +95,11 @@ const Sidebar: React.FC<IconsDataType> = () => {
 
       <hr className='my-8 border-border' />
 
+      <h2 className='font-oswald font-normal text-[1.2rem] text-foreground uppercase tracking-[2px] mb-4'>Traveler Support</h2>
+      <div className="stripe-line"></div>
+
       <div className='bg-card p-4 shadow-lg border border-border'>
-        <h2 className='text-[1.2rem] font-oswald font-normal text-foreground uppercase tracking-[2px] text-center mb-2'>Need Help?</h2>
+        <span className='text-[1.2rem] font-oswald font-normal text-foreground uppercase tracking-[2px] text-center mb-2'>Need Help?</span>
         <p className='text-sm text-muted-foreground text-justify mt-4'>
           Do not hesitage to give us a call. We are a team of local experts and we are happy to talk
           to you.

@@ -103,19 +103,19 @@ export const UltimateAdventureCard: React.FC<{
           </div>
         )}
 
-        <div className="pt-6 border-t border-border mt-auto">
+        <div className="pt-6 border-t border-border mt-auto text-right">
           <Link 
             href={href}
-            className="inline-flex items-center text-primary font-bold text-xs md:text-sm uppercase tracking-[0.1em] group/link"
+            className="inline-flex items-center text-white text-[8px] md:text-[10px] uppercase tracking-[0.1em] hover:text-accent bg-black pl-2 py-1 pr-1 group/link"
           >
             Explore Adventure
             <svg 
-              className="text-accent ml-3 w-5 h-5 transition-transform duration-300 group-hover/link:translate-x-2" 
+              className="text-black ml-3 w-8 h-8 bg-gray-200 pl-1 transition-transform duration-300 group-hover/link:translate-x-2" 
               fill="none" 
               viewBox="0 0 24 24" 
               stroke="currentColor"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M14 8l3 3m0 0l-3 3m3-3H3" />
             </svg>
           </Link>
         </div>

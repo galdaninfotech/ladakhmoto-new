@@ -154,7 +154,7 @@ export const HeaderClient: React.FC<{
                     <Link
                       href={item.href}
                       className={cn(
-                        "h-[45px] font-oswald uppercase border-[darkred] hover:text-accent pl-3 pr-2 flex items-center gap-1 duration-150",
+                        "h-[45px] font-oswald uppercase text-[15px] font-bold tracking-wider hover:text-accent pl-3 pr-2 flex items-center gap-1 duration-150",
                         isScrolled ? "text-foreground" : "text-white"
                       )}
                     >

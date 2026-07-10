@@ -348,7 +348,7 @@ html {
 /* Footer */
 .footer {
     position: relative;
-    background: #515151;
+    background: #020a34;
 }
 
 [data-theme="dark"] .footer {
@@ -395,6 +395,11 @@ html {
     color: rgba(255, 255, 255, 0.4);
 }
 
+.footer-bottom-section {
+  background: url(/images/footer-bottom-section-bg.png) no-repeat;
+  background-size: contain;
+  /* background-position: center; */
+}
 
 
 /* src/heros/HighImpact/CarouselContent.tsx */
@@ -413,3 +418,13 @@ html {
   box-shadow: 0.2rem 0.2rem 0px -1px rgb(255, 255, 255);
 }
 
+
+
+/* Sidebar */
+.stripe-line {
+    height: 12px;
+    margin-top: -15px;
+    margin-bottom: 20px;
+    background: url(/images/stripe.png);
+    overflow: hidden;
+}

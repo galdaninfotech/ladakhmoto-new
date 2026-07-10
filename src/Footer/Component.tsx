@@ -336,6 +336,18 @@ export async function Footer() {
             </nav>
           </div>
         </div>
+
+        <p className='text-sm text-white/40 col-span-4 sm:col-span-8 lg:col-span-12 pt-12 pb-2'>
+          Ladakh Moto is a local company located in the center of Leh, Ladakh and a trusted choice for Leh Ladakh bike tours and adventure travel in the region. As local travel experts, we provide authentic and seamless travel experiences with full accountability and deep knowledge of Ladakh. Please read more to know why to choose Ladakh Moto?
+        </p>
+
+        <p className='text-sm text-white/40 col-span-4 sm:col-span-8 lg:col-span-12 pt-6 pb-2'>
+          Being a direct provider ensures personalized service, immediate support, and careful attention to detail so your entire journey runs smoothly. Whether you're planning one of our bike tours across Ladakh, need a road captain, or require mechanical support, our experienced local team is here to help.
+        </p>
+
+        <p className='text-sm text-white/40 col-span-4 sm:col-span-8 lg:col-span-12 pt-6 pb-14'>
+          Why choose Ladakh Moto? Because when you travel with us, you not only experience an unforgettable adventure through Leh and Ladakh trip, you also support a local enterprise committed to responsible and sustainable tourism.
+        </p>
       </div>
 
 
@@ -343,71 +355,15 @@ export async function Footer() {
       {/* Bottom Section */}
       <div className="footer px-4">
         <div className="container mx-auto">
-          <div className="px-4 w-full lg:max-w-screen-2xl grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 gap-x-2 md:gap-x-3 lg:gap-x-4">
+          <div className="footer-bottom-section px-4 w-full lg:max-w-screen-2xl grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 gap-x-2 md:gap-x-3 lg:gap-x-4">
             
             {/* TOP SECTION: Two-Column Multi-Row Layout */}
             <div className="col-span-4 sm:col-span-8 lg:col-span-12 border-t border-white/5 py-10 flex flex-col lg:flex-row justify-between gap-10">
               
-              {/* Column 1: Business Identity */}
-              <div className="flex flex-col gap-6">
-                {/* Row 1: Logo */}
-                <Link href="/" className="inline-block opacity-90 hover:opacity-100 transition-opacity">
-                  <Image
-                    src="/images/logo.webp"
-                    alt="Ladakh Moto Logo"
-                    width={100}
-                    height={53}
-                    className="object-contain"
-                  />
-                </Link>
-                
-                {/* Row 2: Reg Info */}
-                <div className="flex flex-col gap-1.5">
-                  <span className="text-[11px] text-white leading-none">
-                    Registration No: 6087-B-LEH
-                  </span>
-                  <span className="text-[11px] text-accent leading-none">
-                    GST TIN : 38BUPPG9731E2Z8
-                  </span>
-                </div>
+              
 
-                <div className="text-white/80 text-xs">
-                  <address className="not-italic mb-8 leading-relaxed text-white/70">
-                  {ladakhMotoData.addressline1}<br />
-                  {ladakhMotoData.addressline2}
-                  </address>
-                  <ul className="list flex justify-start gap-4">
-                    <li className="flex items-center group">
-                        <EmailObfuscator
-                        email="info@ladakhmoto.com"
-                        className="email email-link transition-colors py-1 text-white/70 hover:text-accent flex items-center gap-x-2"
-                        >
-                        <div className="text-accent">
-                            <LMEmail />
-                        </div>
-                        </EmailObfuscator>
-                    </li>
-                    <li className="flex items-center group">
-                        <div className="text-accent">
-                        <LMPhone />
-                        </div>
-                        <Link
-                        aria-label="Call us"
-                        title="Phone Number"
-                        href="tel:+91-9622958013"
-                        className="phone ml-2 transition-colors py-1 text-white/70 hover:text-accent"
-                        >
-                        +91-9622958013
-                        </Link>
-                    </li>
-                  </ul>
-              </div>
-
-
-              </div>
-
-              {/* Column 2: Nav & User Actions */}
-              <div className="flex flex-col items-start lg:items-end gap-3 mt-1">
+              {/* Column 1: Nav & User Actions */}
+              <div className="flex flex-col items-start gap-3 mt-1">
 
                 {/* Row 1: Secondary Navigation */}
                 <nav className="flex flex-wrap items-center gap-4 sm:gap-6 text-[13px] font-medium text-white/90 mt-6">
@@ -462,19 +418,66 @@ export async function Footer() {
                 </div>
 
               </div>
+
+              {/* Column 2: Business Identity */}
+              <div className="flex flex-col gap-6 items-end">
+                {/* Row 1: Logo */}
+                <Link href="/" className="inline-block opacity-90 hover:opacity-100 transition-opacity">
+                  <Image
+                    src="/images/logo.webp"
+                    alt="Ladakh Moto Logo"
+                    width={100}
+                    height={53}
+                    className="object-contain"
+                  />
+                </Link>
+                
+                {/* Row 2: Reg Info */}
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-[11px] text-white leading-none">
+                    Registration No: 6087-B-LEH
+                  </span>
+                  <span className="text-[11px] text-accent leading-none">
+                    GST TIN : 38BUPPG9731E2Z8
+                  </span>
+                </div>
+
+                <div className="text-white/80 text-xs">
+                  <address className="not-italic mb-8 leading-relaxed text-white/70 text-right">
+                  {ladakhMotoData.addressline1}<br />
+                  {ladakhMotoData.addressline2}
+                  </address>
+                  <ul className="list flex justify-start gap-4">
+                    <li className="flex items-center group">
+                        <EmailObfuscator
+                        email="info@ladakhmoto.com"
+                        className="email email-link transition-colors py-1 text-white/70 hover:text-accent flex items-center gap-x-2"
+                        >
+                        <div className="text-accent">
+                            <LMEmail />
+                        </div>
+                        </EmailObfuscator>
+                    </li>
+                    <li className="flex items-center group">
+                        <div className="text-accent">
+                        <LMPhone />
+                        </div>
+                        <Link
+                        aria-label="Call us"
+                        title="Phone Number"
+                        href="tel:+91-9622958013"
+                        className="phone ml-2 transition-colors py-1 text-white/70 hover:text-accent"
+                        >
+                        +91-9622958013
+                        </Link>
+                    </li>
+                  </ul>
+              </div>
+
+
+              </div>
             </div>
 
-            <p className='text-sm text-white/40 col-span-4 sm:col-span-8 lg:col-span-12 pt-12 pb-2'>
-              Ladakh Moto is a local company located in the center of Leh, Ladakh and a trusted choice for Leh Ladakh bike tours and adventure travel in the region. As local travel experts, we provide authentic and seamless travel experiences with full accountability and deep knowledge of Ladakh. Please read more to know why to choose Ladakh Moto?
-            </p>
-
-            <p className='text-sm text-white/40 col-span-4 sm:col-span-8 lg:col-span-12 pt-6 pb-2'>
-              Being a direct provider ensures personalized service, immediate support, and careful attention to detail so your entire journey runs smoothly. Whether you're planning one of our bike tours across Ladakh, need a road captain, or require mechanical support, our experienced local team is here to help.
-            </p>
-
-            <p className='text-sm text-white/40 col-span-4 sm:col-span-8 lg:col-span-12 pt-6 pb-14'>
-              Why choose Ladakh Moto? Because when you travel with us, you not only experience an unforgettable adventure through Leh and Ladakh trip, you also support a local enterprise committed to responsible and sustainable tourism.
-            </p>
 
             {/* TIER 3: LEGAL LINKS */}
             <div className="col-span-4 sm:col-span-8 lg:col-span-12 border-t border-white/5 pt-6 pb-2">

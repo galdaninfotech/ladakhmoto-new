@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 
 import { cn } from '@/utilities/ui'
 import { Oswald } from 'next/font/google'
+import { Truculenta } from 'next/font/google'
 
 import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
@@ -25,6 +26,13 @@ import Accrediations from '@/components/Accrediations'
 
 const oswald = Oswald({
   subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-oswald',
+})
+
+const sixCaps = Truculenta({
+  subsets: ['latin'],
+  weight: '400',
   display: 'swap',
   variable: '--font-oswald',
 })
@@ -58,7 +66,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const localSchema = localBusinessSchema(ladakhMotoData)
 
   return (
-    <html className={cn(oswald.variable)} lang="en" suppressHydrationWarning>
+    <html className={cn(sixCaps.variable)} lang="en" suppressHydrationWarning>
       <head>
         <link rel="preload" as="image" href="/images/logo.webp" fetchPriority="high" />
         <InitTheme />
