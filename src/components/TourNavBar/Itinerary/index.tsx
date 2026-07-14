@@ -90,14 +90,14 @@ export const Itinerary: React.FC<{
                     {/* Highlights Section */}
                     {itinerary.structuredHighlights && itinerary.structuredHighlights.length > 0 && (
                       <div className="flex flex-wrap gap-2 mb-4">
-                        <strong className="text-primary uppercase">Highlights:</strong>
+                        <strong className="text-accent uppercase">Highlights:</strong>
                         {itinerary.structuredHighlights.map((h, hIndex) => {
                           if (typeof h === 'object' && h !== null) {
                             return (
                               <Link
                                 key={hIndex}
                                 href={`/highlights/${h.slug}`}
-                                className="inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-medium bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-colors"
+                                className="inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-medium bg-accent/10 text-foreground/80 border border-accent/20 hover:bg-accent/20 transition-colors"
                               >
                                 {h.title}
                               </Link>

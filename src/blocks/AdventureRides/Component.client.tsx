@@ -17,114 +17,151 @@ export const AdventureRides: React.FC<{
       ? [bikingAdventureData]
       : []
 
+  // Helper to calculate saving percentage
+  const calculateDiscount = (min?: string | number | null, cutout?: string | number | null) => {
+    const minVal = typeof min === 'string' ? parseFloat(min) : min
+    const cutoutVal = typeof cutout === 'string' ? parseFloat(cutout) : cutout
+    if (!minVal || !cutoutVal || cutoutVal <= minVal) return 0
+    return Math.round(((cutoutVal - minVal) / cutoutVal) * 100)
+  }
+
+  // Helper to format cost nicely
+  const formatCost = (cost?: string | number | null) => {
+    if (!cost) return ''
+    const val = typeof cost === 'string' ? parseFloat(cost) : cost
+    return isNaN(val) ? String(cost) : `₹ ${val.toLocaleString()}`
+  }
+
   return (
-    <>
-      <div
-      className="container mx-auto
-            grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12
-            gap-y-8 md:gap-y-16 gap-x-4 mb-6 mt-12"
-    >
-      <div className="intro flex flex-col items-center justify-center col-span-4 sm:col-span-8 lg:col-span-12">
-        <h2 className="font-oswald text-[16px] md:text-xl uppercase text-foreground">
+    <div className="container mx-auto mb-16 mt-24">
+      {/* Block Title */}
+      <div className="intro flex flex-col items-center justify-center mb-16">
+        <h2 className="font-oswald text-xl md:text-2xl uppercase text-foreground tracking-[0.2em] relative pb-3">
           Adventure Rides 2026
+          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-accent" />
         </h2>
       </div>
 
-      {tours.map((tour, index) => {
-        const imageUrl = `/api/media/file/${tour.slug}-home.webp`
-        const normalizedImageUrl = formatImageUrl(imageUrl) || '/images/placeholder.jpg'
+      {/* Grid List */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {tours.map((tour, index) => {
+          const imageUrl = `/api/media/file/${tour.slug}-home.webp`
+          const normalizedImageUrl = formatImageUrl(imageUrl) || '/images/placeholder.jpg'
+          const savings = calculateDiscount(tour.minCost, tour.cutOutCost)
 
-        return (
-          <div
-            key={tour.id}
-            className="col-span-4 w-full rounded-md overflow-hidden shadow-lg bg-card border border-border"
-          >
-            <div className="relative h-55">
-              <Image
-                src={normalizedImageUrl}
-                alt={tour.title ? tour.title : ''}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                priority={index < 3}
-                className="object-cover"
-              />
-              { tour.minCost && 
-                <>
-                  <div className="absolute top-3 right-3 bg-red-500 text-primary-foreground text-[11px] uppercase tracking-widest px-3 py-1">
-                    ₹ {tour.minCost} / pp
+          return (
+            <div
+              key={tour.id}
+              className="group relative flex flex-col w-full bg-card border border-border/60 rounded-[2px] hover:border-accent/40 hover:shadow-lg hover:shadow-black/5 transition-all duration-500 overflow-hidden"
+            >
+              {/* Card Header Image Area */}
+              <div className="relative h-64 w-full overflow-hidden bg-black">
+                <Image
+                  src={normalizedImageUrl}
+                  alt={tour.title ? tour.title : ''}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority={index < 3}
+                  className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-105 group-hover:opacity-90"
+                />
+
+                {/* Savings Pill Badge */}
+                {savings > 0 && (
+                  <div className="absolute top-4 left-4 bg-accent text-accent-on font-oswald text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-[2px] z-20 shadow-md">
+                    SAVE {savings}%
                   </div>
-                </>
-              }
+                )}
 
-              { tour.minCost && 
-                <>
-                  <div className="absolute top-3 right-3 bg-red-500 text-primary-foreground text-[11px] uppercase tracking-widest px-3 py-1">
-                    ₹ {tour.minCost} / pp
+                {/* Cost Pill Badge */}
+                {tour.minCost && (
+                  <div className="absolute top-4 right-4 bg-black/85 backdrop-blur-md border border-white/10 text-white font-oswald text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-[2px] z-20 shadow-md">
+                    {formatCost(tour.minCost)} / pp
                   </div>
-                </>
-              }
+                )}
 
-              <div className="absolute bottom-0 left-1/2 w-[80%] -translate-x-1/2 bg-primary font-oswald text-primary-foreground text-sm py-2 text-center rounded-t shadow-md">
-                {tour.duration ? formatTourDuration(tour.duration) : 'Duration unavailable'} &nbsp;
-                | &nbsp; {tour.startEndCity}
+                {/* Duration & Route Banner */}
+                <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black via-black/40 to-transparent p-4 pt-12 text-white z-10 flex items-end justify-between pointer-events-none">
+                  <div className="flex flex-col gap-0.5">
+                    <span className="font-oswald text-[11px] uppercase tracking-[0.15em] text-accent font-semibold">
+                      {tour.duration ? formatTourDuration(tour.duration) : 'Duration unavailable'}
+                    </span>
+                  </div>
+                  <span className="font-sans text-[11px] text-white/80 font-medium tracking-wide">
+                    {tour.startEndCity}
+                  </span>
+                </div>
+              </div>
+
+              {/* Card Body Area */}
+              <div className="p-5 flex flex-col flex-1 gap-1">
+                <h3 className="font-oswald text-base font-bold tracking-wide text-foreground uppercase group-hover:text-primary transition-colors duration-300 line-clamp-1">
+                  {tour.title}
+                </h3>
+
+                {/* Tour Key Statistics Grid */}
+                <div className="py-4 border-y border-border/50 my-3">
+                  <TourIcons
+                    isOverview={true}
+                    highestPeak={tour.highestPeak}
+                    distance={tour.distance}
+                    duration={tour.duration}
+                    accommodation={tour.accommodation}
+                    meal={tour.meal}
+                  />
+                </div>
+
+                {/* Cost Info Panel */}
+                <div className="flex justify-between items-center my-1 text-xs">
+                  <span className="text-muted-foreground font-sans tracking-wide">Expedition Price</span>
+                  <div className="text-right flex items-center justify-end">
+                    {tour.cutOutCost && (
+                      <span className="line-through text-muted-foreground mr-2 font-sans text-[11px]">
+                        {formatCost(tour.cutOutCost)}
+                      </span>
+                    )}
+                    <span className="text-primary font-oswald text-sm font-bold tracking-wide">
+                      {formatCost(tour.minCost)}
+                      <span className="font-sans text-[10px] text-muted-foreground font-normal ml-1">
+                        / pp
+                      </span>
+                    </span>
+                  </div>
+                </div>
+
+                {/* Navigation and Call to Action Links */}
+                <div className="flex gap-3 mt-4">
+                  <Link
+                    href={`/downloads/bike-tours/${tour.slug}.pdf`}
+                    className="flex-1 border border-accent bg-transparent font-oswald text-[10px] text-foreground uppercase font-bold text-center py-2.5 rounded-[2px] hover:bg-accent hover:text-black transition-all duration-300 cursor-pointer tracking-widest"
+                  >
+                    View PDF
+                  </Link>
+                  <Link
+                    href={`/bike-tours/${tour.slug}`}
+                    className="flex-1 bg-primary font-oswald text-[10px] text-primary-foreground uppercase font-bold text-center py-2.5 rounded-[2px] hover:opacity-90 hover:shadow-md transition-all duration-300 cursor-pointer tracking-widest"
+                  >
+                    Explore Ride
+                  </Link>
+                </div>
               </div>
             </div>
+          )
+        })}
+      </div>
 
-            <div className="p-4 flex flex-col gap-1">
-              <h3 className="font-oswald text-sm font-semibold tracking-wide text-foreground uppercase">
-                {tour.title}
-              </h3>
-
-              <TourIcons
-                isOverview={true}
-                highestPeak={tour.highestPeak}
-                distance={tour.distance}
-                duration={tour.duration}
-                accommodation={tour.accommodation}
-                meal={tour.meal}
-              />
-
-              <div className="text-xs text-muted-foreground my-2">
-                Starting from{' '}
-                <span className="line-through text-muted-foreground mr-1">₹ {tour.cutOutCost}</span>
-                <span className="text-primary font-bold">₹ {tour.minCost}</span>{' '}
-                <span className="text-muted-foreground">per person</span>
-              </div>
-
-              <div className="flex gap-3 mt-2">
-                <Link
-                  href={`/downloads/bike-tours/${tour.slug}.pdf`}
-                  className="flex-1 border border-accent bg-card font-oswald text-[10px] text-primary uppercase font-thick text-center py-2.5 rounded-sm hover:bg-accent hover:text-white transition cursor-pointer"
-                >
-                  View Full PDF
-                </Link>
-                <Link
-                  href={`/bike-tours/${tour.slug}`}
-                  className="flex-1 bg-primary font-oswald text-[10px] text-primary-foreground uppercase font-thick text-center py-2.5 rounded-sm hover:opacity-90 transition cursor-pointer"
-                >
-                  MORE DETAILS
-                </Link>
-              </div>
-            </div>
-          </div>
-        )
-      })}
-
-      
+      {/* Explore All Bottom Section */}
+      <div className="mt-16 text-right">
+        <Link
+          href="/bike-tours"
+          className="inline-flex items-center font-oswald text-xs md:text-sm uppercase tracking-[0.3em] group text-muted-foreground hover:text-foreground transition-colors"
+        >
+          Explore All Adventure Rides
+          <span className="ml-2 -mt-1 transform group-hover:translate-x-1.5 transition-transform duration-300 inline-block">
+            →
+          </span>
+        </Link>
+      </div>
     </div>
-
-    <div className="mt-16 text-right">
-      <Link
-        href="/bike-tours"
-        className="inline-flex items-center font-oswald text-sm uppercase tracking-[0.3em] group text-muted-foreground hover:text-foreground transition-colors"
-      >
-        Explore All Adventure Rides
-        <span className="ml-2 -mt-1 transform group-hover:translate-x-1 transition-transform inline-block">
-          →
-        </span>
-      </Link>
-    </div>
-    </>
   )
 }
 
