@@ -72,13 +72,6 @@ export const AdventureRides: React.FC<{
                   </div>
                 )}
 
-                {/* Cost Pill Badge */}
-                {tour.minCost && (
-                  <div className="absolute top-4 right-4 bg-black/85 backdrop-blur-md border border-white/10 text-white font-oswald text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-[2px] z-20 shadow-md">
-                    {formatCost(tour.minCost)} / pp
-                  </div>
-                )}
-
                 {/* Duration & Route Banner */}
                 <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black via-black/40 to-transparent p-4 pt-12 text-white z-10 flex items-end justify-between pointer-events-none">
                   <div className="flex flex-col gap-0.5">
@@ -112,13 +105,21 @@ export const AdventureRides: React.FC<{
 
                 {/* Cost Info Panel */}
                 <div className="flex justify-between items-center my-1 text-xs">
-                  <span className="text-muted-foreground font-sans tracking-wide">Expedition Price</span>
+                  <span className="text-muted-foreground font-sans tracking-wide">Trip Price</span>
                   <div className="text-right flex items-center justify-end">
+                    {/* Savings Pill Badge */}
+                    {savings > 0 && (
+                      <div className="text-accent font-oswald text-[18px] font-bold uppercase tracking-widest mr-4">
+                        SAVE {savings}%
+                      </div>
+                    )}
+
                     {tour.cutOutCost && (
                       <span className="line-through text-muted-foreground mr-2 font-sans text-[11px]">
                         {formatCost(tour.cutOutCost)}
                       </span>
                     )}
+                    
                     <span className="text-primary font-oswald text-sm font-bold tracking-wide">
                       {formatCost(tour.minCost)}
                       <span className="font-sans text-[10px] text-muted-foreground font-normal ml-1">

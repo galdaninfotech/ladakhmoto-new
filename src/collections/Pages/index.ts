@@ -23,6 +23,7 @@ import { Team } from '../../blocks/Team/config'
 import { ContactForm } from '../../blocks/ContactForm/config'
 import { HotelsBlock } from '../../blocks/Hotels/config'
 import { HighlightsBlock } from '../../blocks/Highlights/config'
+import { DealOfTheDay } from '../../blocks/DealOfTheDay/config'
 
 import {
   MetaDescriptionField,
@@ -83,7 +84,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, ContentWithMedia, Gallery, CompanyIntro, AdventureRides, HolidayPackages, UltimateAdventuresBlock, Team, ContactForm, HotelsBlock, HighlightsBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, ContentWithMedia, Gallery, CompanyIntro, DealOfTheDay, AdventureRides, HolidayPackages, UltimateAdventuresBlock, Team, ContactForm, HotelsBlock, HighlightsBlock],
               required: true,
               admin: {
                 initCollapsed: true,

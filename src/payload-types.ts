@@ -223,6 +223,7 @@ export interface Page {
     | ContentWithMediaBlock
     | GalleryBlock
     | CompanyIntroBlock
+    | DealOfTheDayBlock
     | AdventureRidesBlock
     | HolidayPackagesBlock
     | UltimateAdventuresBlock
@@ -890,6 +891,25 @@ export interface CompanyIntroBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'companyIntro';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DealOfTheDayBlock".
+ */
+export interface DealOfTheDayBlock {
+  enabled?: boolean | null;
+  image: number | Media;
+  title: string;
+  subTitle?: string | null;
+  description?: string | null;
+  startDate?: string | null;
+  endDate?: string | null;
+  price?: string | null;
+  url?: string | null;
+  buttonText?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'dealOfTheDay';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1835,6 +1855,7 @@ export interface PagesSelect<T extends boolean = true> {
         contentWithMedia?: T | ContentWithMediaBlockSelect<T>;
         gallery?: T | GalleryBlockSelect<T>;
         companyIntro?: T | CompanyIntroBlockSelect<T>;
+        dealOfTheDay?: T | DealOfTheDayBlockSelect<T>;
         adventureRides?: T | AdventureRidesBlockSelect<T>;
         holidayPackages?: T | HolidayPackagesBlockSelect<T>;
         ultimateAdventuresBlock?: T | UltimateAdventuresBlockSelect<T>;
@@ -1977,6 +1998,24 @@ export interface CompanyIntroBlockSelect<T extends boolean = true> {
   subTitle?: T;
   content?: T;
   readMore?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DealOfTheDayBlock_select".
+ */
+export interface DealOfTheDayBlockSelect<T extends boolean = true> {
+  enabled?: T;
+  image?: T;
+  title?: T;
+  subTitle?: T;
+  description?: T;
+  startDate?: T;
+  endDate?: T;
+  price?: T;
+  url?: T;
+  buttonText?: T;
   id?: T;
   blockName?: T;
 }

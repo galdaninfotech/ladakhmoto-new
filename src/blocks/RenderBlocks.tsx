@@ -18,6 +18,7 @@ import TeamComponent from '@/blocks/Team/Component';
 import { ContactForm } from '@/blocks/ContactForm/Component';
 import HotelsComponent from '@/blocks/Hotels/Component';
 import HighlightsComponent from '@/blocks/Highlights/Component';
+import { DealOfTheDay } from '@/blocks/DealOfTheDay/Component';
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -35,6 +36,7 @@ const blockComponents = {
   contactForm: ContactForm,
   hotelsBlock: HotelsComponent,
   highlightsBlock: HighlightsComponent,
+  dealOfTheDay: DealOfTheDay,
 }
 
 export const RenderBlocks: React.FC<{

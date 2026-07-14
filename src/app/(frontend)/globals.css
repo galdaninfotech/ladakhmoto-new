@@ -418,6 +418,21 @@ html {
   box-shadow: 0.2rem 0.2rem 0px -1px rgb(255, 255, 255);
 }
 
+/* src/blocks/DealOfTheDay/Component.tsx */
+.deal-of-the-day
+{
+  display:inline-block;
+  font-size:1.1rem;
+  background: rgb(235,235,236);
+  background: linear-gradient(90deg, rgb(252, 175, 8) 0%, rgb(241, 165, 2) 26%, rgb(246, 212, 140) 58%, rgb(244, 167, 0) 100%);
+  transform: skew(-15deg);
+  padding:0.3rem 1.4rem;
+  
+  /*Shadow*/
+  webkit-box-shadow: 0.2rem 0.2rem 0px 0.1rem rgb(255, 255, 255);
+  -moz-box-shadow: 0.2rem 0.2rem 0px 0.1rem rgb(255, 255, 255);
+  box-shadow: 0.2rem 0.2rem 0px -1px rgb(255, 255, 255);
+}
 
 
 /* Sidebar */
