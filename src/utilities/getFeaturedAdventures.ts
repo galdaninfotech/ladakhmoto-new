@@ -32,6 +32,7 @@ async function getFeaturedAdventures() {
       heroImage: true,
       meta: true,
       description: true,
+      categories: true,
     },
   })
 

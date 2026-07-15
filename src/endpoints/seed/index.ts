@@ -13,6 +13,7 @@ import { clearGlobals } from './globals/clear-globals'
 import { seedGlobals } from './globals/seed-globals'
 import { seedHighlightPosts } from './highlight-posts/seed-highlight-posts'
 import { seedHotelPosts } from './hotels-posts/seed-hotel-posts'
+import { seedCategories } from './categories/seed-categories'
 
 const collectionsWithRelationships: CollectionSlug[] = [
   'pages',
@@ -190,7 +191,7 @@ export const seed = async ({
     }),
   ])
 
-  // await seedCategories({ payload, req })
+  const { categoriesMap } = await seedCategories({ payload, req })
 
   const { highlightsMap } = await seedHighlightPosts({ payload, req, mediaMap, demoAuthor })
   const { hotelsMap } = await seedHotelPosts({ payload, req, mediaMap, demoAuthor })

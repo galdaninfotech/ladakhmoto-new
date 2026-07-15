@@ -1,10 +1,35 @@
 import React from 'react'
-import type { BikingAdventure } from '@/payload-types'
+import type { BikingAdventure, Category } from '@/payload-types'
 import Link from 'next/link'
 import Image from 'next/image'
 
 import TourIcons from '@/components/TourIcons'
 import { formatImageUrl } from '@/utilities/formatImageUrl'
+
+const getCategoryStyle = (slug?: string | null): { bg: string; text: string } => {
+  switch (slug) {
+    case 'bike-tour':
+      return { bg: 'bg-amber-500', text: 'text-white' }
+    case 'holiday-packages':
+      return { bg: 'bg-emerald-600', text: 'text-white' }
+    case 'extreme':
+      return { bg: 'bg-rose-600', text: 'text-white' }
+    case 'group-tour':
+      return { bg: 'bg-cyan-600', text: 'text-white' }
+    case 'off-road-expeditions':
+      return { bg: 'bg-orange-600', text: 'text-white' }
+    case 'trekking-hiking':
+      return { bg: 'bg-teal-600', text: 'text-white' }
+    case 'cultural-sightseeing':
+      return { bg: 'bg-indigo-600', text: 'text-white' }
+    case 'spiti-valley':
+      return { bg: 'bg-purple-600', text: 'text-white' }
+    case 'leh-ladakh':
+      return { bg: 'bg-sky-600', text: 'text-white' }
+    default:
+      return { bg: 'bg-accent', text: 'text-accent-on' }
+  }
+}
 
 // Use a partial type because the server sometimes returns a selected subset of fields
 export const AdventureRides: React.FC<{
@@ -16,14 +41,6 @@ export const AdventureRides: React.FC<{
     : bikingAdventureData
       ? [bikingAdventureData]
       : []
-
-  // Helper to calculate saving percentage
-  const calculateDiscount = (min?: string | number | null, cutout?: string | number | null) => {
-    const minVal = typeof min === 'string' ? parseFloat(min) : min
-    const cutoutVal = typeof cutout === 'string' ? parseFloat(cutout) : cutout
-    if (!minVal || !cutoutVal || cutoutVal <= minVal) return 0
-    return Math.round(((cutoutVal - minVal) / cutoutVal) * 100)
-  }
 
   // Helper to format cost nicely
   const formatCost = (cost?: string | number | null) => {
@@ -47,7 +64,6 @@ export const AdventureRides: React.FC<{
         {tours.map((tour, index) => {
           const imageUrl = `/api/media/file/${tour.slug}-home.webp`
           const normalizedImageUrl = formatImageUrl(imageUrl) || '/images/placeholder.jpg'
-          const savings = calculateDiscount(tour.minCost, tour.cutOutCost)
 
           return (
             <div
@@ -65,10 +81,23 @@ export const AdventureRides: React.FC<{
                   className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-105 group-hover:opacity-90"
                 />
 
-                {/* Savings Pill Badge */}
-                {savings > 0 && (
-                  <div className="absolute top-4 left-4 bg-accent text-accent-on font-oswald text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-[2px] z-20 shadow-md">
-                    SAVE {savings}%
+                {/* Category Pill Badge */}
+                {tour.categories && tour.categories.length > 0 && (
+                  <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-20">
+                    {tour.categories.map((category) => {
+                      if (category && typeof category === 'object') {
+                        const style = getCategoryStyle(category.slug)
+                        return (
+                          <div
+                            key={category.id}
+                            className={`${style.bg} ${style.text} font-oswald text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-[2px] shadow-md`}
+                          >
+                            {category.title}
+                          </div>
+                        )
+                      }
+                      return null
+                    })}
                   </div>
                 )}
 
@@ -107,12 +136,6 @@ export const AdventureRides: React.FC<{
                 <div className="flex justify-between items-center my-1 text-xs">
                   <span className="text-muted-foreground font-sans tracking-wide">Trip Price</span>
                   <div className="text-right flex items-center justify-end">
-                    {/* Savings Pill Badge */}
-                    {savings > 0 && (
-                      <div className="text-accent font-oswald text-[18px] font-bold uppercase tracking-widest mr-4">
-                        SAVE {savings}%
-                      </div>
-                    )}
 
                     {tour.cutOutCost && (
                       <span className="line-through text-muted-foreground mr-2 font-sans text-[11px]">
