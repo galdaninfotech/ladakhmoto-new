@@ -46,7 +46,7 @@ export const UltimateAdventures: React.FC<UltimateAdventuresProps> = ({
               <div className="intro flex flex-col items-center justify-center mb-6">
                 <h2 className="font-oswald text-xl md:text-2xl uppercase text-foreground tracking-[0.2em] relative pb-3">
                   Ultimate Adventures 2026
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-accent" />
+                  <span className="absolute bottom-2 w-full h-px bg-accent/50" />
                 </h2>
               </div>
             )}

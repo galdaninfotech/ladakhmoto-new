@@ -50,7 +50,7 @@ export const DealOfTheDay: React.FC<DealOfTheDayBlockProps> = (props) => {
 
           {/* Price and Dates Details */}
           {(hasDates || price) && (
-            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 mb-8 text-xs text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-bold font-oswald">
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 mb-1 text-xs text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-bold font-oswald">
               {price && (
                 <span className="text-neutral-900 dark:text-neutral-200 text-sm font-extrabold">
                   Price: {price}
@@ -64,6 +64,11 @@ export const DealOfTheDay: React.FC<DealOfTheDayBlockProps> = (props) => {
               )}
             </div>
           )}
+
+          <p className="justify-self-end text-[10px] md:text-[9px] opacity-90 float-right mb-12">
+            terms & conditions apply 
+            <span className='text-[14px] text-accent'>*</span>
+          </p>
 
           {/* Pill CTA Button */}
           {url && (

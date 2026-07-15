@@ -12,11 +12,11 @@ import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
-import { HeaderTop } from '@/components/HeaderTop'
+import { HeaderTop } from '@/Header/HeaderTop'
 
 import './globals.css'
 import { getSiteURL } from '@/utilities/getURL'
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from '@/components/ui/sonner'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import { LadakhMoto } from '@/payload-types'
 import { SchemaComponent, localBusinessSchema } from '@/components/Schema'
@@ -74,7 +74,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        
+
         <meta name="apple-mobile-web-app-title" content="Ladakh Moto" />
         <meta name="application-name" content="Ladakh Moto" />
         <link rel="manifest" href="/manifest.json" />
@@ -83,9 +83,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Providers>
           <DeferredClientComponents />
           <Header />
-          <main id="main-content">
-            {children}
-          </main>
+          <main id="main-content">{children}</main>
           <Accrediations />
           <Footer />
           <Toaster />
@@ -115,8 +113,6 @@ export const metadata: Metadata = {
       { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
     ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
 }

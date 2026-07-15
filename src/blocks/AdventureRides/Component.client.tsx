@@ -55,7 +55,7 @@ export const AdventureRides: React.FC<{
       <div className="intro flex flex-col items-center justify-center mb-16">
         <h2 className="font-oswald text-xl md:text-2xl uppercase text-foreground tracking-[0.2em] relative pb-3">
           Adventure Rides 2026
-          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-accent" />
+          <span className="absolute bottom-2 w-full h-px bg-accent/50" />
         </h2>
       </div>
 
@@ -136,13 +136,12 @@ export const AdventureRides: React.FC<{
                 <div className="flex justify-between items-center my-1 text-xs">
                   <span className="text-muted-foreground font-sans tracking-wide">Trip Price</span>
                   <div className="text-right flex items-center justify-end">
-
                     {tour.cutOutCost && (
                       <span className="line-through text-muted-foreground mr-2 font-sans text-[11px]">
                         {formatCost(tour.cutOutCost)}
                       </span>
                     )}
-                    
+
                     <span className="text-primary font-oswald text-sm font-bold tracking-wide">
                       {formatCost(tour.minCost)}
                       <span className="font-sans text-[10px] text-muted-foreground font-normal ml-1">

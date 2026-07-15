@@ -22,20 +22,10 @@ async function HotelsComponent() {
 
   return (
     <div
-      className="container mx-auto relative rounded-[4px] overflow-hidden py-20 px-8 md:px-12 mb-6 my-32 border border-white/5"
-      style={{
-        backgroundImage: "url('/images/slides/slide1.webp')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
-      {/* Background Overlay */}
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px] z-0 pointer-events-none" />
-
+      className="container mx-auto relative bg-[#eaeaea] dark:bg-slate-900 rounded-sm overflow-hidden transition-colors duration-300 py-20 px-8 md:px-12 mb-6 my-32 border border-white/5">
       <div className="relative z-10">
         <div className="intro flex flex-col items-center justify-center mb-12">
-          <h2 className="font-oswald text-[16px] md:text-xl uppercase text-background tracking-[0.2em] relative pb-3">
+          <h2 className="font-oswald text-[16px] md:text-xl uppercase text-foreground tracking-[0.2em] relative pb-3">
             Featured Hotels
             {/* <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-accent" /> */}
           </h2>
