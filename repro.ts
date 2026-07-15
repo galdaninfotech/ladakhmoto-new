@@ -1,26 +1,13 @@
-import configPromise from './src/payload.config.js'
-import { getPayload } from 'payload'
+import { AdventureRides } from './src/blocks/AdventureRides/Component.client.js'
+import { getCachedFeaturedAdventures } from './src/utilities/getFeaturedAdventures.js'
 
 async function test() {
-  const payload = await getPayload({ config: configPromise })
   try {
-    console.log('Testing payload.find for bikingAdventures with real slug and overrideAccess: true...')
-    const result = await payload.find({
-      collection: 'bikingAdventures',
-      draft: false,
-      limit: 1,
-      overrideAccess: true,
-      where: {
-        slug: {
-          equals: 'leh-ladakh-adventure',
-        },
-      },
-      select: {
-        slug: true,
-      },
-    })
-    console.log('Result count:', result.docs.length)
-    console.log('Result doc:', result.docs[0])
+    console.log('Fetching adventures...')
+    const featuredAdventures = await getCachedFeaturedAdventures()
+    console.log('Executing AdventureRides render function...')
+    const result = AdventureRides({ bikingAdventureData: featuredAdventures })
+    console.log('Render executed successfully.')
   } catch (error) {
     console.error('Error:', error)
   }

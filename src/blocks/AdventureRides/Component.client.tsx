@@ -108,7 +108,7 @@ export const AdventureRides: React.FC<{
                       {tour.duration ? formatTourDuration(tour.duration) : 'Duration unavailable'}
                     </span>
                   </div>
-                  <span className="font-sans text-[11px] text-white/80 font-medium tracking-wide">
+                  <span className="font-sans text-[11px] text-white/80 uppercase font-medium tracking-wide">
                     {tour.startEndCity}
                   </span>
                 </div>

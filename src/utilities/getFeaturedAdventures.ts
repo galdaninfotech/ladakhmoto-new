@@ -39,13 +39,4 @@ async function getFeaturedAdventures() {
   return adventureRides.docs
 }
 
-/**
- * Returns a unstable_cache function for featured biking adventures
- */
-export const getCachedFeaturedAdventures = unstable_cache(
-  async () => getFeaturedAdventures(),
-  ['featured-bike-tours'],
-  {
-    tags: ['collection_bikingAdventures'],
-  },
-)
+export const getCachedFeaturedAdventures = async () => getFeaturedAdventures()

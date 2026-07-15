@@ -10,9 +10,9 @@ export const seedCategories = async ({
   payload.logger.info(`— Seeding categories...`)
 
   const categories = [
-    { title: 'Biking Adventures', slug: 'biking-adventures' },
-    { title: 'Holiday Packages', slug: 'holiday-packages' },
-    { title: 'Ultimate Adventures', slug: 'ultimate-adventures' },
+    { title: 'Bike Tour', slug: 'bike-tour' },
+    { title: 'Group Tour', slug: 'group-tour' },
+    { title: 'Extreme', slug: 'extreme' },
     { title: 'Family Tours', slug: 'family-tours' },
     { title: 'Off-Road Expeditions', slug: 'off-road-expeditions' },
     { title: 'Trekking & Hiking', slug: 'trekking-hiking' },

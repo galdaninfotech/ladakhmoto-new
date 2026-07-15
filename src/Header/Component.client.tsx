@@ -7,6 +7,7 @@ import type { Header, LadakhMoto } from '@/payload-types'
 import { usePathname } from 'next/navigation'
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 import { HeaderTop } from '@/components/HeaderTop'
+import { User } from 'lucide-react'
 
 import LMFacebook from '@/components/Icons/LMFacebook'
 import LMInstagram from '@/components/Icons/LMInstagram'
@@ -59,6 +60,15 @@ export const HeaderClient: React.FC<{
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileActiveDropdown, setMobileActiveDropdown] = useState<string | null>(null)
   const pathname = usePathname()
+  const isHeaderDark = !isScrolled && (
+    pathname === '/' ||
+    pathname === '/home' ||
+    pathname?.includes('/ultimate-adventures') ||
+    pathname?.includes('/bike-tours') ||
+    pathname?.includes('/holiday-packages') ||
+    pathname?.includes('/destinations') ||
+    pathname?.includes('/posts')
+  )
 
   useEffect(() => {
     let ticking = false
@@ -126,17 +136,25 @@ export const HeaderClient: React.FC<{
 
               <div className="flex items-center gap-4 lg:hidden">
                 <div className={cn(
-                  "flex items-center transition-colors duration-300",
-                  isScrolled ? "text-foreground" : "text-white"
+                  "flex items-center transition-colors duration-300 gap-4",
+                  isHeaderDark ? "text-white" : "text-foreground"
                 )}>
                   <ThemeSelector />
+                  <Link
+                    href="/admin"
+                    aria-label="Admin Login"
+                    className="text-current relative flex items-center justify-center w-9 h-9 transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-accent group cursor-pointer"
+                  >
+                    <User className="w-[1.1rem] h-[1.1rem] text-current transition-all duration-300 group-hover:scale-110" />
+                    <span className="sr-only">Login</span>
+                  </Link>
                 </div>
                 <button
                   onClick={() => setMenuState(!menuState)}
                   aria-label={menuState ? 'Close Menu' : 'Open Menu'}
                   className={cn(
                     "relative z-40 block cursor-pointer transition-colors duration-300",
-                    isScrolled ? "text-foreground" : "text-white"
+                    isHeaderDark ? "text-white" : "text-foreground"
                   )}
                 >
                   {menuState ? <CloseIcon /> : <MenuIcon />}
@@ -155,7 +173,7 @@ export const HeaderClient: React.FC<{
                       href={item.href}
                       className={cn(
                         "h-[45px] font-oswald uppercase text-[15px] font-bold tracking-wider hover:text-accent pl-3 pr-2 flex items-center gap-1 duration-150",
-                        isScrolled ? "text-foreground" : "text-white"
+                        isHeaderDark ? "text-white" : "text-foreground"
                       )}
                     >
                       <span>{item.name}</span>
@@ -202,10 +220,18 @@ export const HeaderClient: React.FC<{
                 ))}
               </ul>
               <div className={cn(
-                "border-l pl-4 flex items-center transition-colors duration-300",
-                isScrolled ? "border-foreground/20 text-foreground" : "text-white border-white/20"
+                "border-l pl-4 flex items-center gap-4 transition-colors duration-300",
+                isHeaderDark ? "text-white border-white/20" : "border-foreground/20 text-foreground"
               )}>
                 <ThemeSelector />
+                <Link
+                  href="/admin"
+                  aria-label="Admin Login"
+                  className="text-current relative flex items-center justify-center w-9 h-9 transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-accent group cursor-pointer"
+                >
+                  <User className="w-[1.1rem] h-[1.1rem] text-current transition-all duration-300 group-hover:scale-110" />
+                  <span className="sr-only">Login</span>
+                </Link>
               </div>
             </nav>
           </div>

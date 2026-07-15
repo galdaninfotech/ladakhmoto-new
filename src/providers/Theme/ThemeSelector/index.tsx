@@ -10,6 +10,7 @@ import { cn } from '@/utilities/ui'
 export const ThemeSelector: React.FC = () => {
   const { setTheme, theme } = useTheme()
   const [value, setValue] = useState<string>('')
+  const [open, setOpen] = useState<boolean>(false)
 
   useEffect(() => {
     const preference = window.localStorage.getItem(themeLocalStorageKey)
@@ -24,12 +25,13 @@ export const ThemeSelector: React.FC = () => {
       setTheme(themeToSet)
       setValue(themeToSet)
     }
+    setOpen(false)
   }
 
   const themes = [
     { name: 'Light', value: 'light', icon: Sun },
     { name: 'Dark', value: 'dark', icon: Moon },
-    { name: 'System', value: 'auto', icon: Monitor },
+    { name: 'Auto', value: 'auto', icon: Monitor },
   ]
 
   // Determine which icon to show on the trigger based on the active theme
@@ -37,7 +39,7 @@ export const ThemeSelector: React.FC = () => {
   const CurrentIcon = theme === 'dark' ? Moon : Sun
 
   return (
-    <Popover>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <button
           aria-label="Select a theme"
