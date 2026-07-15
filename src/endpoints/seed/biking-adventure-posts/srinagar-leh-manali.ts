@@ -10,6 +10,7 @@ export type PostArgs = {
     author: User
     highlightsMap?: Record<string, any>
     hotelsMap?: Record<string, any>
+    categoriesMap?: Record<string, any>
 }
 
 export const srinagarLehManali: (args: PostArgs) => RequiredDataFromCollectionSlug<'bikingAdventures'> = ({
@@ -17,6 +18,7 @@ export const srinagarLehManali: (args: PostArgs) => RequiredDataFromCollectionSl
     author,
     highlightsMap,
     hotelsMap,
+    categoriesMap,
 }) => {
     return {
         slug: "srinagar-leh-manali",
@@ -399,6 +401,9 @@ export const srinagarLehManali: (args: PostArgs) => RequiredDataFromCollectionSl
         startEndCity: "Srinagar - Manali",
         minCost: "23000",
         cutOutCost: "29000",
+        categories: [
+            categoriesMap?.['bike-tour'],
+        ].filter(Boolean),
         meta: {
             description:
                 "1525 km trip - Hotel, Meal, Fuel & Mechanic included | Srinagar, Kargil, Leh, Khardong la, Nubra, Turtuk, Pangong, & Manali. SATISFACTION GUARANTEED",

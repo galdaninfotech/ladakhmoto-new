@@ -7,11 +7,12 @@ export type PostArgs = {
   author: User
   highlightsMap?: Record<string, any>
   hotelsMap?: Record<string, any>
+  categoriesMap?: Record<string, any>
 }
 
 export const ladakhSrinagarWithUmlingla: (
   args: PostArgs,
-) => RequiredDataFromCollectionSlug<'bikingAdventures'> = ({ mediaMap, author, highlightsMap, hotelsMap }) => {
+) => RequiredDataFromCollectionSlug<'bikingAdventures'> = ({ mediaMap, author, highlightsMap, hotelsMap, categoriesMap }) => {
   return {
     slug: 'ladakh-srinagar-with-umlingla',
     _status: 'published',
@@ -373,6 +374,10 @@ export const ladakhSrinagarWithUmlingla: (
     startEndCity: 'Leh - Srinagar',
     minCost: '25000',
     cutOutCost: '29000',
+    categories: [
+      categoriesMap?.['bike-tour'],
+      categoriesMap?.['extreme'],
+    ].filter(Boolean),
     meta: {
       description:
         'Hotel, Meal, Fuel & Mechanic included | Khardongla, Nubra, Turtuk, Pangong, Hanle, Kargil & Umling La pass. 100% TRAVELLERS SATISFACTION GUARANTEED!',

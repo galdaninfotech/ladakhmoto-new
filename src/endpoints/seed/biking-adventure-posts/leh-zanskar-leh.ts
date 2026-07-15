@@ -10,12 +10,14 @@ export type PostArgs = {
     author: User
     highlightsMap?: Record<string, any>
     hotelsMap?: Record<string, any>
+    categoriesMap?: Record<string, any>
 }
 
 export const lehZanskarLeh: (args: PostArgs) => RequiredDataFromCollectionSlug<'bikingAdventures'> = ({
     mediaMap,
     author,
     highlightsMap,
+    categoriesMap,
 }) => {
     return {
     slug: "leh-zanskar-leh",
@@ -364,6 +366,11 @@ export const lehZanskarLeh: (args: PostArgs) => RequiredDataFromCollectionSlug<'
     startEndCity: "Leh - Leh",
     minCost: "28500",
     cutOutCost: "32000",
+    categories: [
+        categoriesMap?.['bike-tour'],
+        categoriesMap?.['extreme'],
+        categoriesMap?.['leh-ladakh'],
+    ].filter(Boolean),
     meta: {
         description:
         "Leh to Leh trip - Hotel, Meal, Fuel & Mechanic included. Lamayuru, Padum, Phuktal, Shingo La, Serchu, Tsokar & Tsomoriri SATISFACTION GUARANTEED",

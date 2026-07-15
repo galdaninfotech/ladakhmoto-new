@@ -10,6 +10,7 @@ export type PostArgs = {
     author: User
     highlightsMap?: Record<string, any>
     hotelsMap?: Record<string, any>
+    categoriesMap?: Record<string, any>
 }
 
 export const ladakhWithUmlingla: (args: PostArgs) => RequiredDataFromCollectionSlug<'bikingAdventures'> = ({
@@ -17,6 +18,7 @@ export const ladakhWithUmlingla: (args: PostArgs) => RequiredDataFromCollectionS
     author,
     highlightsMap,
     hotelsMap,
+    categoriesMap,
 }) => {
     return {
         slug: "ladakh-with-umlingla",
@@ -441,6 +443,11 @@ export const ladakhWithUmlingla: (args: PostArgs) => RequiredDataFromCollectionS
         startEndCity: "Leh - Leh",
         minCost: "19500",
         cutOutCost: "24000",
+        categories: [
+            categoriesMap?.['bike-tour'],
+            categoriesMap?.['extreme'],
+            categoriesMap?.['leh-ladakh'],
+        ].filter(Boolean),
         meta: {
             description:
                 "Hotel, Meal, Fuel & Mechanic included - Khardong La, Nubra Valley, Pangong Lake, Hanle & Umlingla pass. 100% TRAVELLERS SATISFACTION GUARANTEED",

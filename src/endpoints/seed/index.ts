@@ -197,7 +197,7 @@ export const seed = async ({
   const { hotelsMap } = await seedHotelPosts({ payload, req, mediaMap, demoAuthor })
 
   await seedBlogPosts({ payload, req, mediaMap, demoAuthor, })
-  await seedBikingAdventurePosts({ payload, req, mediaMap, demoAuthor, highlightsMap, hotelsMap })
+  await seedBikingAdventurePosts({ payload, req, mediaMap, demoAuthor, highlightsMap, hotelsMap, categoriesMap })
   await seedUltimateAdventurePosts({ payload, req, mediaMap, demoAuthor, highlightsMap, hotelsMap })
   await seedHolidayPackagePosts({ payload, req, mediaMap, demoAuthor, highlightsMap, hotelsMap })
   await seedHolidayPackageRedirects({ payload, req })

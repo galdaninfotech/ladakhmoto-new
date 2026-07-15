@@ -10,6 +10,7 @@ export type PostArgs = {
     author: User
     highlightsMap?: Record<string, any>
     hotelsMap?: Record<string, any>
+    categoriesMap?: Record<string, any>
 }
 
 export const lehLadakhAdventure: (args: PostArgs) => RequiredDataFromCollectionSlug<'bikingAdventures'> = ({
@@ -17,6 +18,7 @@ export const lehLadakhAdventure: (args: PostArgs) => RequiredDataFromCollectionS
     author,
     highlightsMap,
     hotelsMap,
+    categoriesMap,
 }) => {
     return {
         slug: "leh-ladakh-adventure",
@@ -400,6 +402,11 @@ export const lehLadakhAdventure: (args: PostArgs) => RequiredDataFromCollectionS
         startEndCity: "Leh - Leh",
         minCost: "15500",
         cutOutCost: "21000",
+        categories: [
+            categoriesMap?.['bike-tour'],
+            categoriesMap?.['extreme'],
+            categoriesMap?.['group-tour'],
+        ].filter(Boolean),
         meta: {
             description:
                 "Leh to Leh, 550 km tour, Himalayan 411cc BSVI bike - Hotel, Meal, Fuel & Mechanic included | Khardongla, Nubra & Pangong. 100% SATISFACTION GUARANTEED",

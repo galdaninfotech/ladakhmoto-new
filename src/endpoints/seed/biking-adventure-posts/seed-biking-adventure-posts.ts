@@ -21,6 +21,7 @@ export const seedBikingAdventurePosts = async ({
   demoAuthor,
   highlightsMap,
   hotelsMap,
+  categoriesMap,
 }: {
   payload: Payload
   req: PayloadRequest
@@ -28,6 +29,7 @@ export const seedBikingAdventurePosts = async ({
   demoAuthor: any
   highlightsMap: Record<string, any>
   hotelsMap: Record<string, any>
+  categoriesMap: Record<string, any>
 }) => {
   payload.logger.info(`— Seeding biking adventure posts...`)
 
@@ -36,7 +38,7 @@ export const seedBikingAdventurePosts = async ({
     depth: 0,
     draft: false,
     context: req.context,
-    data: ladakhSrinagarWithUmlingla({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap }),
+    data: ladakhSrinagarWithUmlingla({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap, categoriesMap }),
   })
 
   await payload.create({
@@ -44,7 +46,7 @@ export const seedBikingAdventurePosts = async ({
     depth: 0,
     draft: false,
     context: req.context,
-    data: ladakhWithUmlingla({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap }),
+    data: ladakhWithUmlingla({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap, categoriesMap }),
   })
 
   await payload.create({
@@ -52,7 +54,7 @@ export const seedBikingAdventurePosts = async ({
     depth: 0,
     draft: false,
     context: req.context,
-    data: lehLadakhAdventure({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap }),
+    data: lehLadakhAdventure({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap, categoriesMap }),
   })
 
   await payload.create({
@@ -60,7 +62,7 @@ export const seedBikingAdventurePosts = async ({
     depth: 0,
     draft: false,
     context: req.context,
-    data: lehLadakhWithTurtuk({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap }),
+    data: lehLadakhWithTurtuk({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap, categoriesMap }),
   })
 
   await payload.create({
@@ -68,7 +70,7 @@ export const seedBikingAdventurePosts = async ({
     depth: 0,
     draft: false,
     context: req.context,
-    data: lehZanskarLeh({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap }),
+    data: lehZanskarLeh({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap, categoriesMap }),
   })
 
   await payload.create({
@@ -76,7 +78,7 @@ export const seedBikingAdventurePosts = async ({
     depth: 0,
     draft: false,
     context: req.context,
-    data: manaliLehSrinagar({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap }),
+    data: manaliLehSrinagar({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap, categoriesMap }),
   })
 
   await payload.create({
@@ -84,7 +86,7 @@ export const seedBikingAdventurePosts = async ({
     depth: 0,
     draft: false,
     context: req.context,
-    data: manaliLehWithUmlingla({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap }),
+    data: manaliLehWithUmlingla({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap, categoriesMap }),
   })
 
   await payload.create({
@@ -92,7 +94,7 @@ export const seedBikingAdventurePosts = async ({
     depth: 0,
     draft: false,
     context: req.context,
-    data: srinagarLehManali({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap }),
+    data: srinagarLehManali({ mediaMap, author: demoAuthor, highlightsMap, hotelsMap, categoriesMap }),
   })
 
 }
