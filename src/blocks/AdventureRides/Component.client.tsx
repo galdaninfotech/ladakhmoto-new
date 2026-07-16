@@ -68,7 +68,7 @@ export const AdventureRides: React.FC<{
           return (
             <div
               key={tour.id}
-              className="group relative flex flex-col w-full bg-card border border-border/60 rounded-[2px] hover:border-accent/40 hover:shadow-lg hover:shadow-black/5 transition-all duration-500 overflow-hidden"
+              className="p-1.5 group relative flex flex-col w-full bg-card border border-border/60 rounded-[2px] hover:border-accent/40 hover:shadow-lg hover:shadow-black/5 transition-all duration-500 overflow-hidden"
             >
               {/* Card Header Image Area */}
               <div className="relative h-64 w-full overflow-hidden bg-black">
@@ -173,17 +173,23 @@ export const AdventureRides: React.FC<{
       </div>
 
       {/* Explore All Bottom Section */}
-      <div className="mt-16 text-right">
-        <Link
-          href="/bike-tours"
-          className="inline-flex items-center font-oswald text-xs md:text-sm uppercase tracking-[0.3em] group text-muted-foreground hover:text-foreground transition-colors"
+      <div className="pt-6 border-t border-border mt-auto text-right">
+        <Link 
+          href={'/bike-tours'}
+          className="inline-flex items-center text-white text-[8px] md:text-[10px] uppercase tracking-[0.1em] hover:text-accent bg-black pl-2 py-1 pr-1 group/link"
         >
           Explore All Adventure Rides
-          <span className="ml-2 -mt-1 transform group-hover:translate-x-1.5 transition-transform duration-300 inline-block">
-            →
-          </span>
+          <svg 
+            className="text-black ml-3 w-8 h-8 bg-gray-200 pl-1 transition-transform duration-300 group-hover/link:translate-x-5" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M14 8l3 3m0 0l-3 3m3-3H3" />
+          </svg>
         </Link>
       </div>
+
     </div>
   )
 }

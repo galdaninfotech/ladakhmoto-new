@@ -145,7 +145,7 @@ export const HeaderClient: React.FC<{
             pathname === '/home'
           ),
         },
-        (pathname === '/' || pathname === '/home') && !isScrolled ? 'bg-black text-white' : '',
+        (pathname === '/' || pathname === '/home') && !isScrolled ? 'bg-white text-white' : '',
       )}
     >
       <HeaderTop data={ladakhMotoData} />
@@ -154,7 +154,7 @@ export const HeaderClient: React.FC<{
         className={cn(
           'z-9999 transition-all duration-300 w-full',
           isScrolled
-            ? 'fixed top-0 left-0 bg-background/80 backdrop-blur-md shadow-md py-4'
+            ? 'fixed top-0 left-0 bg-background backdrop-blur-md shadow-[0_10px_40px_rgba(15,23,42,1)] py-4'
             : 'relative container mx-auto px-4 top-0 py-4',
         )}
       >
@@ -215,7 +215,7 @@ export const HeaderClient: React.FC<{
                       href={item.href}
                       className={cn(
                         'h-[45px] font-oswald uppercase text-[15px] font-bold tracking-wider hover:text-accent pl-3 pr-2 flex items-center gap-1 duration-150',
-                        isHeaderDark ? 'text-white' : 'text-foreground',
+                        isHeaderDark ? 'text-foreground' : 'text-foreground',
                       )}
                     >
                       <span>{item.name}</span>
@@ -287,6 +287,7 @@ export const HeaderClient: React.FC<{
         )}
         onClick={() => setMenuState(false)}
       />
+      
       <div
         className={cn(
           'fixed top-0 left-0 h-full w-[85vw] max-w-[400px] bg-background lg:hidden z-[9999] flex flex-col shadow-2xl transition-transform duration-300 ease-out',

@@ -25,8 +25,9 @@ async function TeamComponent() {
 
   return (
     <div className="container mx-auto mb-6 my-32">
-      <div className="intro flex flex-col items-center justify-center mb-12">
+      <div className="relative intro flex flex-col items-center justify-center mb-12">
         <h2 className="font-oswald text-[16px] md:text-xl uppercase text-foreground">Ladakh Moto Team</h2>
+        <span className="absolute -bottom-1 w-full h-px bg-accent/50" />
       </div>
 
       {team.docs && <TeamCarousel members={team.docs as any} />}

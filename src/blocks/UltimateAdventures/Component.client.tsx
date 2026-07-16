@@ -41,9 +41,9 @@ export const UltimateAdventures: React.FC<UltimateAdventuresProps> = ({
     <section className="py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         {(title || subtitle) && (
-          <div className="mb-16 text-center max-w-3xl mx-auto">
+          <div className="mb-16 text-left">
             {title && (
-              <div className="intro flex flex-col items-center justify-center mb-6">
+              <div className="intro flex flex-col items-start mb-6">
                 <h2 className="font-oswald text-xl md:text-2xl uppercase text-foreground tracking-[0.2em] relative pb-3">
                   Ultimate Adventures 2026
                   <span className="absolute bottom-2 w-full h-px bg-accent/50" />
@@ -51,7 +51,7 @@ export const UltimateAdventures: React.FC<UltimateAdventuresProps> = ({
               </div>
             )}
             {subtitle && (
-              <p className="text-muted-foreground text-sm md:text-base font-light tracking-wide max-w-xl mx-auto">
+              <p className="text-muted-foreground text-sm md:text-base font-light tracking-wide max-w-xl">
                 {subtitle}
               </p>
             )}
@@ -175,17 +175,23 @@ export const UltimateAdventures: React.FC<UltimateAdventuresProps> = ({
         </div>
 
         {/* Explore All Bottom Section */}
-        <div className="mt-16 text-right">
-          <Link
-            href="/ultimate-adventures"
-            className="inline-flex items-center font-oswald text-xs md:text-sm uppercase tracking-[0.3em] group text-muted-foreground hover:text-foreground transition-colors"
+        <div className="pt-6 border-t border-border mt-auto text-right">
+          <Link 
+            href={'/ultimate-adventures'}
+            className="inline-flex items-center text-white text-[8px] md:text-[10px] uppercase tracking-[0.1em] hover:text-accent bg-black pl-2 py-1 pr-1 group/link"
           >
             Explore All Ultimate Adventures
-            <span className="ml-2 -mt-1 transform group-hover:translate-x-1.5 transition-transform duration-300 inline-block">
-              →
-            </span>
+            <svg 
+              className="text-black ml-3 w-8 h-8 bg-gray-200 pl-1 transition-transform duration-300 group-hover/link:translate-x-5" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M14 8l3 3m0 0l-3 3m3-3H3" />
+            </svg>
           </Link>
         </div>
+
       </div>
     </section>
   )

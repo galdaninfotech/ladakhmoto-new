@@ -20,8 +20,9 @@ async function HighlightsComponent() {
 
   return (
     <div className="container mx-auto mb-6 my-32">
-      <div className="intro flex flex-col items-center justify-center mb-12">
-        <h2 className="font-oswald text-[16px] md:text-xl uppercase text-foreground">Tour Highlights</h2>
+      <div className="relative intro flex flex-col items-center justify-center mb-12">
+        <h2 className="font-oswald text-[16px] md:text-xl uppercase text-foreground">Activity Highlights</h2>
+        <span className="absolute -bottom-1 w-full h-px bg-accent/50" />
       </div>
 
       {highlights.docs && <HighlightsCarousel highlights={highlights.docs as any} />}

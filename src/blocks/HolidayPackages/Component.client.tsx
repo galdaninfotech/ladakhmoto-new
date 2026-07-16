@@ -50,8 +50,9 @@ const truncateToCharacters = (text: string, charLimit: number): string => {
       className="container mx-auto grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 gap-y-12 gap-x-6 mb-16 mt-16"
     >
 
-      <div className="intro flex flex-col items-center justify-center col-span-4 sm:col-span-8 lg:col-span-12">
+      <div className="relative intro flex flex-col items-center justify-center col-span-4 sm:col-span-8 lg:col-span-12">
         <h2 className='font-oswald text-[16px] md:text-xl uppercase text-foreground'>Holiday Packages 2026</h2>
+        <span className="absolute -bottom-1 w-full h-px bg-accent/50" />
       </div>
 
       {tours.map((tour) => {

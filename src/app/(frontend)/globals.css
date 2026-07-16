@@ -409,7 +409,13 @@ html {
 .footer-bottom-section {
   background: url(/images/footer-bottom-section-bg.png) no-repeat;
   background-size: contain;
-  /* background-position: center; */
+  background-position: center top;
+}
+
+@media (max-width: 767px) {
+  .footer-bottom-section {
+    background-position: center 70px;
+  }
 }
 
 

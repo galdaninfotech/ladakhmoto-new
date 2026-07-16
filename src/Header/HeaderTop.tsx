@@ -9,6 +9,8 @@ import LMEmail from '../components/Icons/LMEmail'
 import { LadakhMoto } from '@/payload-types'
 import { EmailObfuscator } from '../components/EmailObfuscator'
 import Link from 'next/link'
+import { HelpCircle, User, Compass, Heart, GitCompare } from 'lucide-react'
+
 
 interface HeaderTopProps {
   data: LadakhMoto
@@ -16,7 +18,7 @@ interface HeaderTopProps {
 
 export const HeaderTop: React.FC<HeaderTopProps> = ({ data }) => {
   return (
-    <div className="w-full bg-white border-b border-zinc-200 relative z-10 shadow-xs">
+    <div className="w-full bg-primary/10 py-1 relative z-10 shadow-xs">
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Left */}
         <div className="header-top-left">
@@ -159,28 +161,101 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({ data }) => {
         </ul> */}
 
         <ul className="flex justify-start items-center space-x-4">
-          <li>
-              <Link href={'/'} className='text-black/70 text-[10px] font-sans h-4 w-4 mr-4 tracking-widest text-shadow-mdz'>
-                Help
-              </Link>
-            </li>
-            <li>
-              <Link href={'/'} className='text-black/70 text-[10px] font-sans h-4 w-4 mr-4 tracking-widest text-shadow-mdz'>
-                Account
-              </Link>
-            </li>
-            <li>
-              <Link href={'/'} className='text-black/70 text-[10px] font-sans h-4 w-4 mr-4 tracking-widest text-shadow-mdz'>
-                My Trips
-              </Link>
-            </li>
-            <li>
-              <Link href={'/'} className='text-black/70 text-[10px] font-sans h-4 w-4 mr-4 tracking-widest text-shadow-mdz'>
-                Whishlist
-              </Link>
-            </li>
+          <li className="flex items-center">
+            <Link
+              href={'/'}
+              className="flex items-center gap-x-2 group p-1"
+            >
+              <div className="text-accent shrink-0">
+                <HelpCircle className="w-5 h-5" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-black/70 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
+                  Get Help
+                </span>
+                <span className="text-foreground/70 text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
+                  Let Us Know
+                </span>
+              </div>
+            </Link>
+          </li>
+          <li className="h-5 w-px bg-black/10" aria-hidden="true" />
+          <li className="flex items-center">
+            <Link
+              href={'/'}
+              className="flex items-center gap-x-2 group p-1"
+            >
+              <div className="text-accent shrink-0">
+                <User className="w-5 h-5" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-black/70 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
+                  Account
+                </span>
+                <span className="text-foreground/70 text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
+                  Sign In/Register
+                </span>
+              </div>
+            </Link>
+          </li>
+          <li className="h-5 w-px bg-black/10" aria-hidden="true" />
+          <li className="flex items-center">
+            <Link
+              href={'/'}
+              className="flex items-center gap-x-2 group p-1"
+            >
+              <div className="text-accent shrink-0">
+                <Compass className="w-5 h-5" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-black/70 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
+                  My Trips
+                </span>
+                <span className="text-foreground/70 text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
+                  Manage Your Bookings
+                </span>
+              </div>
+            </Link>
+          </li>
+          <li className="h-5 w-px bg-black/10" aria-hidden="true" />
+          <li className="flex items-center">
+            <Link
+              href={'/'}
+              className="flex items-center gap-x-2 group p-1"
+            >
+              <div className="text-accent shrink-0">
+                <Heart className="w-5 h-5" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-black/70 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
+                  Wishlist
+                </span>
+                <span className="text-foreground/70 text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
+                  Save Favourites
+                </span>
+              </div>
+            </Link>
+          </li>
+          <li className="h-5 w-px bg-black/10" aria-hidden="true" />
+          <li className="flex items-center">
+            <Link
+              href={'/'}
+              className="flex items-center gap-x-2 group p-1"
+            >
+              <div className="text-accent shrink-0">
+                <GitCompare className="w-5 h-5" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-black/70 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
+                  Compare
+                </span>
+                <span className="text-foreground/70 text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
+                  Compare Rides
+                </span>
+              </div>
+            </Link>
+          </li>
         </ul>
-
       </div>
     </div>
   )

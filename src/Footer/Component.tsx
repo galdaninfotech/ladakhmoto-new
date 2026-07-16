@@ -34,7 +34,7 @@ export async function Footer() {
           <div className="col-span-4 md:col-span-3 lg:col-span-2">
             <nav aria-label="Adventure rides" className="text-white/80 text-xs w-full text-center md:text-left flex flex-col items-center md:items-start">
               {/* <h2 className="text-lg font-oswald uppercase text-white mb-5">About us</h2> */}
-              <h2 className="mb-6 font-oswald uppercase text-white tracking-[1px] text-[1.2rem] font-normal leading-[1.5em] relative before:content-[''] before:bg-accent before:w-[55px] before:h-[3px] before:absolute before:-bottom-[9px] before:left-1/2 before:-translate-x-1/2 md:before:left-0 md:before:translate-x-0 after:content-[''] after:bg-accent after:w-[80px] after:h-px after:absolute after:-bottom-[8px] after:left-1/2 after:-translate-x-1/2 md:after:left-0 md:after:translate-x-0">
+              <h2 className="mb-6 font-oswald uppercase text-white tracking-[1px] text-[1.2rem] font-normal leading-[1.5em] relative before:content-[''] before:bg-accent before:w-[5px] before:h-[18px] before:absolute before:bottom-[7px] before:-left-2.5">
                 About us
               </h2>
               <ul className="list flex flex-col justify-center items-center md:items-start gap-3">
@@ -135,7 +135,7 @@ export async function Footer() {
           <div className="col-span-4 md:col-span-3 lg:col-span-2">
             <nav aria-label="Quick links" className="text-white/80 text-xs w-full text-center md:text-left flex flex-col items-center md:items-start">
               {/* <h2 className="text-lg font-oswald uppercase text-white mb-6">Quick Links</h2> */}
-              <h2 className="mb-6 font-oswald uppercase text-white tracking-[1px] text-[1.2rem] font-normal leading-[1.5em] relative before:content-[''] before:bg-accent before:w-[68px] before:h-[3px] before:absolute before:-bottom-[9px] before:left-1/2 before:-translate-x-1/2 md:before:left-0 md:before:translate-x-0 after:content-[''] after:bg-accent after:w-[102px] after:h-px after:absolute after:-bottom-[8px] after:left-1/2 after:-translate-x-1/2 md:after:left-0 md:after:translate-x-0">
+              <h2 className="mb-6 font-oswald uppercase text-white tracking-[1px] text-[1.2rem] font-normal leading-[1.5em] relative before:content-[''] before:bg-accent before:w-[5px] before:h-[18px] before:absolute before:bottom-[7px] before:-left-2.5">
                 Quick Links
               </h2>
               <ul className="list flex flex-col justify-center items-center md:items-start gap-4">
@@ -161,7 +161,7 @@ export async function Footer() {
           <div className="col-span-4 md:col-span-3 lg:col-span-2">
             <nav aria-label="Adventure rides" className="text-white/80 text-xs w-full text-center md:text-left flex flex-col items-center md:items-start">
               {/* <h2 className="text-lg font-oswald uppercase text-white mb-6">Adventure Rides</h2> */}
-              <h2 className="mb-6 font-oswald uppercase text-white tracking-[1px] text-[1.2rem] font-normal leading-[1.5em] relative before:content-[''] before:bg-accent before:w-[92px] before:h-[3px] before:absolute before:-bottom-[9px] before:left-1/2 before:-translate-x-1/2 md:before:left-0 md:before:translate-x-0 after:content-[''] after:bg-accent after:w-[142px] after:h-px after:absolute after:-bottom-[8px] after:left-1/2 after:-translate-x-1/2 md:after:left-0 md:after:translate-x-0">
+              <h2 className="mb-6 font-oswald uppercase text-white tracking-[1px] text-[1.2rem] font-normal leading-[1.5em] relative before:content-[''] before:bg-accent before:w-[5px] before:h-[18px] before:absolute before:bottom-[7px] before:-left-2.5">
                 Adventure Rides
               </h2>
               <ul className="list flex flex-col justify-center items-center md:items-start gap-4">
@@ -187,7 +187,7 @@ export async function Footer() {
           <div className="col-span-4 md:col-span-3 lg:col-span-2 hidden md:block">
             <nav aria-label="Destinations" className="text-white/80 text-xs w-full text-center md:text-left flex flex-col items-center md:items-start">
               {/* <h2 className="text-lg font-oswald uppercase text-white mb-6">Destinations</h2> */}
-               <h2 className="mb-6 font-oswald uppercase text-white tracking-[2px] text-[1.2rem] font-normal leading-[1.5em] relative before:content-[''] before:bg-accent before:w-[80px] before:h-[3px] before:absolute before:-bottom-[9px] before:left-1/2 before:-translate-x-1/2 md:before:left-0 md:before:translate-x-0 after:content-[''] after:bg-accent after:w-[124px] after:h-px after:absolute after:-bottom-[8px] after:left-1/2 after:-translate-x-1/2 md:after:left-0 md:after:translate-x-0">
+               <h2 className="mb-6 font-oswald uppercase text-white tracking-[1px] text-[1.2rem] font-normal leading-[1.5em] relative before:content-[''] before:bg-accent before:w-[5px] before:h-[18px] before:absolute before:bottom-[7px] before:-left-2.5">
                 Destinations
               </h2>
               <ul className="list flex flex-col justify-center items-center md:items-start gap-4">
@@ -212,7 +212,7 @@ export async function Footer() {
 
           <div className="col-span-4 md:col-span-3 lg:col-span-2 hidden md:block">
             <nav aria-label="Highlights" className="text-white/80 text-xs w-full text-center md:text-left flex flex-col items-center md:items-start">
-              <h2 className="mb-6 font-oswald uppercase text-white tracking-[2px] text-[1.2rem] font-normal leading-[1.5em] relative before:content-[''] before:bg-accent before:w-[70px] before:h-[3px] before:absolute before:-bottom-[9px] before:left-1/2 before:-translate-x-1/2 md:before:left-0 md:before:translate-x-0 after:content-[''] after:bg-accent after:w-[108px] after:h-px after:absolute after:-bottom-[8px] after:left-1/2 after:-translate-x-1/2 md:after:left-0 md:after:translate-x-0">
+              <h2 className="mb-6 font-oswald uppercase text-white tracking-[1px] text-[1.2rem] font-normal leading-[1.5em] relative before:content-[''] before:bg-accent before:w-[5px] before:h-[18px] before:absolute before:bottom-[7px] before:-left-2.5">
                 Highlights
               </h2>
               <ul className="list flex flex-col justify-center items-center md:items-start gap-4">
@@ -238,7 +238,7 @@ export async function Footer() {
           <div className="col-span-4 md:col-span-2 lg:col-span-2">
             <nav aria-label="Adventure rides" className="text-white/80 text-xs w-full text-center md:text-left flex flex-col items-center md:items-start">
               {/* <h2 className="text-lg font-oswald uppercase text-white mb-6">Other Services</h2> */}
-              <h2 className="mb-6 font-oswald uppercase text-white tracking-[1px] text-[1.2rem] font-normal leading-[1.5em] relative before:content-[''] before:bg-accent before:w-[90px] before:h-[3px] before:absolute before:-bottom-[9px] before:left-1/2 before:-translate-x-1/2 md:before:left-0 md:before:translate-x-0 after:content-[''] after:bg-accent after:w-[135px] after:h-px after:absolute after:-bottom-[8px] after:left-1/2 after:-translate-x-1/2 md:after:left-0 md:after:translate-x-0">
+              <h2 className="mb-6 font-oswald uppercase text-white tracking-[1px] text-[1.2rem] font-normal leading-[1.5em] relative before:content-[''] before:bg-accent before:w-[5px] before:h-[18px] before:absolute before:bottom-[7px] before:-left-2.5">
                 Other Services
               </h2>
               <ul className="list flex flex-col justify-center items-center md:items-start gap-3">

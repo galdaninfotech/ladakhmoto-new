@@ -27,7 +27,7 @@ async function HotelsComponent() {
         <div className="intro flex flex-col items-center justify-center mb-12">
           <h2 className="font-oswald text-[16px] md:text-xl uppercase text-foreground tracking-[0.2em] relative pb-3">
             Featured Hotels
-            {/* <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-[2px] bg-accent" /> */}
+            <span className="absolute bottom-2 w-full h-px bg-accent/50" />
           </h2>
         </div>
 
