@@ -18,10 +18,10 @@ interface HeaderTopProps {
 
 export const HeaderTop: React.FC<HeaderTopProps> = ({ data }) => {
   return (
-    <div className="w-full bg-primary/10 py-1 relative z-10 shadow-xs">
+    <div className="w-full bg-secondary/40 dark:bg-secondary/15 py-1 relative z-10 border-b border-border/10 shadow-xs">
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Left */}
-         <ul className="flex justify-start items-center space-x-4">
+         <ul className="flex justify-between items-center w-full md:w-auto md:space-x-4">
           <li className="flex items-center">
             <Link
               href={'/'}
@@ -31,10 +31,10 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({ data }) => {
                 <HelpCircle className="w-5 h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="text-black/70 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
+                <span className="text-foreground/80 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
                   Get Help
                 </span>
-                <span className="text-foreground/70 text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
+                <span className="text-muted-foreground text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
                   Let Us Know
                 </span>
               </div>
@@ -49,16 +49,16 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({ data }) => {
                 <CircleDollarSign className="w-5 h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="text-black/70 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
+                <span className="text-foreground/80 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
                   Curreny
                 </span>
-                <span className="text-foreground/70 text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
+                <span className="text-muted-foreground text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
                   Let Us Know
                 </span>
               </div>
             </Link>
           </li>
-          <li className="h-5 w-px bg-black/10" aria-hidden="true" />
+          <li className="h-5 w-px bg-foreground/10" aria-hidden="true" />
           <li className="flex items-center">
             <Link
               href={'/'}
@@ -68,10 +68,10 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({ data }) => {
                 <Languages className="w-5 h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="text-black/70 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
+                <span className="text-foreground/80 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
                   Language
                 </span>
-                <span className="text-foreground/70 text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
+                <span className="text-muted-foreground text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
                   Sign In/Register
                 </span>
               </div>
@@ -82,7 +82,7 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({ data }) => {
 
         {/* Right */}
         <ul className="flex justify-start items-center space-x-4 hidden md:flex">
-          <li className="h-5 w-px bg-black/10" aria-hidden="true" />
+          <li className="h-5 w-px bg-foreground/10" aria-hidden="true" />
           <li className="flex items-center">
             <Link
               href={'/'}
@@ -92,16 +92,16 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({ data }) => {
                 <Compass className="w-5 h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="text-black/70 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
+                <span className="text-foreground/80 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
                   My Trips
                 </span>
-                <span className="text-foreground/70 text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
+                <span className="text-muted-foreground text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
                   Manage Your Bookings
                 </span>
               </div>
             </Link>
           </li>
-          <li className="h-5 w-px bg-black/10" aria-hidden="true" />
+          <li className="h-5 w-px bg-foreground/10" aria-hidden="true" />
           <li className="flex items-center">
             <Link
               href={'/'}
@@ -111,16 +111,16 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({ data }) => {
                 <Heart className="w-5 h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="text-black/70 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
+                <span className="text-foreground/80 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
                   Wishlist
                 </span>
-                <span className="text-foreground/70 text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
+                <span className="text-muted-foreground text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
                   Save Favourites
                 </span>
               </div>
             </Link>
           </li>
-          <li className="h-5 w-px bg-black/10" aria-hidden="true" />
+          <li className="h-5 w-px bg-foreground/10" aria-hidden="true" />
           <li className="flex items-center">
             <Link
               href={'/'}
@@ -130,16 +130,16 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({ data }) => {
                 <GitCompare className="w-5 h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="text-black/70 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
+                <span className="text-foreground/80 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
                   Compare
                 </span>
-                <span className="text-foreground/70 text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
+                <span className="text-muted-foreground text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
                   Compare Rides
                 </span>
               </div>
             </Link>
           </li>
-          <li className="h-5 w-px bg-black/10" aria-hidden="true" />
+          <li className="h-5 w-px bg-foreground/10" aria-hidden="true" />
           <li className="flex items-center">
             <Link
               href={'/'}
@@ -149,10 +149,10 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({ data }) => {
                 <User className="w-5 h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="text-black/70 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
+                <span className="text-foreground/80 font-bold font-oswald text-[10px] tracking-widest uppercase group-hover:text-accent transition-colors">
                   Account
                 </span>
-                <span className="text-foreground/70 text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
+                <span className="text-muted-foreground text-[9px] leading-tight group-hover:text-accent/80 transition-colors">
                   Sign In/Register
                 </span>
               </div>

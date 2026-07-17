@@ -99,9 +99,7 @@ export const HeaderClient: React.FC<{
   const pathname = usePathname()
   const isHeaderDark =
     !isScrolled &&
-    (pathname === '/' ||
-      pathname === '/home' ||
-      pathname?.includes('/ultimate-adventures') ||
+    (pathname?.includes('/ultimate-adventures') ||
       pathname?.includes('/bike-tours') ||
       pathname?.includes('/holiday-packages') ||
       pathname?.includes('/destinations') ||
@@ -145,7 +143,7 @@ export const HeaderClient: React.FC<{
             pathname === '/home'
           ),
         },
-        (pathname === '/' || pathname === '/home') && !isScrolled ? 'bg-white text-white' : '',
+        (pathname === '/' || pathname === '/home') && !isScrolled ? 'bg-background text-foreground border-b border-border/10 shadow-xs' : '',
       )}
     >
       <HeaderTop data={ladakhMotoData} />
@@ -218,7 +216,7 @@ export const HeaderClient: React.FC<{
                       href={item.href}
                       className={cn(
                         'h-[45px] font-oswald uppercase text-[15px] font-bold tracking-wider hover:text-accent pl-3 pr-2 flex items-center gap-1 duration-150',
-                        isHeaderDark ? 'text-foreground' : 'text-foreground',
+                        isHeaderDark ? 'text-white' : 'text-foreground',
                       )}
                     >
                       <span>{item.name}</span>
@@ -263,8 +261,8 @@ export const HeaderClient: React.FC<{
                 className={cn(
                   'border-l pl-4 flex items-center gap-4 transition-colors duration-300',
                   isHeaderDark
-                    ? 'text-foreground border-black/20'
-                    : 'border-foreground/20 text-white',
+                    ? 'text-white border-white/20'
+                    : 'text-foreground border-foreground/20',
                 )}
               >
                 <ThemeSelector />
