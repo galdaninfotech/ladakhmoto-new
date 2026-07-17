@@ -81,7 +81,7 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({ data }) => {
 
 
         {/* Right */}
-        <ul className="flex justify-start items-center space-x-4">
+        <ul className="flex justify-start items-center space-x-4 hidden md:flex">
           <li className="h-5 w-px bg-black/10" aria-hidden="true" />
           <li className="flex items-center">
             <Link

@@ -263,7 +263,7 @@ export const HeaderClient: React.FC<{
                 className={cn(
                   'border-l pl-4 flex items-center gap-4 transition-colors duration-300',
                   isHeaderDark
-                    ? 'text-foreground border-white/20'
+                    ? 'text-foreground border-black/20'
                     : 'border-foreground/20 text-white',
                 )}
               >
