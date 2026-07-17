@@ -3,6 +3,7 @@ import React from 'react'
 import type { UltimateAdventure } from '@/payload-types'
 import Link from 'next/link'
 import Image from 'next/image'
+import { ExploreLink } from '@/components/ExploreLink'
 import { motion } from 'framer-motion'
 import TourIcons from '@/components/TourIcons'
 import { formatImageUrl } from '@/utilities/formatImageUrl'
@@ -50,11 +51,9 @@ export const UltimateAdventures: React.FC<UltimateAdventuresProps> = ({
                 </h2>
               </div>
             )}
-            {subtitle && (
-              <p className="text-muted-foreground text-sm md:text-base font-light tracking-wide max-w-xl">
-                {subtitle}
-              </p>
-            )}
+            <p className="text-muted-foreground text-xs font-sans font-light tracking-wide -mt-4 mb-12">
+              Conquer the highest motorable passes and cross the most formidable terrains in the Himalayas. Our signature, high-octane expeditions are custom-built for seasoned riders seeking the ultimate test of endurance and adventure.
+            </p>
           </div>
         )}
 
@@ -175,22 +174,7 @@ export const UltimateAdventures: React.FC<UltimateAdventuresProps> = ({
         </div>
 
         {/* Explore All Bottom Section */}
-        <div className="pt-6 border-t border-border mt-auto text-right">
-          <Link 
-            href={'/ultimate-adventures'}
-            className="inline-flex items-center text-white text-[8px] md:text-[10px] uppercase tracking-[0.1em] hover:text-accent bg-black pl-2 py-1 pr-1 group/link"
-          >
-            Explore All Ultimate Adventures
-            <svg 
-              className="text-black ml-3 w-8 h-8 bg-gray-200 pl-1 transition-transform duration-300 group-hover/link:translate-x-5" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M14 8l3 3m0 0l-3 3m3-3H3" />
-            </svg>
-          </Link>
-        </div>
+        <ExploreLink url="/ultimate-adventures" title="Explore All Ultimate Adventures" />
 
       </div>
     </section>

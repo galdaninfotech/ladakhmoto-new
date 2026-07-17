@@ -149,6 +149,9 @@ export const HeaderClient: React.FC<{
       )}
     >
       <HeaderTop data={ladakhMotoData} />
+
+      
+
       <nav
         role="navigation"
         className={cn(
@@ -260,8 +263,8 @@ export const HeaderClient: React.FC<{
                 className={cn(
                   'border-l pl-4 flex items-center gap-4 transition-colors duration-300',
                   isHeaderDark
-                    ? 'text-white border-white/20'
-                    : 'border-foreground/20 text-foreground',
+                    ? 'text-foreground border-white/20'
+                    : 'border-foreground/20 text-white',
                 )}
               >
                 <ThemeSelector />

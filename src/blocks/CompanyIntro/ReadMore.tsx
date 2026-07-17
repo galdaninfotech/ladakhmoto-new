@@ -37,7 +37,7 @@ export const ReadMore: React.FC<Props> = ({ readMore }) => {
           isReadMoreOpen ? 'max-h-[1000px] opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-4'
         }`}
       >
-        <RichText data={readMore} enableGutter={false} />
+        <RichText data={readMore} enableGutter={false} className='text-muted-foreground text-[15px] font-sans font-light' />
       </div>
     </>
   )

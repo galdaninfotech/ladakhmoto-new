@@ -72,15 +72,22 @@ export const DealOfTheDay: React.FC<DealOfTheDayBlockProps> = (props) => {
 
           {/* Pill CTA Button */}
           {url && (
-            <div>
-              <Link
-                href={url}
-                className="inline-flex items-center justify-center gap-2 bg-black dark:bg-white text-white dark:text-black hover:bg-neutral-800 dark:hover:bg-neutral-200 px-10 py-4 rounded-full font-oswald text-xs uppercase tracking-[0.2em] font-bold transition-all duration-300 shadow-lg hover:shadow-black/10 dark:hover:shadow-white/10"
+            <div className={`pt-6 mt-auto text-right`}>
+            <Link
+              href={'/'}
+              className="inline-flex items-center text-white text-[8px] md:text-[10px] uppercase tracking-widest hover:text-accent bg-black pl-5 py-1.5 pr-1 group/link rounded-full"
+            >
+              {buttonText || 'Explore More'}
+              <svg
+                className="text-black ml-3 w-8 h-8 bg-gray-200 pl-1 transition-transform duration-300 group-hover/link:translate-x-5 rounded-full"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                {buttonText || 'shop now'}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M14 8l3 3m0 0l-3 3m3-3H3" />
+              </svg>
+            </Link>
+          </div>
           )}
 
         </div>

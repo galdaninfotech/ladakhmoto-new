@@ -2,6 +2,7 @@ import React from 'react'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { HighlightsCarousel } from './HighlightsCarousel'
+import { ExploreLink } from '@/components/ExploreLink'
 
 async function HighlightsComponent() {
   const payload = await getPayload({ config: configPromise })
@@ -25,7 +26,13 @@ async function HighlightsComponent() {
         <span className="absolute -bottom-1 w-full h-px bg-accent/50" />
       </div>
 
+      <p className="text-muted-foreground text-xs font-sans font-light tracking-wide mx-auto -mt-7 mb-6">
+        Take a glimpse at the iconic landmarks, serene lakes, and majestic vistas of Ladakh that you will experience firsthand on our carefully crafted itineraries.
+      </p>
+
       {highlights.docs && <HighlightsCarousel highlights={highlights.docs as any} />}
+
+      <ExploreLink url="/highlights" title="Explore All Highlights" className="col-span-4 sm:col-span-8 lg:col-span-12" />
     </div>
   )
 }

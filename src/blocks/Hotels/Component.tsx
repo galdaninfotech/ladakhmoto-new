@@ -3,6 +3,7 @@ import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { HotelsCarousel } from './HotelsCarousel'
 import Link from 'next/link'
+import { ExploreLink } from '@/components/ExploreLink'
 
 async function HotelsComponent() {
   const payload = await getPayload({ config: configPromise })
@@ -31,9 +32,15 @@ async function HotelsComponent() {
           </h2>
         </div>
 
+        <p className="text-muted-foreground text-xs font-sans font-light tracking-wide mx-auto -mt-9 mb-12">
+          Discover our handpicked selection of premium hotels, boutique stays, and cozy high-altitude luxury camps, ensuring comfort and hospitality after your day's journey.
+        </p>
+
         {hotels.docs && <HotelsCarousel hotels={hotels.docs as any} />}
 
-        <Link className='bg-accent text-background px-4 py-2 rounded-xs float-right' href="/hotels">View All Hotels</Link >
+
+        <ExploreLink url="/highlights" title="View All Hotels" className="col-span-4 sm:col-span-8 lg:col-span-12" />
+
       </div>
     </div>
   )

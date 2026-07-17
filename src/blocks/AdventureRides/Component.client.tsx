@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import TourIcons from '@/components/TourIcons'
+import { ExploreLink } from '@/components/ExploreLink'
 import { formatImageUrl } from '@/utilities/formatImageUrl'
 
 const getCategoryStyle = (slug?: string | null): { bg: string; text: string } => {
@@ -56,8 +57,12 @@ export const AdventureRides: React.FC<{
         <h2 className="font-oswald text-xl md:text-2xl uppercase text-foreground tracking-[0.2em] relative pb-3">
           Adventure Rides 2026
           <span className="absolute bottom-2 w-full h-px bg-accent/50" />
-        </h2>
+        </h2> 
       </div>
+
+      <p className="text-muted-foreground text-xs font-sans font-light tracking-wide mx-auto -mt-12 mb-12">
+        Explore below the ultimate motorbiking journeys across the high-altitude passes of Ladakh. Browse through our handpicked selection of extreme tours, off-road expeditions, and cultural road trips designed for passionate riders.
+      </p>
 
       {/* Grid List */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -173,22 +178,7 @@ export const AdventureRides: React.FC<{
       </div>
 
       {/* Explore All Bottom Section */}
-      <div className="pt-6 border-t border-border mt-auto text-right">
-        <Link 
-          href={'/bike-tours'}
-          className="inline-flex items-center text-white text-[8px] md:text-[10px] uppercase tracking-[0.1em] hover:text-accent bg-black pl-2 py-1 pr-1 group/link"
-        >
-          Explore All Adventure Rides
-          <svg 
-            className="text-black ml-3 w-8 h-8 bg-gray-200 pl-1 transition-transform duration-300 group-hover/link:translate-x-5" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M14 8l3 3m0 0l-3 3m3-3H3" />
-          </svg>
-        </Link>
-      </div>
+      <ExploreLink url="/bike-tours" title="Explore All Adventure Rides" />
 
     </div>
   )

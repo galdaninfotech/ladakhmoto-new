@@ -15,7 +15,7 @@ export const CompanyIntro: React.FC<CompanyIntroBlockProps> = (props) => {
 
       {content && (
         <div className="text-muted-foreground my-4">
-          <RichText data={content} enableGutter={false} />
+          <RichText data={content} enableGutter={false} className='text-muted-foreground text-[15px] font-sans font-light' />
           {readMore && <ReadMore readMore={readMore} />}
         </div>
       )}
