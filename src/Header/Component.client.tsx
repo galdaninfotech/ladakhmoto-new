@@ -148,6 +148,61 @@ export const HeaderClient: React.FC<{
     >
       <HeaderTop data={ladakhMotoData} />
 
+      {/* Middle */}
+      <div className="hidden md:block w-full bg-secondary/20 dark:bg-secondary/5 py-4 border-b border-border/10 shadow-xxs">
+        <div className="container mx-auto px-4 flex flex-row justify-between items-center text-[7.5px] min-[375px]:text-[8.5px] sm:text-[10px] font-bold font-oswald text-muted-foreground uppercase tracking-widest gap-2">
+          
+          <Link href="/" aria-label="home" className="flex items-center space-x-2">
+            {!menuState && (
+              <Image
+                loading="eager"
+                priority
+                fetchPriority="high"
+                src="/images/logo.webp"
+                alt="Ladakh Moto Logo"
+                width={100}
+                height={53}
+                sizes="(max-width: 1024px) 75px, 100px"
+                className="w-[75px] h-[40px] lg:w-[100px] lg:h-[53px] object-contain transition-all duration-300"
+              />
+            )}
+          </Link>
+
+
+          <div className="flex-1 text-center"><SearchBar /></div>
+          
+          <div
+            className={cn(
+              'border-l pl-4 flex items-center gap-4 transition-colors duration-300',
+              isHeaderDark
+                ? 'text-white border-white/20'
+                : 'text-foreground border-foreground/20',
+            )}
+          >
+            <ThemeSelector />
+            <Link
+              href="/admin"
+              aria-label="Admin Login"
+              className="text-current relative flex items-center justify-center w-9 h-9 transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-accent group cursor-pointer"
+            >
+              <User className="w-[1.1rem] h-[1.1rem] text-current transition-all duration-300 group-hover:scale-110" />
+              <span className="sr-only">Login</span>
+            </Link>
+            <button
+              onClick={() => setMenuState(!menuState)}
+              aria-label={menuState ? 'Close Menu' : 'Open Menu'}
+              className={cn(
+                'relative z-40 block cursor-pointer transition-colors duration-300',
+                isHeaderDark ? 'text-white' : 'text-foreground',
+              )}
+            >
+              {menuState ? <CloseIcon /> : <MenuIcon />}
+            </button>
+          </div>
+        </div>
+      </div>
+      
+
       
 
       <nav
@@ -162,7 +217,7 @@ export const HeaderClient: React.FC<{
         <div className={cn(!isScrolled && 'w-full', isScrolled && 'container mx-auto px-4')}>
           <div className="relative flex items-center justify-between gap-6 lg:gap-0 h-13.45">
             <div className="flex w-full justify-between lg:w-auto">
-              <Link href="/" aria-label="home" className="flex items-center space-x-2">
+              <Link href="/" aria-label="home" className="flex items-center space-x-2 md:hidden">
                 {!menuState && (
                   <Image
                     loading="eager"
@@ -178,7 +233,7 @@ export const HeaderClient: React.FC<{
                 )}
               </Link>
 
-              <div className="flex items-center gap-4 lg:hidden">
+              <div className="flex items-center gap-4 md:hidden">
                 <div
                   className={cn(
                     'flex items-center transition-colors duration-300 gap-4',
@@ -259,7 +314,7 @@ export const HeaderClient: React.FC<{
               </ul>
               <div
                 className={cn(
-                  'border-l pl-4 flex items-center gap-4 transition-colors duration-300',
+                  'border-l pl-4 flex items-center gap-4 transition-colors duration-300 md:hidden',
                   isHeaderDark
                     ? 'text-white border-white/20'
                     : 'text-foreground border-foreground/20',
