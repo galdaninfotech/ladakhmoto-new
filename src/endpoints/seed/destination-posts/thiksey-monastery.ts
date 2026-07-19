@@ -674,9 +674,9 @@ export const thikseyMonastery: (args: PostArgs) => RequiredDataFromCollectionSlu
         description:
         "Explore the heritage and architecture of Thiksey Monastery, what to see, how to reach, and practical advice for your Ladakh trip with Ladakh Moto.",
         image: mediaMap['thiksey-monastery-slide.webp'],
-        title: "Lamayuru Monastery - Travel Guide & Visit Info | Ladakh Moto",
+        title: "Thiksey Monastery - Travel Guide & Visit Info | Ladakh Moto",
     },
     relatedPosts: [],
-    title: "Lamayuru Monastery",
+    title: "Thiksey Monastery",
 }
 }

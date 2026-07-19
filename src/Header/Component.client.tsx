@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation'
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 import { HeaderTop } from '@/Header/HeaderTop'
 import { User } from 'lucide-react'
+import { SearchBar } from './SearchBar'
 
 import LMFacebook from '@/components/Icons/LMFacebook'
 import LMInstagram from '@/components/Icons/LMInstagram'
@@ -169,7 +170,9 @@ export const HeaderClient: React.FC<{
           </Link>
 
 
-          <div className="flex-1 text-center"><SearchBar /></div>
+          <div className="flex-1 text-center">
+            <SearchBar />
+          </div>
           
           <div
             className={cn(
