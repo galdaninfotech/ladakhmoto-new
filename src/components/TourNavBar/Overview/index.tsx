@@ -9,11 +9,6 @@ import TourIcons from '@/components/TourIcons'
 
 export const Overview: React.FC<{
   tourOverview?: {
-    duration?: string | null | undefined
-    distance?: string | null | undefined
-    highestPeak?: string | null | undefined
-    accommodation?: string[] | null | undefined
-    meal?: string[] | null | undefined
     description?: DefaultTypedEditorState | null | undefined
     summary?: DefaultTypedEditorState | null | undefined
     overviewImage?: number | null | MediaType | undefined
@@ -40,11 +35,6 @@ export const Overview: React.FC<{
 }> = (props) => {
   const { tourOverview } = props
   const {
-    duration,
-    distance,
-    highestPeak,
-    accommodation,
-    meal,
     description,
     summary,
     overviewImage,
@@ -81,15 +71,6 @@ export const Overview: React.FC<{
       <h2 className="mb-2 font-oswald uppercase text-foreground tracking-[2px] text-[1.25rem] font-normal leading-[1.5em] relative left-2.5 before:content-[''] before:bg-accent before:w-[5px] before:h-[18px] before:absolute before:bottom-[7px] before:-left-2.5">
         Tour Overview
       </h2>
-
-      <TourIcons
-        isOverview={true}
-        duration={duration}
-        distance={distance}
-        highestPeak={highestPeak}
-        accommodation={accommodation}
-        meal={meal}
-      />
 
       <MediaTabs
         overviewImage={overviewImage}
