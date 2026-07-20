@@ -107,7 +107,7 @@ export default function BikeTourTitleArea({ post, isUltimateAdventure }: BikeTou
   const savings = calculateDiscount(post.minCost, post.cutOutCost)
 
   return (
-    <div className="mb-12 font-sans">
+    <div className="mb-18 font-sans">
       <div className="flex flex-col gap-6">
         
         {/* Eyebrow Subtitle */}
@@ -146,27 +146,9 @@ export default function BikeTourTitleArea({ post, isUltimateAdventure }: BikeTou
           )}
         </div>
 
-        {/* Inline Category Details (Accommodation & Meals) */}
-        {(accommodationLabels?.length || mealLabels?.length) && (
-          <div className="grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:gap-x-6 sm:gap-y-2 text-xs font-medium text-muted-foreground font-sans tracking-wide w-full">
-            {accommodationLabels?.length && (
-              <div className="flex items-center gap-2">
-                <Bed className="h-4 w-4 text-accent" strokeWidth={1.8} />
-                <span>Stay: {accommodationLabels.join(' · ')}</span>
-              </div>
-            )}
-            {mealLabels?.length && (
-              <div className="flex items-center gap-2">
-                <Utensils className="h-4 w-4 text-accent" strokeWidth={1.8} />
-                <span>Meals: {mealLabels.join(' · ')}</span>
-              </div>
-            )}
-          </div>
-        )}
-
         {/* Stats Sporty Accent-Border Bar */}
         {titleHighlights.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-6 gap-x-8 py-8 border-y border-border/40 my-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-6 gap-x-8">
             {titleHighlights.map((item) => {
               const Icon = item.icon
               return (
@@ -188,6 +170,24 @@ export default function BikeTourTitleArea({ post, isUltimateAdventure }: BikeTou
                 </div>
               )
             })}
+          </div>
+        )}
+
+        {/* Inline Category Details (Accommodation & Meals) */}
+        {(accommodationLabels?.length || mealLabels?.length) && (
+          <div className="grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:gap-x-6 sm:gap-y-2 text-xs font-medium text-muted-foreground font-sans tracking-wide w-full">
+            {accommodationLabels?.length && (
+              <div className="flex items-center gap-2">
+                <Bed className="h-4 w-4 text-accent" strokeWidth={1.8} />
+                <span>Stay: {accommodationLabels.join(' · ')}</span>
+              </div>
+            )}
+            {mealLabels?.length && (
+              <div className="flex items-center gap-2">
+                <Utensils className="h-4 w-4 text-accent" strokeWidth={1.8} />
+                <span>Meals: {mealLabels.join(' · ')}</span>
+              </div>
+            )}
           </div>
         )}
 
