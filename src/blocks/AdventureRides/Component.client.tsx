@@ -136,9 +136,9 @@ export const AdventureRides: React.FC<{
                   </h3>
 
                   {savings > 0 && (
-                    <span className="text-accent font-sans text-[16px] font-bold uppercase shrink-0">
-                      SAVE {savings}%
-                    </span>
+                    <div className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 px-2.5 py-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+                      Save {savings}%
+                    </div>
                   )}
                 </div>
 
