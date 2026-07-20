@@ -34,6 +34,7 @@ async function getUltimateAdventures() {
       description: true,
       summary: true,
       highlights: true,
+      categories: true,
     },
   })
 

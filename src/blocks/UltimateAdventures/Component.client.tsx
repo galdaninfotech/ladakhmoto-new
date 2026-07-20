@@ -8,6 +8,31 @@ import { motion } from 'framer-motion'
 import TourIcons from '@/components/TourIcons'
 import { formatImageUrl } from '@/utilities/formatImageUrl'
 
+const getCategoryStyle = (slug?: string | null): { bg: string; text: string } => {
+  switch (slug) {
+    case 'bike-tour':
+      return { bg: 'bg-amber-500', text: 'text-white' }
+    case 'holiday-packages':
+      return { bg: 'bg-emerald-600', text: 'text-white' }
+    case 'extreme':
+      return { bg: 'bg-rose-600', text: 'text-white' }
+    case 'group-tour':
+      return { bg: 'bg-cyan-600', text: 'text-white' }
+    case 'off-road-expeditions':
+      return { bg: 'bg-orange-600', text: 'text-white' }
+    case 'trekking-hiking':
+      return { bg: 'bg-teal-600', text: 'text-white' }
+    case 'cultural-sightseeing':
+      return { bg: 'bg-indigo-600', text: 'text-white' }
+    case 'spiti-valley':
+      return { bg: 'bg-purple-600', text: 'text-white' }
+    case 'leh-ladakh':
+      return { bg: 'bg-sky-600', text: 'text-white' }
+    default:
+      return { bg: 'bg-accent', text: 'text-accent-on' }
+  }
+}
+
 interface UltimateAdventuresProps {
   ultimateAdventureData: Partial<UltimateAdventure>[]
   title?: string
@@ -82,17 +107,29 @@ export const UltimateAdventures: React.FC<UltimateAdventuresProps> = ({
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
 
-                  {/* Savings Pill Badge */}
-                  {savings > 0 && (
-                    <div className="absolute top-6 left-6 bg-accent text-accent-on font-oswald text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-[2px] z-20 shadow-md">
-                      SAVE {savings}%
-                    </div>
-                  )}
-
-                  {/* Ultimate Experience Badge */}
-                  {savings <= 0 && (
-                    <div className="absolute top-6 left-6 bg-accent text-accent-on font-oswald text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-[2px] z-20 shadow-md">
-                      Ultimate Experience
+                  {/* Category & Experience Badge Pill Wrapper */}
+                  {((tour.categories && tour.categories.length > 0) || savings <= 0) && (
+                    <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-20">
+                      {tour.categories &&
+                        tour.categories.map((category) => {
+                          if (category && typeof category === 'object') {
+                            const style = getCategoryStyle(category.slug)
+                            return (
+                              <div
+                                key={category.id}
+                                className={`${style.bg} ${style.text} font-oswald text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-[2px] shadow-md`}
+                              >
+                                {category.title}
+                              </div>
+                            )
+                          }
+                          return null
+                        })}
+                      {savings <= 0 && (
+                        <div className="bg-accent text-accent-on font-oswald text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-[2px] shadow-md">
+                          Ultimate Experience
+                        </div>
+                      )}
                     </div>
                   )}
 
@@ -106,11 +143,11 @@ export const UltimateAdventures: React.FC<UltimateAdventuresProps> = ({
                   {/* Duration & Route Banner */}
                   <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black via-black/40 to-transparent p-6 pt-12 text-white z-10 flex items-end justify-between pointer-events-none">
                     <div className="flex flex-col gap-0.5">
-                      <span className="font-oswald text-[11px] uppercase tracking-[0.15em] text-accent font-semibold">
+                      <span className="font-oswald text-[11px] uppercase tracking-[0.15em] font-semibold">
                         {tour.duration ? formatTourDuration(tour.duration) : 'Duration unavailable'}
                       </span>
                     </div>
-                    <span className="font-sans text-[11px] text-white/80 font-medium tracking-wide">
+                    <span className="font-sans text-[11px] text-white/80 font-medium tracking-wide uppercase">
                       {tour.startEndCity}
                     </span>
                   </div>
@@ -118,9 +155,17 @@ export const UltimateAdventures: React.FC<UltimateAdventuresProps> = ({
 
                 {/* Body Details Section */}
                 <div className="p-6 md:p-8 flex flex-col flex-1 gap-1 bg-card">
-                  <h3 className="font-oswald text-lg font-bold tracking-wide text-foreground uppercase group-hover:text-primary transition-colors duration-300 line-clamp-1">
+                  <div className="flex justify-between items-start gap-2">
+                  <h3 className="font-oswald text-base font-bold tracking-wide text-foreground uppercase group-hover:text-primary transition-colors duration-300 line-clamp-1">
                     {tour.title}
                   </h3>
+
+                  {savings > 0 && (
+                    <span className="text-accent font-sans text-[16px] font-bold uppercase shrink-0">
+                      SAVE {savings}%
+                    </span>
+                  )}
+                </div>
 
                   {/* Tour Key Statistics Grid */}
                   <div className="py-4 border-y border-border/50 my-4">
@@ -143,7 +188,7 @@ export const UltimateAdventures: React.FC<UltimateAdventuresProps> = ({
                           {formatCost(tour.cutOutCost)}
                         </span>
                       )}
-                      <span className="text-primary font-oswald text-base font-bold tracking-wide">
+                      <span className="font-oswald text-base font-bold tracking-wide">
                         {formatCost(tour.minCost)}
                         <span className="font-sans text-[10px] text-muted-foreground font-normal ml-1">
                           / pp

@@ -50,6 +50,14 @@ export const AdventureRides: React.FC<{
     return isNaN(val) ? String(cost) : `₹ ${val.toLocaleString()}`
   }
 
+  // Helper to calculate saving percentage
+  const calculateDiscount = (min?: string | number | null, cutout?: string | number | null) => {
+    const minVal = typeof min === 'string' ? parseFloat(min) : min
+    const cutoutVal = typeof cutout === 'string' ? parseFloat(cutout) : cutout
+    if (!minVal || !cutoutVal || cutoutVal <= minVal) return 0
+    return Math.round(((cutoutVal - minVal) / cutoutVal) * 100)
+  }
+
   return (
     <div className="container mx-auto mb-16 mt-24">
       {/* Block Title */}
@@ -69,6 +77,7 @@ export const AdventureRides: React.FC<{
         {tours.map((tour, index) => {
           const imageUrl = `/api/media/file/${tour.slug}-home.webp`
           const normalizedImageUrl = formatImageUrl(imageUrl) || '/images/placeholder.jpg'
+          const savings = calculateDiscount(tour.minCost, tour.cutOutCost)
 
           return (
             <div
@@ -109,24 +118,32 @@ export const AdventureRides: React.FC<{
                 {/* Duration & Route Banner */}
                 <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black via-black/40 to-transparent p-4 pt-12 text-white z-10 flex items-end justify-between pointer-events-none">
                   <div className="flex flex-col gap-0.5">
-                    <span className="font-oswald text-[11px] uppercase tracking-[0.15em] text-accent font-semibold">
+                    <span className="font-oswald text-[11px] uppercase tracking-[0.15em] font-semibold">
                       {tour.duration ? formatTourDuration(tour.duration) : 'Duration unavailable'}
                     </span>
                   </div>
-                  <span className="font-sans text-[11px] text-white/80 uppercase font-medium tracking-wide">
+                  <span className="font-oswald text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-[2px] shadow-md">
                     {tour.startEndCity}
                   </span>
                 </div>
               </div>
 
               {/* Card Body Area */}
-              <div className="p-5 flex flex-col flex-1 gap-1">
-                <h3 className="font-oswald text-base font-bold tracking-wide text-foreground uppercase group-hover:text-primary transition-colors duration-300 line-clamp-1">
-                  {tour.title}
-                </h3>
+              <div className="p-3 flex flex-col flex-1 gap-1">
+                <div className="flex justify-between items-start gap-2">
+                  <h3 className="font-oswald text-base font-bold tracking-wide text-foreground uppercase group-hover:text-primary transition-colors duration-300 line-clamp-1">
+                    {tour.title}
+                  </h3>
+
+                  {savings > 0 && (
+                    <span className="text-accent font-sans text-[16px] font-bold uppercase shrink-0">
+                      SAVE {savings}%
+                    </span>
+                  )}
+                </div>
 
                 {/* Tour Key Statistics Grid */}
-                <div className="py-4 border-y border-border/50 my-3">
+                <div className="py-2 border-y border-border/50">
                   <TourIcons
                     isOverview={true}
                     highestPeak={tour.highestPeak}

@@ -78,7 +78,7 @@ export const Overview: React.FC<{
 
   return (
     <section id="overview" className="pt-6 mb-12 text-xs/6">
-      <h2 className="mb-8 font-oswald uppercase text-foreground tracking-[2px] text-[1.25rem] font-normal leading-[1.5em] relative before:content-[''] before:bg-accent before:w-[90px] before:h-[3px] before:absolute before:-bottom-[10px] before:left-0 after:content-[''] after:bg-accent after:w-[145px] after:h-px after:absolute after:-bottom-[9px] after:left-0">
+      <h2 className="mb-2 font-oswald uppercase text-foreground tracking-[2px] text-[1.25rem] font-normal leading-[1.5em] relative left-2.5 before:content-[''] before:bg-accent before:w-[5px] before:h-[18px] before:absolute before:bottom-[7px] before:-left-2.5">
         Tour Overview
       </h2>
 

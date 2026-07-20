@@ -1,10 +1,5 @@
 import React from 'react'
-import LMHighestPeak from './Icons/LMHighestPeak'
-import LMDistance from './Icons/LMDistance'
-import LMDurationDay from './Icons/LMDurationDay'
-import LMDurationHour from './Icons/LMDurationHour'
-import LMAccommodation from './Icons/LMAccommodation'
-import LMMeal from './Icons/LMMeal'
+import { MountainSnow, Route, Clock, CalendarDays, Bed, Utensils } from 'lucide-react'
 
 type IconsDataType = {
   isOverview: boolean
@@ -40,43 +35,52 @@ const TourIcons: React.FC<IconsDataType> = (props) => {
   const durationText = duration ? (isOverview ? `${duration}` : `${duration} hr`) : ''
 
   return (
-    <div className="tour-icons flex items-start justify-around w-full gap-2">
+    <div className="tour-icons flex items-start justify-around w-full gap-1 py-1">
       {highestPeak && (
-        <div className="flex flex-col items-center flex-1 min-w-0">
-          <div className="h-10 flex items-center justify-center mb-1">
-            <LMHighestPeak />
+        <div className="flex flex-col items-center flex-1 min-w-0 group">
+          <div className="h-10 rounded-full  text-gray-400 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:text-black shadow-xs">
+            <MountainSnow className="w-5 h-5" strokeWidth={1.8} />
           </div>
-          <div className="text-[10px] md:text-xs text-center break-words w-full">
+          <div className="text-[10px] md:text-xs text-center wrap-break-word w-full font-medium tracking-wide text-foreground/80 group-hover:text-foreground transition-colors duration-300">
             {`${highestPeak} ft`}
           </div>
         </div>
       )}
       {distance && (
-        <div className="flex flex-col items-center flex-1 min-w-0">
-          <div className="h-10 flex items-center justify-center mb-1">
-            <LMDistance />
+        <div className="flex flex-col items-center flex-1 min-w-0 group">
+          <div className="h-10 rounded-full text-gray-400 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:text-black shadow-xs">
+            <Route className="w-5 h-5" strokeWidth={1.8} />
           </div>
-          <div className="text-[10px] md:text-xs text-center break-words w-full">
+          <div className="text-[10px] md:text-xs text-center wrap-break-word w-full font-medium tracking-wide text-foreground/80 group-hover:text-foreground transition-colors duration-300">
             {`${distance} km`}
           </div>
         </div>
       )}
       {duration && (
-        <div className="flex flex-col items-center flex-1 min-w-0">
-          <div className="h-10 flex items-center justify-center mb-1">
-            {durationText.toLowerCase().includes('hr') ? <LMDurationHour /> : <LMDurationDay />}
+        <div className="flex flex-col items-center flex-1 min-w-0 group">
+          <div className="h-10 rounded-full text-gray-400 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:text-black shadow-xs">
+            {durationText.toLowerCase().includes('hr') ? (
+              <Clock className="w-5 h-5" strokeWidth={1.8} />
+            ) : (
+              <CalendarDays className="w-5 h-5" strokeWidth={1.8} />
+            )}
           </div>
-          <div className="text-[10px] md:text-xs text-center break-words w-full">
+          <div className="text-[10px] md:text-xs text-center wrap-break-word w-full font-medium tracking-wide text-foreground/80 group-hover:text-foreground transition-colors duration-300">
             {durationText}
           </div>
         </div>
       )}
       {accommodation && accommodation.length > 0 && (
-        <div className="flex flex-col items-center flex-1 min-w-0">
-          <div className="h-10 flex items-center justify-center mb-1">
-            <LMAccommodation />
+        <div className="flex flex-col items-center flex-1 min-w-0 group">
+          <div className="h-10 rounded-full text-gray-400 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:text-black shadow-xs">
+            {/* <Bed className="w-5 h-5" strokeWidth={1.8} /> */}
+            <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current" strokeWidth="1.8">
+              <path d="M3 20v-9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9" />
+              <path d="M7 9V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3" />
+              <path d="M3 15h18" />
+            </svg>
           </div>
-          <div className="text-[10px] md:text-xs text-center break-words w-full">
+          <div className="text-[10px] md:text-xs text-center wrap-break-word w-full font-medium tracking-wide text-foreground/80 group-hover:text-foreground transition-colors duration-300">
             <ul className="inline">
               {accommodation.map((item, index) => (
                 <li className="inline capitalize" key={item}>
@@ -89,11 +93,11 @@ const TourIcons: React.FC<IconsDataType> = (props) => {
         </div>
       )}
       {meal && meal.length > 0 && (
-        <div className="flex flex-col items-center flex-1 min-w-0">
-          <div className="h-10 flex items-center justify-center mb-1">
-            <LMMeal />
+        <div className="flex flex-col items-center flex-1 min-w-0 group">
+          <div className="h-10 rounded-full text-gray-400 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:text-black shadow-xs">
+            <Utensils className="w-5 h-5" strokeWidth={1.8} />
           </div>
-          <div className="text-[10px] md:text-xs text-center break-words w-full">
+          <div className="text-[10px] md:text-xs text-center wrap-break-word w-full font-medium tracking-wide text-foreground/80 group-hover:text-foreground transition-colors duration-300">
             <ul className="inline">
               {meal.map((item, index) => (
                 <li className="inline capitalize" key={item}>

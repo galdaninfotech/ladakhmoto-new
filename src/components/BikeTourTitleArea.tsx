@@ -96,7 +96,7 @@ export default function BikeTourTitleArea({ post, isUltimateAdventure }: BikeTou
               )}
               {post.title}
             </h1>
-            {/* {(accommodationLabels?.length || mealLabels?.length) && (
+            {(accommodationLabels?.length || mealLabels?.length) && (
               <div className="mt-4 flex flex-wrap gap-2 text-[11px] uppercase tracking-[0.18em] text-black/65">
                 {accommodationLabels?.length ? (
                   <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-2">
@@ -120,7 +120,7 @@ export default function BikeTourTitleArea({ post, isUltimateAdventure }: BikeTou
                   </span>
                 ) : null}
               </div>
-            )} */}
+            )}
           </div>
 
           {(post.minCost || post.cutOutCost) && (
