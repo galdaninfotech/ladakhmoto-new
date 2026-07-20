@@ -31,10 +31,10 @@ const Sidebar: React.FC<IconsDataType> = () => {
   const downloadName = slug ? slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('-') : 'Itinerary'
 
   return (
-    <div id='sidebar' className='mb-8 space-y-16' style={{position: 'sticky', top: '150px'}}>
+    <div id='sidebar' className='mb-8 space-y-16' style={{position: 'sticky', top: '110px'}}>
         <hr className='my-8 lg:hidden mb-26 border-border' />
 
-      <div className="lg:mt-28.5 font-oswald">
+      <div className="lg:mt-12 font-oswald">
         <h2 className='font-oswald font-normal text-[1.2rem] text-foreground uppercase tracking-[2px] mb-4'>Book With Confidence!</h2>
         <div className="stripe-line"></div>
         <div className="space-y-2">
