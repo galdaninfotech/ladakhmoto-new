@@ -184,7 +184,7 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
       <div className="flex flex-col w-full">
         {/* Carousel Header Controls */}
         <div className="flex justify-between items-center mb-4 px-1">
-          <span className="text-[11px] font-oswald uppercase tracking-wider text-foreground/50">
+          <span className="text-[10px] font-oswald uppercase tracking-wider text-foreground/50">
             {hotels.length} Featured Hotels
           </span>
           <div className="flex items-center gap-2">
@@ -205,7 +205,7 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
               onClick={() => scrollHotels('right')}
               disabled={!canScrollRightHotels}
               className={cn(
-                "p-1.5 rounded-sm border border-white/10 bg-white/[0.02] text-foreground transition-all duration-300",
+                "p-1.5 rounded-sm border border-white/10 bg-white/2 text-foreground transition-all duration-300",
                 canScrollRightHotels 
                   ? "hover:border-accent/40 hover:bg-accent hover:text-black cursor-pointer" 
                   : "opacity-30 cursor-not-allowed"
@@ -554,7 +554,7 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
   }
 
   return (
-    <div className="flex flex-col items-end mt-6 w-full">
+    <div className="flex flex-col items-end mt-1 w-full">
       {/* Tab Buttons */}
       {tabs.length > 0 && (
         <div className="flex justify-end mb-6 w-full max-w-full relative">
@@ -569,7 +569,7 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
 
           <div
             ref={scrollContainerRef}
-            className="flex overflow-x-auto scrollbar-none max-w-full p-1.5 bg-white/[0.03] rounded-sm shadow-2xl backdrop-blur-xl relative snap-x snap-mandatory gap-1 ml-auto"
+            className="flex overflow-x-auto scrollbar-none max-w-full p-0.5 md:p-1 bg-white/[0.03] rounded-sm shadow-2xl backdrop-blur-xl relative snap-x snap-mandatory gap-1 ml-auto"
           >
             {tabs.map((tab) => {
               const Icon = tab.icon
@@ -579,7 +579,7 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
                   key={tab.id}
                   onClick={() => handleTabClick(tab.id as MediaTypeTab)}
                   className={cn(
-                    'relative flex items-center gap-1 sm:gap-1.5 px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-sm text-[9px] sm:text-[10px] font-medium tracking-[0.1em] sm:tracking-[0.15em] uppercase transition-colors duration-500 z-10 shrink-0 select-none snap-start',
+                    'relative flex items-center gap-1 sm:gap-1.5 px-2 py-1 rounded-sm text-[9px] sm:text-[10px] font-medium tracking-[0.1em] sm:tracking-[0.15em] transition-colors duration-500 z-10 shrink-0 select-none snap-start',
                     isActive ? 'text-black' : 'text-foreground/50 hover:text-foreground',
                   )}
                 >

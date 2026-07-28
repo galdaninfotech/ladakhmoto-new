@@ -164,7 +164,7 @@ export const HeaderClient: React.FC<{
                 width={100}
                 height={53}
                 sizes="(max-width: 1024px) 75px, 100px"
-                className="w-[75px] h-[40px] lg:w-[100px] lg:h-[53px] object-contain transition-all duration-300"
+                className="w-[75px] h-[40px] lg:w-[100px] lg:h-[53px] md:mr-6 lg:mr-20 xl:mr-30 object-contain transition-all duration-300"
               />
             )}
           </Link>
