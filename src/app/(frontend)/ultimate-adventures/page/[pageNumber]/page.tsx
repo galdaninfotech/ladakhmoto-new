@@ -9,7 +9,7 @@ import PageClient from './page.client'
 import { notFound } from 'next/navigation'
 import { TourHero } from '@/heros/TourHero'
 import Sidebar from '@/components/Sidebar'
-import { BikingAdventureCard } from '@/components/BikingAdventureCard'
+import { UltimateAdventureCard } from '@/components/UltimateAdventureCard'
 
 export const revalidate = 600
 
@@ -61,10 +61,10 @@ export default async function Page({ params: paramsPromise }: Args) {
           <main className="lg:col-span-9">
             <div className="mb-12">
               <h1 className="font-oswald text-sm md:text-xl uppercase tracking-tight text-foreground mb-4">
-                Ladakh Moto - Biking Adventures 2026 (Page {pageNumber})
+                Delhi to Ladakh Bike Trip - Ultimate Adventures 2026 (Page {pageNumber})
               </h1>
-              <p className="text-slate-500 max-w-2xl text-sm">
-                Conquer the highest motorable passes and explore the raw beauty of Ladakh on two wheels.
+              <p className="text-slate-500 text-sm">
+                Plan your Delhi to Ladakh bike trip with Ladakh Moto — a local Ladakhi operator trusted by riders from across India and the world. Both our Ultimate Adventures depart from Delhi, covering over 1,420 km of the Himalayas on well-maintained Royal Enfield motorbikes, with expert guides, acclimatization schedules, and all logistics handled for you.
               </p>
             </div>
 
@@ -79,7 +79,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
             <div className="flex flex-col">
               {posts.docs?.map((post, index) => (
-                <BikingAdventureCard key={index} doc={post} />
+                <UltimateAdventureCard key={index} doc={post} />
               ))}
             </div>
 
@@ -104,7 +104,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { pageNumber } = await paramsPromise
   return {
-    title: `Biking Adventures Page ${pageNumber || ''}`,
+    title: `Ultimate Adventures Page ${pageNumber || ''}`,
   }
 }
 

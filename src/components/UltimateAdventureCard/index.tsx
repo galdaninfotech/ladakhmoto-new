@@ -1,6 +1,5 @@
 'use client'
 import { cn } from '@/utilities/ui'
-import useClickableCard from '@/utilities/useClickableCard'
 import Link from 'next/link'
 import React from 'react'
 import type { UltimateAdventure } from '@/payload-types'
@@ -8,6 +7,7 @@ import { Media } from '@/components/Media'
 import TourIcons from '../TourIcons'
 import RichText from '../RichText'
 import { ArrowUpRight, MapPin } from 'lucide-react'
+import { ExploreLink } from '../ExploreLink'
 
 export type UltimateAdventureCardData = Pick<UltimateAdventure, 'slug' | 'meta' | 'title' | 'minCost' | 'duration' | 'startEndCity' | 'distance' | 'highestPeak' | 'accommodation' | 'meal' | 'description' | 'heroImage'>
 
@@ -15,7 +15,6 @@ export const UltimateAdventureCard: React.FC<{
   className?: string
   doc?: UltimateAdventureCardData
 }> = (props) => {
-  const { card, link } = useClickableCard({})
   const { className, doc } = props
 
   const { slug, meta, title, minCost, duration, startEndCity, distance, highestPeak, accommodation, meal, description: tourDescription, heroImage } = doc || {}
@@ -29,10 +28,9 @@ export const UltimateAdventureCard: React.FC<{
   return (
     <article
       className={cn(
-        'group flex flex-col md:flex-row border border-border/40 dark:border-border/10 rounded-xl overflow-hidden bg-card/60 backdrop-blur-md hover:border-accent/40 hover:shadow-2xl dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 mb-12 cursor-pointer',
+        'group flex flex-col md:flex-row border border-border/40 dark:border-border/10 rounded-xl overflow-hidden bg-card/60 backdrop-blur-md hover:border-accent/40 hover:shadow-2xl dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 mb-12',
         className,
       )}
-      ref={card.ref}
     >
       {/* Image Section - Left on desktop, Top on mobile */}
       <div className="relative w-full md:w-[320px] lg:w-95 xl:w-105 h-62.5 md:h-auto overflow-hidden shrink-0">
@@ -83,7 +81,7 @@ export const UltimateAdventureCard: React.FC<{
           </div>
 
           <h2 className="font-oswald text-xl md:text-2xl lg:text-3xl text-foreground font-semibold leading-tight uppercase tracking-wider mb-4 hover:text-accent transition-colors duration-300">
-            <Link className="hover:text-accent transition-colors" href={href} ref={link.ref}>
+            <Link className="hover:text-accent transition-colors" href={href}>
               {title}
             </Link>
           </h2>
@@ -124,14 +122,8 @@ export const UltimateAdventureCard: React.FC<{
               </span>
             </div>
           )}
-          
-          <Link
-            href={href}
-            className="inline-flex items-center gap-2 bg-accent text-accent-on font-oswald text-xs uppercase font-bold text-center px-6 py-3 rounded-md hover:bg-accent/90 hover:shadow-[0_4px_20px_rgba(249,185,0,0.3)] transition-all duration-300 cursor-pointer tracking-widest shrink-0"
-          >
-            Explore Ride
-            <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
+
+          <ExploreLink url={href} title="Explore Ride" />
         </div>
       </div>
     </article>
