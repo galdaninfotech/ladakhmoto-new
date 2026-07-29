@@ -132,7 +132,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       <RenderHero {...hero} />
 
       <div className="container mx-auto px-4 mt-8 lg:mt-16">
-        {decodedSlug !== 'home' && decodedSlug !== 'gallery' ? (
+        {decodedSlug !== 'home' && decodedSlug !== 'gallery' && decodedSlug !== 'contact' ? (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <main className="lg:col-span-9">
               <RenderBlocks blocks={layout} />
