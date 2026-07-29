@@ -32,6 +32,8 @@ export default async function Page() {
       accommodation: true,
       meal: true,
       description: true,
+      difficulty: true,
+      cost: true,
     },
   })
 

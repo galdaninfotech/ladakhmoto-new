@@ -44,6 +44,8 @@ export default async function Page({ params: paramsPromise }: Args) {
       accommodation: true,
       meal: true,
       description: true,
+      difficulty: true,
+      cost: true,
     },
   })
 
