@@ -7,6 +7,7 @@ import type { UltimateAdventure } from '@/payload-types'
 import { Media } from '@/components/Media'
 import TourIcons from '../TourIcons'
 import RichText from '../RichText'
+import { ExploreLink } from '../ExploreLink'
 
 export type UltimateAdventureCardData = Pick<UltimateAdventure, 'slug' | 'meta' | 'title' | 'minCost' | 'duration' | 'startEndCity' | 'distance' | 'highestPeak' | 'accommodation' | 'meal' | 'description' | 'heroImage'>
 
@@ -103,22 +104,8 @@ export const UltimateAdventureCard: React.FC<{
           </div>
         )}
 
-        <div className="pt-6 border-t border-border mt-auto text-right">
-          <Link 
-            href={href}
-            className="inline-flex items-center text-white text-[8px] md:text-[10px] uppercase tracking-[0.1em] hover:text-accent bg-black pl-2 py-1 pr-1 group/link"
-          >
-            Explore Adventure
-            <svg 
-              className="text-black ml-3 w-8 h-8 bg-gray-200 pl-1 transition-transform duration-300 group-hover/link:translate-x-2" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M14 8l3 3m0 0l-3 3m3-3H3" />
-            </svg>
-          </Link>
-        </div>
+        <ExploreLink url={href} title="Explore Adventure" />
+
       </div>
     </article>
   )

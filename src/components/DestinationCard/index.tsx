@@ -5,6 +5,7 @@ import Link from 'next/link'
 import React from 'react'
 import type { Destination } from '@/payload-types'
 import { Media } from '@/components/Media'
+import { ExploreLink } from '../ExploreLink'
 
 export type DestinationCardData = Pick<Destination, 'slug' | 'meta' | 'title'>
 
@@ -60,22 +61,7 @@ export const DestinationCard: React.FC<{
           </p>
         )}
 
-        <div className="pt-6 border-t border-border">
-          <Link 
-            href={href}
-            className="inline-flex items-center text-primary font-bold text-xs md:text-sm uppercase tracking-[0.1em] group/link"
-          >
-            Explore Destination
-            <svg 
-              className="text-accent ml-3 w-5 h-5 transition-transform duration-300 group-hover/link:translate-x-2" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-        </div>
+        <ExploreLink url={href} title="Explore Destination" />
       </div>
     </article>
   )

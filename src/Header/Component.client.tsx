@@ -150,7 +150,7 @@ export const HeaderClient: React.FC<{
       <HeaderTop data={ladakhMotoData} />
 
       {/* Middle */}
-      <div className="hidden md:block w-full bg-secondary/20 dark:bg-secondary/5 py-4 border-b border-border/10 shadow-xxs">
+      <div className="hidden md:block w-full bg-white dark:bg-secondary/5z py-4 border-b border-border/10 shadow-xxs">
         <div className="container mx-auto px-4 flex flex-row justify-between items-center text-[7.5px] min-[375px]:text-[8.5px] sm:text-[10px] font-bold font-oswald text-muted-foreground uppercase tracking-widest gap-2">
           
           <Link href="/" aria-label="home" className="flex items-center space-x-2">

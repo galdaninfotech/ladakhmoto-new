@@ -7,6 +7,7 @@ import type { HolidayPackage } from '@/payload-types'
 import { Media } from '@/components/Media'
 import TourIcons from '../TourIcons'
 import RichText from '../RichText'
+import { ExploreLink } from '../ExploreLink'
 
 export type HolidayPackageCardData = Pick<HolidayPackage, 'slug' | 'meta' | 'title' | 'duration' | 'distance' | 'highestPeak' | 'accommodation' | 'meal' | 'description'>
 
@@ -88,22 +89,7 @@ export const HolidayPackageCard: React.FC<{
           </div>
         )}
 
-        <div className="pt-6 border-t border-border mt-auto">
-          <Link 
-            href={href}
-            className="inline-flex items-center text-primary font-bold text-xs md:text-sm uppercase tracking-[0.1em] group/link"
-          >
-            View Package
-            <svg 
-              className="text-accent ml-3 w-5 h-5 transition-transform duration-300 group-hover/link:translate-x-2" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-        </div>
+        <ExploreLink url={href} title="Explore Adventure" />
       </div>
     </article>
   )
