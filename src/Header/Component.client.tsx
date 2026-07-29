@@ -98,13 +98,7 @@ export const HeaderClient: React.FC<{
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileActiveDropdown, setMobileActiveDropdown] = useState<string | null>(null)
   const pathname = usePathname()
-  const isHeaderDark =
-    !isScrolled &&
-    (pathname?.includes('/ultimate-adventures') ||
-      pathname?.includes('/bike-tours') ||
-      pathname?.includes('/holiday-packages') ||
-      pathname?.includes('/destinations') ||
-      pathname?.includes('/posts'))
+  const isHeaderDark = false
 
   useEffect(() => {
     let ticking = false
@@ -144,7 +138,7 @@ export const HeaderClient: React.FC<{
             pathname === '/home'
           ),
         },
-        (pathname === '/' || pathname === '/home') && !isScrolled ? 'bg-background text-foreground border-b border-border/10 shadow-xs' : '',
+        !isScrolled ? 'bg-background text-foreground border-b border-border/10 shadow-xs' : '',
       )}
     >
       <HeaderTop data={ladakhMotoData} />

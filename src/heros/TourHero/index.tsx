@@ -47,7 +47,7 @@ export const TourHero: React.FC<{
 
   // console.log(post)
   return (
-    <div className="relative -mt-[10.4rem] flex items-center justify-center">
+    <div className="relative flex items-center justify-center">
       <div className="z-10 flex items-center justify-center 2xl:justify-end text-white pb-2">
         <div className="mt-[16.5rem] md:mt-[21.25rem]">
           <div className="">

@@ -31,7 +31,7 @@ export const LowImpactHero: React.FC<Page['hero']> = ({ slides }) => {
 
   if (!mounted && firstSlideSrc) {
     return (
-      <div className="absolute top-0 left-0 h-[500px] w-full">
+      <div className="relative h-[500px] w-full">
         <div className="relative w-full h-[500px] overflow-hidden">
           <Image
             src={firstSlideSrc}
@@ -52,7 +52,7 @@ export const LowImpactHero: React.FC<Page['hero']> = ({ slides }) => {
   }
 
   return (
-    <div className="absolute top-0 left-0 h-[500px] w-full">
+    <div className="relative h-[500px] w-full">
       <Carousel autoPlay autoPlayInterval={4000}>
         <CarouselContent>
           {slides && slides.length > 0
