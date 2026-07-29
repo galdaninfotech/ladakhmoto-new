@@ -1,6 +1,5 @@
 'use client'
 import { cn } from '@/utilities/ui'
-import useClickableCard from '@/utilities/useClickableCard'
 import Link from 'next/link'
 import React from 'react'
 import type { HolidayPackage } from '@/payload-types'
@@ -29,7 +28,6 @@ export const HolidayPackageCard: React.FC<{
   className?: string
   doc?: HolidayPackageCardData
 }> = (props) => {
-  const { card, link } = useClickableCard({})
   const { className, doc } = props
 
   const {
@@ -76,7 +74,6 @@ export const HolidayPackageCard: React.FC<{
         'group flex flex-col md:flex-row border border-border/40 dark:border-border/10 rounded-xl overflow-hidden bg-card/60 backdrop-blur-md hover:border-accent/40 hover:shadow-2xl dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 mb-12',
         className,
       )}
-      ref={card.ref}
     >
       {/* Image Section - Left on desktop, Top on mobile */}
       <div className="relative w-full md:w-[320px] lg:w-96 xl:w-104 h-64 md:h-auto overflow-hidden shrink-0">
@@ -133,7 +130,7 @@ export const HolidayPackageCard: React.FC<{
           </div>
 
           <h3 className="font-oswald text-xl md:text-2xl lg:text-3xl text-foreground font-semibold leading-tight uppercase tracking-wider mb-4 hover:text-accent transition-colors duration-300">
-            <Link className="hover:text-accent transition-colors" href={href} ref={link.ref}>
+            <Link className="hover:text-accent transition-colors" href={href}>
               {title}
             </Link>
           </h3>
