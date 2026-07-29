@@ -55,7 +55,7 @@ export default async function Page() {
               <h1 className="font-oswald text-sm md:text-xl uppercase tracking-tight text-foreground mb-4">
               Delhi to Ladakh Bike Trip - Ultimate Adventures 2026
               </h1>
-              <p className="text-slate-500 max-w-2xl text-sm">
+              <p className="text-slate-500 text-sm">
               Plan your Delhi to Ladakh bike trip with Ladakh Moto — a local Ladakhi operator trusted by riders from across India and the world. Both our Ultimate Adventures depart from Delhi, covering over 1,420 km of the Himalayas on well-maintained Royal Enfield motorbikes, with expert guides, acclimatization schedules, and all logistics handled for you.
               </p>
             </div>

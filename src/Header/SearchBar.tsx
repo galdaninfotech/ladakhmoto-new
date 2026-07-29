@@ -50,7 +50,7 @@ export const SearchBar: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-center w-full max-w-[550px]z mx-autoz bg-[#1b5d52] border border-[#1b5d52] rounded-[4px] overflow-hidden h-[34px] shadow-sm"
+      className="flex items-center w-full max-w-[550px]z mx-autoz bg-primary border border-primary/40 rounded-[4px] overflow-hidden h-[34px] shadow-sm"
     >
       {/* Category Dropdown */}
       <div className="relative h-full flex items-center" ref={dropdownRef}>

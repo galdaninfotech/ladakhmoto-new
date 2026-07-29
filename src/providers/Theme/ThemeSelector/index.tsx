@@ -49,7 +49,7 @@ export const ThemeSelector: React.FC = () => {
           <span className="sr-only">Switch Theme</span>
         </button>
       </PopoverTrigger>
-      <PopoverContent align="end" className="w-40 p-1.5 bg-card border-border shadow-xl rounded-sm">
+      <PopoverContent align="end" className="w-40 p-1.5 bg-card border-border shadow-xl rounded-sm z-10000">
         <div className="flex flex-col gap-1">
           {themes.map((t) => {
             const Icon = t.icon
