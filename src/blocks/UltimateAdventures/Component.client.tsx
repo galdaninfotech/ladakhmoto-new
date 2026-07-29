@@ -123,22 +123,26 @@ export const UltimateAdventures: React.FC<UltimateAdventuresProps> = ({
                   {/* Floating Glassmorphic Badges */}
                   <div className="absolute top-4 inset-x-4 flex items-center justify-between z-20">
                     <div className="flex flex-wrap gap-2">
-                      {tour.categories &&
-                        tour.categories.map((category) => {
-                          if (category && typeof category === 'object') {
-                            const style = getCategoryStyle(category.slug)
-                            return (
-                              <div
-                                key={category.id}
-                                className="backdrop-blur-md bg-black/60 border border-white/10 text-white font-oswald text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-sm shadow-sm flex items-center gap-1.5"
-                              >
-                                <span className={`w-1.5 h-1.5 rounded-full ${style.bg}`} />
-                                {category.title}
-                              </div>
-                            )
-                          }
-                          return null
-                        })}
+                      {/* Category Pill Badge */}
+                      {tour.categories && tour.categories.length > 0 && (
+                        <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-20">
+                          {tour.categories.map((category) => {
+                            if (category && typeof category === 'object') {
+                              const style = getCategoryStyle(category.slug)
+                              return (
+                                <div
+                                  key={category.id}
+                                  className={`${style.bg} ${style.text} font-oswald text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-[2px] shadow-md`}
+                                >
+                                  {category.title}
+                                </div>
+                              )
+                            }
+                            return null
+                          })}
+                        </div>
+                      )}
+
                       {savings <= 0 && (
                         <div className="backdrop-blur-md bg-accent text-accent-on font-oswald text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-sm shadow-sm flex items-center gap-1">
                           <span className="w-1.5 h-1.5 rounded-full bg-accent-on animate-ping" />
