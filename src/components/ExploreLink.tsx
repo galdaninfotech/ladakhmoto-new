@@ -18,7 +18,7 @@ export const ExploreLink: React.FC<ExploreLinkProps> = ({
   type, 
   disabled 
 }) => {
-  const commonClasses = "inline-flex items-center text-white text-[8px] md:text-[10px] uppercase tracking-widest hover:text-accent bg-black pl-2 py-1 pr-1 group/link cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+  const commonClasses = "inline-flex items-center text-white text-[8px] md:text-[10px] uppercase tracking-widest hover:text-accent bg-primary pl-2 py-1 pr-1 group/link cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
   const svgIcon = (
     <svg
       className="text-black ml-3 w-8 h-8 bg-gray-200 pl-1 transition-transform duration-300 group-hover/link:translate-x-5"

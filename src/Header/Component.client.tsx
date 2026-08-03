@@ -207,14 +207,21 @@ export const HeaderClient: React.FC<{
         className={cn(
           'z-9999 transition-all duration-300 w-full',
           isScrolled
-            ? 'fixed top-0 left-0 bg-background backdrop-blur-md shadow-[0_10px_40px_rgba(15,23,42,1)] py-4'
+            ? 'fixed top-0 left-0 bg-background backdrop-blur-md shadow-[0_1px_20px_rgba(15,23,42,1)] py-4'
             : 'relative container mx-auto px-4 top-0 py-4',
         )}
       >
         <div className={cn(!isScrolled && 'w-full', isScrolled && 'container mx-auto px-4')}>
           <div className="relative flex items-center justify-between gap-6 lg:gap-0 h-13.45">
             <div className="flex w-full justify-between lg:w-auto">
-              <Link href="/" aria-label="home" className="flex items-center space-x-2 md:hidden">
+              <Link href="/" aria-label="home" 
+                className={cn(
+                  'flex items-center space-x-2',
+                  isScrolled
+                    ? 'block'
+                    : 'hidden',
+                )}
+              >
                 {!menuState && (
                   <Image
                     loading="eager"

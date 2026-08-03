@@ -75,7 +75,7 @@ export const DealOfTheDay: React.FC<DealOfTheDayBlockProps> = (props) => {
             <div className={`pt-6 mt-auto text-right`}>
             <Link
               href={'/'}
-              className="inline-flex items-center text-white text-[8px] md:text-[10px] uppercase tracking-widest hover:text-accent bg-black pl-5 py-1.5 pr-1 group/link rounded-full"
+              className="inline-flex items-center text-white text-[8px] md:text-[10px] uppercase tracking-widest hover:text-accent bg-primary pl-5 py-1.5 pr-1 group/link rounded-full"
             >
               {buttonText || 'Explore More'}
               <svg

@@ -82,7 +82,7 @@ export const BottomActions: React.FC<BottomActionsProps> = (props) => {
             >
               <button
                 onClick={() => setShowEnquiry(false)}
-                className="absolute top-3.5 right-3.5 text-slate-400 hover:text-white p-1 hover:bg-white/5 rounded-xs transition-colors cursor-pointer"
+                className="absolute top-3.5 right-3.5 text-red-400 hover:text-white p-1 hover:bg-white/5 rounded-xs transition-colors cursor-pointer"
                 aria-label="Close enquiry"
               >
                 <X className="w-4 h-4" />

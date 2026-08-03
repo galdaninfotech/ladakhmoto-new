@@ -18,7 +18,7 @@ export const ReadMore: React.FC<Props> = ({ readMore }) => {
       <div className="pt-6 mt-auto text-right">
         <button
           onClick={() => setIsReadMoreOpen((prev) => !prev)}
-          className="inline-flex items-center text-white text-[8px] md:text-[10px] uppercase tracking-widest hover:text-accent bg-black pl-2 py-1 pr-1 group/link cursor-pointer"
+          className="inline-flex items-center text-white text-[8px] md:text-[10px] uppercase tracking-widest hover:text-accent bg-primary pl-2 py-1 pr-1 group/link cursor-pointer"
         >
           {isReadMoreOpen ? 'Read Less' : 'Read More'}
           <svg

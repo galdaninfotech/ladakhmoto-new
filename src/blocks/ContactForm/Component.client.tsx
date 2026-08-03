@@ -188,7 +188,7 @@ const ContactFormContent: React.FC<CustomContactFormBlockProps> = (props) => {
             className="w-full text-center lg:text-left animate-in fade-in slide-in-from-bottom duration-500"
           >
             <span className="text-xs uppercase tracking-[0.25em] text-accent font-semibold font-oswald block mb-2">Get In Touch</span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-oswald text-foreground tracking-wide uppercase leading-tight font-semibold">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-oswald text-foreground tracking-wide uppercase leading-tight font-semibold">
               {title || "Let's Plan Your Next Adventure"}
             </h2>
             <p className="text-xs sm:text-sm text-muted-foreground mt-3 max-w-3xl leading-relaxed">
@@ -197,16 +197,16 @@ const ContactFormContent: React.FC<CustomContactFormBlockProps> = (props) => {
             <div className="h-0.75 w-12 bg-accent mt-6 rounded-full mx-auto lg:mx-0"></div>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 lg:items-stretch items-start">
             {/* Left Column: Office details */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="lg:col-span-5 space-y-8 animate-in fade-in slide-in-from-bottom duration-500"
+              className="lg:col-span-5 flex flex-col animate-in fade-in slide-in-from-bottom duration-500"
             >
               {/* Office Card */}
-              <div className="bg-card border border-border/60 rounded-sm p-6 md:p-8 shadow-xl relative overflow-hidden">
+              <div className="bg-card border border-border/60 rounded-sm p-6 md:p-8 shadow-xl relative overflow-hidden flex flex-col flex-1">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -z-10 pointer-events-none" />
                 
                 <h3 className="text-lg text-foreground font-oswald uppercase tracking-wider mb-6 flex items-center gap-2">
@@ -297,7 +297,7 @@ const ContactFormContent: React.FC<CustomContactFormBlockProps> = (props) => {
                 </div>
 
                 {/* Social networks */}
-                <div className="mt-10 pt-4 border-t border-border/50">
+                <div className="mt-auto pt-4 border-t border-border/50">
                   <span className="text-[10px] uppercase tracking-wider text-muted-foreground block font-medium mb-4">Connect With Us</span>
                   <div className="flex flex-wrap gap-3">
                     {ladakhMotoData.facebook && (

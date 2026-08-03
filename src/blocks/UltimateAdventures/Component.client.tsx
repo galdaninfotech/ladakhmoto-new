@@ -69,8 +69,9 @@ export const UltimateAdventures: React.FC<UltimateAdventuresProps> = ({
   }
 
   return (
-    <section className="py-16 bg-background overflow-hidden border-t border-border/20">
+    <section className="py-16 bg-background overflow-hiddenz border-t border-border/20">
       <div className="container mx-auto">
+
         {/* Editorial Split Header */}
         <div className="mb-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 border-b border-border/25 pb-12">
           <div className="lg:max-w-xl">

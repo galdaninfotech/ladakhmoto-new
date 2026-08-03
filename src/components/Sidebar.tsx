@@ -31,99 +31,166 @@ const Sidebar: React.FC<IconsDataType> = () => {
   const downloadName = slug ? slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('-') : 'Itinerary'
 
   return (
-    <div id='sidebar' className='mb-8 space-y-16' style={{position: 'sticky', top: '110px'}}>
-        <hr className='my-8 lg:hidden mb-26 border-border' />
+    <div id='sidebar' className='mb-8 space-y-8' style={{position: 'sticky', top: '110px'}}>
+      <hr className='my-8 lg:hidden mb-26 border-border/20' />
 
-      <div className="lg:mt-12 font-oswald">
-        <h2 className='font-oswald font-normal text-[1.2rem] text-foreground uppercase tracking-[2px] mb-4'>Book With Confidence!</h2>
-        <div className="stripe-line"></div>
-        <div className="space-y-2">
-          <div className="text-sm text-muted-foreground flex gap-x-2"><LMDoneSqaure className='text-success size-3.5 mt-0.5' />No-Hassle Best Price Guarantee</div>
-          <div className="text-sm text-muted-foreground flex gap-x-2"><LMDoneSqaure className='text-success size-3.5 mt-0.5' />Local Operator</div>
-          <div className="text-sm text-muted-foreground flex gap-x-2"><LMDoneSqaure className='text-success size-3.5 mt-0.5' />Safety Backup</div>
-          <div className="text-sm text-muted-foreground flex gap-x-2"><LMDoneSqaure className='text-success size-3.5 mt-0.5' />Hand-Picked Tours &amp; Activities</div>
-          <div className="text-sm text-muted-foreground flex gap-x-2"><LMDoneSqaure className='text-success size-3.5 mt-0.5' />RE Himalayan Bike With Fuel</div>
-          <div className="text-sm text-muted-foreground flex gap-x-2"><LMDoneSqaure className='text-success size-3.5 mt-0.5' />Handpicked Accommodation</div>
-          <div className="text-sm text-muted-foreground flex gap-x-2"><LMDoneSqaure className='text-success size-3.5 mt-0.5' />Includes Lodging, Meal &amp; Fuel</div>
-          <div className="text-sm text-muted-foreground flex gap-x-2"><LMDoneSqaure className='text-success size-3.5 mt-0.5' />Oxygen / Mechanic Support</div>
-          <div className="text-sm text-muted-foreground flex gap-x-2"><LMDoneSqaure className='text-success size-3.5 mt-0.5' />Customer Care Available 24/7</div>
+      {/* Card 1: Adventure Booking & Actions Card */}
+      <div className="p-6 bg-card/60 dark:bg-card/35 backdrop-blur-md border border-accent/20 dark:border-accent/10 rounded-sm shadow-lg space-y-6 relative overflow-hidden group">
+        {/* Subtle decorative glow */}
+        <div className="absolute -right-16 -top-16 w-32 h-32 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-all duration-700" />
+        
+        <div className="space-y-2 text-center">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/10 border border-accent/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-accent">Flexible Booking</span>
+          </div>
+          <p className="text-xs text-foreground/90 font-medium leading-relaxed mt-2 px-1">
+            Book your dream trip with a deposit of <span className="text-accent font-semibold underline decoration-accent/30 decoration-2 underline-offset-4">30%</span> of the tour cost.
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          <button
+            id="booking-sidebar"
+            onClick={() => {
+              setSource('sidebar')
+              setIsSheetOpen(true)
+            }}
+            title="Book Now"
+            className="w-full font-oswald text-accent-on text-center font-medium bg-accent hover:bg-accent/90 transition-all duration-300 rounded-lg h-11 flex items-center justify-center shadow-md hover:shadow-accent/20 uppercase tracking-widest cursor-pointer group/btn"
+          >
+            <span className="text-xs flex items-center gap-2">
+              Book Now 
+              <svg className="w-3.5 h-3.5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              </svg>
+            </span>
+          </button>
+
+          {isTourPage ? (
+            <Link
+              id="download-itinerary"
+              href={pdfUrl}
+              download={downloadName}
+              type="application/octet-stream"
+              aria-label={`Download ${downloadName} Itinerary PDF`}
+              title={`Download ${downloadName} Itinerary PDF`}
+              target="_blank"
+              className="w-full font-oswald text-foreground text-center font-normal border border-border/60 hover:bg-muted/50 dark:hover:bg-card-foreground/5 transition-all duration-300 rounded-lg h-11 flex items-center justify-center uppercase tracking-widest"
+            >
+              <i className="bi bi-download mr-2 text-xs"></i>
+              <span className="text-xs">
+                Itinerary PDF
+              </span>
+            </Link>
+          ) : (
+            <Link
+              id="view-tours"
+              href="/bike-tours"
+              className="w-full font-oswald text-foreground text-center font-normal border border-border/60 hover:bg-muted/50 dark:hover:bg-card-foreground/5 transition-all duration-300 rounded-lg h-11 flex items-center justify-center uppercase tracking-widest"
+            >
+              <span className="text-xs">
+                View Tours
+              </span>
+            </Link>
+          )}
         </div>
       </div>
 
-      <div className="space-y-4 -mt-4">
-        <p className='text-sm mb-8 px-2 font-bold text-center italic text-foreground'>Book your dream trip with a deposit of 30% of the tour cost.</p>
-        <button
-          id="booking-sidebar"
-          onClick={() => {
-            setSource('sidebar')
-            setIsSheetOpen(true)
-          }}
-          title="Book Now"
-          className="font-oswald text-white text-center text-shadow-2xs text-shadow-black bg-primary w-3/5 mx-auto h-10 flex items-center justify-center hover:opacity-90 transition-opacity shadow-md uppercase tracking-wider cursor-pointer"
-        >
-          <span className="text-sm">
-            Book Now
-          </span>
-        </button>
-
-        {isTourPage ? (
-          <Link
-            id="download-itinerary"
-            href={pdfUrl}
-            download={downloadName}
-            type="application/octet-stream"
-            aria-label={`Download ${downloadName} Itinerary PDF`}
-            title={`Download ${downloadName} Itinerary PDF`}
-            target="_blank"
-            className="font-oswald text-accent-on text-center text-shadow-2xs text-shadow-black bg-accent w-3/5 mx-auto h-10 flex items-center justify-center hover:opacity-90 transition-opacity shadow-md uppercase tracking-wider"
-          >
-            <i className="bi bi-download"></i>
-            <span className="ml-2.5 text-sm">
-              Itinerary PDF
-            </span>
-          </Link>
-        ) : (
-          <Link
-            id="view-tours"
-            href="/bike-tours"
-            className="font-oswald text-sm text-accent-on text-center text-shadow-2xs text-shadow-black bg-accent w-3/5 mx-auto h-10 flex items-center justify-center hover:opacity-90 transition-opacity shadow-md uppercase tracking-wider"
-          >
-            View Tours
-          </Link>
-        )}
+      {/* Card 2: Trust Card ("Book With Confidence!") */}
+      <div className="py-6 px-3 bg-card/45 dark:bg-card/20 backdrop-blur-md border border-border/40 dark:border-border/10 rounded-sm shadow-sm space-y-5">
+        <div className="space-y-1">
+          <h3 className="font-oswald text-base font-normal text-foreground uppercase tracking-[2px] flex items-center gap-2">
+            <span className="w-1 h-5 bg-accent rounded-full" />
+            Book With Confidence!
+          </h3>
+          <div className="stripe-line !my-2 opacity-80"></div>
+        </div>
+        
+        <ul className="space-y-1">
+          {[
+            "No-Hassle Best Price Guarantee",
+            "Local Operator",
+            "Safety Backup",
+            "Hand-Picked Tours & Activities",
+            "RE Himalayan Bike With Fuel",
+            "Handpicked Accommodation",
+            "Includes Lodging, Meal & Fuel",
+            "Oxygen / Mechanic Support",
+            "Customer Care Available 24/7"
+          ].map((benefit, index) => (
+            <li 
+              key={index} 
+              className="group flex items-start gap-3 text-xs text-muted-foreground hover:text-foreground transition-colors duration-300 py-2 border-b border-border/10 last:border-0"
+            >
+              <LMDoneSqaure className="text-success shrink-0 size-3.5 mt-0.5 group-hover:scale-110 transition-transform duration-300" />
+              <span className="font-light leading-snug">{benefit}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
-      <hr className='my-8 border-border' />
+      {/* Card 3: Traveler Support Card */}
+      <div className="p-6 bg-card/45 dark:bg-card/20 backdrop-blur-md border border-border/40 dark:border-border/10 rounded-sm shadow-sm space-y-5">
+        <div className="space-y-1">
+          <h3 className="font-oswald text-base font-normal text-foreground uppercase tracking-[2px] flex items-center gap-2">
+            <span className="w-1 h-5 bg-accent rounded-full" />
+            Traveler Support
+          </h3>
+          <div className="stripe-line !my-2 opacity-80"></div>
+        </div>
 
-      <h2 className='font-oswald font-normal text-[1.2rem] text-foreground uppercase tracking-[2px] mb-4'>Traveler Support</h2>
-      <div className="stripe-line"></div>
-
-      <div className='bg-card p-4 shadow-lg border border-border'>
-        <span className='text-[1.2rem] font-oswald font-normal text-foreground uppercase tracking-[2px] text-center mb-2'>Need Help?</span>
-        <p className='text-sm text-muted-foreground text-justify mt-4'>
-          Do not hesitage to give us a call. We are a team of local experts and we are happy to talk
-          to you.
-        </p>
-        <div className="items space-y-3 mt-4">
-          <div className="item phone flex items-center">
-            <LMPhone className="text-accent" />
-            <a href="tel:+91-9622958013" aria-label="Phone One" title="Phone One" className='text-xs text-foreground hover:text-primary transition-colors ml-2 cursor-pointer'>
-              +91-9622958013
-            </a>
-          </div>
-          <div className="item phone flex items-center">
-            <LMPhone className="text-accent" />
-            <a href="tel:+91-9906989962" aria-label="Phone Two" title="Phone Two" className='text-xs text-foreground hover:text-primary transition-colors ml-2 cursor-pointer'>
-              +91-9906989962
-            </a>
-          </div>
-          <div className="item email flex items-center">
-            <EmailObfuscator
-              email="info@ladakhmoto.com"
-              className="email email-link text-xs text-foreground hover:text-primary transition-colors ml-2 cursor-pointer flex items-center gap-x-2"
+        <div className="space-y-4">
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Do not hesitate to give us a call. We are a team of local experts and we are happy to talk to you.
+          </p>
+          
+          <div className="space-y-2.5">
+            <a 
+              href="tel:+91-9622958013" 
+              aria-label="Phone One" 
+              title="Phone One" 
+              className="group flex items-center gap-3 p-2.5 rounded-xl border border-border/40 dark:border-border/10 hover:border-accent/30 dark:hover:border-accent/20 hover:bg-accent/5 transition-all duration-300 cursor-pointer"
             >
-              <LMEmail className="text-accent" />
-            </EmailObfuscator>
+              <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+                <LMPhone className="text-accent size-4" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-medium">Call Expert</span>
+                <span className="text-xs text-foreground font-mono font-medium group-hover:text-accent transition-colors duration-300">+91-9622958013</span>
+              </div>
+            </a>
+
+            <a 
+              href="tel:+91-9906989962" 
+              aria-label="Phone Two" 
+              title="Phone Two" 
+              className="group flex items-center gap-3 p-2.5 rounded-xl border border-border/40 dark:border-border/10 hover:border-accent/30 dark:hover:border-accent/20 hover:bg-accent/5 transition-all duration-300 cursor-pointer"
+            >
+              <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+                <LMPhone className="text-accent size-4" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-medium">Backup Line</span>
+                <span className="text-xs text-foreground font-mono font-medium group-hover:text-accent transition-colors duration-300">+91-9906989962</span>
+              </div>
+            </a>
+
+            <div className="group flex items-center gap-3 p-2.5 rounded-xl border border-border/40 dark:border-border/10 hover:border-accent/30 dark:hover:border-accent/20 hover:bg-accent/5 transition-all duration-300 cursor-pointer">
+              <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+                <LMEmail className="text-accent size-4" />
+              </div>
+              <div className="flex flex-col w-full">
+                <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-medium">Email Us</span>
+                <EmailObfuscator
+                  email="info@ladakhmoto.com"
+                  className="text-xs text-foreground font-medium group-hover:text-accent transition-colors duration-300 block"
+                  showEmail={false}
+                >
+                  info@ladakhmoto.com
+                </EmailObfuscator>
+              </div>
+            </div>
           </div>
         </div>
       </div>
