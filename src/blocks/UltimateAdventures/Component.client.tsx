@@ -71,26 +71,15 @@ export const UltimateAdventures: React.FC<UltimateAdventuresProps> = ({
   return (
     <section className="py-16 bg-background overflow-hiddenz border-t border-border/20">
       <div className="container mx-auto">
-
-        {/* Editorial Split Header */}
-        <div className="mb-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 border-b border-border/25 pb-12">
-          <div className="lg:max-w-xl">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
-                Signature Expeditions
-              </span>
-            </div>
-            <h2 className="font-oswald text-3xl md:text-4xl lg:text-5xl uppercase text-foreground tracking-wide leading-none">
-              {displayTitle}
-            </h2>
-          </div>
-          <div className="lg:max-w-md lg:border-l lg:border-border/40 lg:pl-8">
-            <p className="text-muted-foreground text-xs md:text-sm font-sans font-light tracking-wide leading-relaxed">
-              {displaySubtitle}
-            </p>
-          </div>
+        <div className="intro flex flex-col items-center justify-center mb-16">
+          <h2 className="font-oswald text-xl md:text-2xl uppercase text-foreground tracking-[0.2em] relative pb-3">
+            Ultimate Ladakh Adventures 2026
+            <span className="absolute bottom-2 w-full h-px bg-accent/50" />
+          </h2> 
         </div>
+        <p className="text-muted-foreground text-xs font-sans font-light tracking-wide mx-auto -mt-12 mb-12">
+          Explore below the ultimate motorbiking journeys across the high-altitude passes of Ladakh. Browse through our handpicked selection of extreme tours, off-road expeditions, and cultural road trips designed for passionate riders.
+        </p>
 
         {/* Symmetric Card Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 pb-12">
