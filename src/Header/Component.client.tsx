@@ -244,7 +244,7 @@ export const HeaderClient: React.FC<{
                     isHeaderDark ? 'text-white' : 'text-foreground',
                   )}
                 >
-                  <ThemeSelector />
+                  {isScrolled && <ThemeSelector />}
                   <Link
                     href="/admin"
                     aria-label="Admin Login"
@@ -318,7 +318,8 @@ export const HeaderClient: React.FC<{
               </ul>
               <div
                 className={cn(
-                  'border-l pl-4 flex items-center gap-4 transition-colors duration-300 md:hidden',
+                  'border-l pl-4 items-center gap-4 transition-colors duration-300',
+                  isScrolled ? 'flex' : 'hidden',
                   isHeaderDark
                     ? 'text-white border-white/20'
                     : 'text-foreground border-foreground/20',
