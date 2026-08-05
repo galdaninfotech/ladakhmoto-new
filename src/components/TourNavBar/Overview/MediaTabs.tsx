@@ -2,10 +2,11 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ImageIcon, LayoutGridIcon, VideoIcon, Map, Building, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ImageIcon, LayoutGridIcon, VideoIcon, Map, Building, Sparkles, ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react'
 import { cn } from '@/utilities/ui'
 import { Media as MediaType, Hotel, Highlight } from '@/payload-types'
 import { Media } from '@/components/Media'
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet'
 
 type MediaTypeTab = 'image' | 'gallery' | 'video' | 'map' | 'hotels' | 'highlights'
 
@@ -42,6 +43,8 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
   const [activeTab, setActiveTab] = useState<MediaTypeTab | null>(null)
   const [showLeftFade, setShowLeftFade] = useState(false)
   const [showRightFade, setShowRightFade] = useState(false)
+  const [activeHotel, setActiveHotel] = useState<Hotel | null>(null)
+  const [activeHighlight, setActiveHighlight] = useState<Highlight | null>(null)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   // Highlights Carousel Refs & States
@@ -260,17 +263,15 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
                 )}
 
                 {hotel.website && (
-                  <a
-                    href={hotel.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-[10px] font-medium text-accent hover:text-white transition-colors mt-auto w-fit border-b border-accent/30 hover:border-white pb-0.5"
+                  <button
+                    onClick={() => setActiveHotel(hotel)}
+                    className="inline-flex items-center text-[10px] font-medium text-accent hover:text-white transition-colors mt-auto w-fit border-b border-accent/30 hover:border-white pb-0.5 cursor-pointer bg-transparent border-none p-0"
                   >
                     View Details
                     <svg className="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
-                  </a>
+                  </button>
                 )}
               </div>
             </div>
@@ -359,15 +360,15 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
                     </p>
                   )}
 
-                  <a
-                    href={`/highlights/${highlight.slug}`}
-                    className="inline-flex items-center text-[10px] font-medium text-accent hover:text-white transition-colors mt-auto w-fit border-b border-accent/30 hover:border-white pb-0.5"
+                  <button
+                    onClick={() => setActiveHighlight(highlight)}
+                    className="inline-flex items-center text-[10px] font-medium text-accent hover:text-white transition-colors mt-auto w-fit border-b border-accent/30 hover:border-white pb-0.5 cursor-pointer bg-transparent border-none p-0"
                   >
                     Explore More
                     <svg className="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
-                  </a>
+                  </button>
                 </div>
               </div>
             )
@@ -627,6 +628,118 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
           )}
         </AnimatePresence>
       </motion.div>
+
+      <Sheet open={!!activeHotel} onOpenChange={(open) => !open && setActiveHotel(null)}>
+        <SheetContent
+          side="right"
+          className="w-full max-w-none sm:max-w-none bg-neutral-950 border-none p-0 flex flex-col h-full z-99999 rounded-none"
+        >
+          <div className="p-6 border-b border-white/10 flex flex-row items-start gap-6 relative">
+            <button
+              onClick={() => setActiveHotel(null)}
+              className="flex items-center gap-2 px-3 py-1.5 border border-white/10 hover:border-accent bg-white/5 hover:bg-accent text-white hover:text-black transition-all duration-300 font-oswald text-[11px] uppercase tracking-wider rounded-sm cursor-pointer shrink-0 mt-0.5"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Go Back</span>
+            </button>
+
+            <SheetHeader className="text-left">
+              <SheetTitle className="text-[18px] font-oswald tracking-wide text-white uppercase">
+                {activeHotel?.name}
+              </SheetTitle>
+              <SheetDescription className="text-foreground/50 text-[11px] font-sans flex items-center gap-2">
+                {activeHotel?.starRating && (
+                  <span className="inline-block text-accent font-medium px-1.5 py-0.5 bg-accent/10 rounded-sm">
+                    {activeHotel.starRating.length === 1 ? `${activeHotel.starRating} Star` : activeHotel.starRating}
+                  </span>
+                )}
+                {activeHotel?.website && (
+                  <a
+                    href={activeHotel.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-accent hover:text-white transition-colors underline decoration-accent/30 hover:decoration-white"
+                  >
+                    Open in new tab
+                    <svg className="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                )}
+              </SheetDescription>
+            </SheetHeader>
+          </div>
+          <div className="grow w-full bg-neutral-900 relative">
+            {activeHotel?.website ? (
+              <iframe
+                src={activeHotel.website}
+                className="w-full h-full border-0"
+                title={activeHotel.name}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <div className="flex items-center justify-center h-full text-foreground/50 text-xs">
+                No website link available for this hotel.
+              </div>
+            )}
+          </div>
+        </SheetContent>
+      </Sheet>
+
+      <Sheet open={!!activeHighlight} onOpenChange={(open) => !open && setActiveHighlight(null)}>
+        <SheetContent
+          side="right"
+          className="w-full max-w-none sm:max-w-none bg-neutral-950 border-none p-0 flex flex-col h-full z-99999 rounded-none"
+        >
+          <div className="p-6 border-b border-white/10 flex flex-row items-start gap-6 relative">
+            <button
+              onClick={() => setActiveHighlight(null)}
+              className="flex items-center gap-2 px-3 py-1.5 border border-white/10 hover:border-accent bg-white/5 hover:bg-accent text-white hover:text-black transition-all duration-300 font-oswald text-[11px] uppercase tracking-wider rounded-sm cursor-pointer shrink-0 mt-0.5"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Go Back</span>
+            </button>
+
+            <SheetHeader className="text-left">
+              <SheetTitle className="text-[18px] font-oswald tracking-wide text-white uppercase">
+                {activeHighlight?.title}
+              </SheetTitle>
+              <SheetDescription className="text-foreground/50 text-[11px] font-sans flex items-center gap-2">
+                Highlight Details
+                {activeHighlight?.slug && (
+                  <a
+                    href={`/highlights/${activeHighlight.slug}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-accent hover:text-white transition-colors underline decoration-accent/30 hover:decoration-white"
+                  >
+                    Open in new tab
+                    <svg className="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                )}
+              </SheetDescription>
+            </SheetHeader>
+          </div>
+          <div className="grow w-full bg-neutral-900 relative">
+            {activeHighlight?.slug ? (
+              <iframe
+                src={`/highlights/${activeHighlight.slug}`}
+                className="w-full h-full border-0"
+                title={activeHighlight.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <div className="flex items-center justify-center h-full text-foreground/50 text-xs">
+                Loading highlight details...
+              </div>
+            )}
+          </div>
+        </SheetContent>
+      </Sheet>
     </div>
   )
 }

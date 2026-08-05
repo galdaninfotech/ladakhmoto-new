@@ -13,6 +13,8 @@ import { handleAccordionScrollIntoView } from '@/utilities/handleAccordionScroll
 import { useState, useRef } from 'react'
 import { useInView } from 'framer-motion'
 import Link from 'next/link'
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet'
+import { ArrowLeft } from 'lucide-react'
 
 type ItineraryType = {
   id?: string | number | null
@@ -36,6 +38,7 @@ export const Itinerary: React.FC<{
 }> = (props) => {
   const { itineraries } = props
   const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set())
+  const [activeHotel, setActiveHotel] = useState<Hotel | null>(null)
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '200px' })
 
@@ -154,15 +157,12 @@ export const Itinerary: React.FC<{
                               {itinerary.hotel.description}
                             </p>
                             {itinerary.hotel.website && (
-                              <Link
-                                // href={itinerary.hotel.website}
-                                href={`/hotel/${itinerary.hotel.website}`}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="text-accent hover:underline text-[11px] uppercase tracking-tighter inline-flex items-center gap-1 w-fit"
+                              <button
+                                onClick={() => setActiveHotel(itinerary.hotel as Hotel)}
+                                className="text-accent hover:underline text-[11px] uppercase tracking-tighter inline-flex items-center gap-1 w-fit cursor-pointer bg-transparent border-none p-0"
                               >
                                 View Details <span className="text-xs">→</span>
-                              </Link>
+                              </button>
                             )}
                           </div>
                         </div>
@@ -174,6 +174,64 @@ export const Itinerary: React.FC<{
             </AccordionItem>
           ))}
       </Accordion>
+
+      <Sheet open={!!activeHotel} onOpenChange={(open) => !open && setActiveHotel(null)}>
+        <SheetContent
+          side="right"
+          className="w-full max-w-none sm:max-w-none bg-neutral-950 border-none p-0 flex flex-col h-full z-99999 rounded-none"
+        >
+          <div className="p-6 border-b border-white/10 flex flex-row items-start gap-6 relative">
+            <button
+              onClick={() => setActiveHotel(null)}
+              className="flex items-center gap-2 px-3 py-1.5 border border-white/10 hover:border-accent bg-white/5 hover:bg-accent text-white hover:text-black transition-all duration-300 font-oswald text-[11px] uppercase tracking-wider rounded-sm cursor-pointer shrink-0 mt-0.5"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Go Back</span>
+            </button>
+
+            <SheetHeader className="text-left">
+              <SheetTitle className="text-[18px] font-oswald tracking-wide text-white uppercase">
+                {activeHotel?.name}
+              </SheetTitle>
+              <SheetDescription className="text-foreground/50 text-[11px] font-sans flex items-center gap-2">
+                {activeHotel?.starRating && (
+                  <span className="inline-block text-accent font-medium px-1.5 py-0.5 bg-accent/10 rounded-sm">
+                    {activeHotel.starRating.length === 1 ? `${activeHotel.starRating} Star` : activeHotel.starRating}
+                  </span>
+                )}
+                {activeHotel?.website && (
+                  <a
+                    href={activeHotel.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-accent hover:text-white transition-colors underline decoration-accent/30 hover:decoration-white"
+                  >
+                    Open in new tab
+                    <svg className="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                )}
+              </SheetDescription>
+            </SheetHeader>
+          </div>
+          <div className="grow w-full bg-neutral-900 relative">
+            {activeHotel?.website ? (
+              <iframe
+                src={activeHotel.website}
+                className="w-full h-full border-0"
+                title={activeHotel.name}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <div className="flex items-center justify-center h-full text-foreground/50 text-xs">
+                No website link available for this hotel.
+              </div>
+            )}
+          </div>
+        </SheetContent>
+      </Sheet>
     </section>
   )
 }
