@@ -512,8 +512,8 @@ export const seedGlobals = async ({ payload, req, mediaMap }: { payload: Payload
           },
           {
             link: {
-              label: 'Leh City',
-              url: '/highlights/leh-city',
+              label: 'Leh Market',
+              url: '/highlights/leh-market',
               type: 'custom',
             },
           },

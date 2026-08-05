@@ -164,8 +164,8 @@ export const BottomActions: React.FC<BottomActionsProps> = (props) => {
                   aria-label="Call us"
                   className={`flex flex-col items-center justify-center p-2.5 rounded-xs border transition-all duration-300 group cursor-pointer ${
                     isComponentDark
-                      ? 'bg-white/5 hover:bg-blue-500/10 border-white/5 hover:border-blue-500/30'
-                      : 'bg-slate-50 hover:bg-blue-50 border-slate-100 hover:border-blue-200'
+                      ? 'bg-slate-200 hover:bg-blue-500/10 border-white/5 hover:border-blue-500/30'
+                      : 'bg-slate-200 hover:bg-blue-50 border-slate-100 hover:border-blue-200'
                   }`}
                 >
                   <div className="w-10 h-10 rounded-xs flex items-center justify-center mb-1.5 bg-blue-600/10 text-blue-500 border border-blue-600/20 transition-transform duration-300 group-hover:scale-110">
@@ -189,8 +189,8 @@ export const BottomActions: React.FC<BottomActionsProps> = (props) => {
                   aria-label="Follow us on Instagram"
                   className={`flex flex-col items-center justify-center p-2.5 rounded-xs border transition-all duration-300 group cursor-pointer ${
                     isComponentDark
-                      ? 'bg-white/5 hover:bg-pink-500/10 border-white/5 hover:border-pink-500/30'
-                      : 'bg-slate-50 hover:bg-pink-50 border-slate-100 hover:border-pink-200'
+                      ? 'bg-slate-200 hover:bg-pink-500/10 border-white/5 hover:border-pink-500/30'
+                      : 'bg-slate-200 hover:bg-pink-50 border-slate-100 hover:border-pink-200'
                   }`}
                 >
                   <div className="w-10 h-10 rounded-xs flex items-center justify-center mb-1.5 bg-gradient-to-tr from-yellow-500 via-pink-600 to-purple-600 text-white transition-transform duration-300 group-hover:scale-110">
@@ -213,8 +213,8 @@ export const BottomActions: React.FC<BottomActionsProps> = (props) => {
                   showEmail={false}
                   className={`flex flex-col items-center justify-center p-2.5 rounded-xs border transition-all duration-300 group cursor-pointer ${
                     isComponentDark
-                      ? 'bg-white/5 hover:bg-indigo-500/10 border-white/5 hover:border-indigo-500/30'
-                      : 'bg-slate-50 hover:bg-indigo-50 border-slate-100 hover:border-indigo-200'
+                      ? 'bg-slate-200 hover:bg-indigo-500/10 border-white/5 hover:border-indigo-500/30'
+                      : 'bg-slate-200 hover:bg-indigo-50 border-slate-100 hover:border-indigo-200'
                   }`}
                 >
                   <div className="w-10 h-10 rounded-xs flex items-center justify-center mb-1.5 bg-indigo-600/10 text-indigo-400 border border-indigo-600/20 transition-transform duration-300 group-hover:scale-110">

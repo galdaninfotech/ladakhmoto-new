@@ -15,6 +15,7 @@ import { useInView } from 'framer-motion'
 import Link from 'next/link'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet'
 import { ArrowLeft } from 'lucide-react'
+import { useTheme } from '@/providers/Theme'
 
 type ItineraryType = {
   id?: string | number | null
@@ -37,6 +38,7 @@ export const Itinerary: React.FC<{
   itineraries?: ItineraryType[] | null
 }> = (props) => {
   const { itineraries } = props
+  const { theme } = useTheme()
   const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set())
   const [activeHotel, setActiveHotel] = useState<Hotel | null>(null)
   const sectionRef = useRef(null)
@@ -178,22 +180,23 @@ export const Itinerary: React.FC<{
       <Sheet open={!!activeHotel} onOpenChange={(open) => !open && setActiveHotel(null)}>
         <SheetContent
           side="right"
-          className="w-full max-w-none sm:max-w-none bg-neutral-950 border-none p-0 flex flex-col h-full z-99999 rounded-none"
+          data-theme={theme}
+          className="w-full max-w-none sm:max-w-none bg-white dark:bg-neutral-950 border-none p-0 flex flex-col h-full z-99999 rounded-none text-zinc-900 dark:text-zinc-100"
         >
-          <div className="p-6 border-b border-white/10 flex flex-row items-start gap-6 relative">
+          <div className="p-6 border-b border-zinc-200 dark:border-white/10 flex flex-row items-start gap-6 relative">
             <button
               onClick={() => setActiveHotel(null)}
-              className="flex items-center gap-2 px-3 py-1.5 border border-white/10 hover:border-accent bg-white/5 hover:bg-accent text-white hover:text-black transition-all duration-300 font-oswald text-[11px] uppercase tracking-wider rounded-sm cursor-pointer shrink-0 mt-0.5"
+              className="flex items-center gap-2 px-3 py-1.5 border border-zinc-300 dark:border-white/10 hover:border-accent bg-zinc-50 dark:bg-white/5 hover:bg-accent text-zinc-900 dark:text-white hover:text-black dark:hover:text-black transition-all duration-300 font-oswald text-[11px] uppercase tracking-wider rounded-sm cursor-pointer shrink-0 mt-0.5"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Go Back</span>
             </button>
 
             <SheetHeader className="text-left">
-              <SheetTitle className="text-[18px] font-oswald tracking-wide text-white uppercase">
+              <SheetTitle className="text-[18px] font-oswald tracking-wide text-zinc-900 dark:text-white uppercase">
                 {activeHotel?.name}
               </SheetTitle>
-              <SheetDescription className="text-foreground/50 text-[11px] font-sans flex items-center gap-2">
+              <SheetDescription className="text-zinc-500 dark:text-zinc-400 text-[11px] font-sans flex items-center gap-2">
                 {activeHotel?.starRating && (
                   <span className="inline-block text-accent font-medium px-1.5 py-0.5 bg-accent/10 rounded-sm">
                     {activeHotel.starRating.length === 1 ? `${activeHotel.starRating} Star` : activeHotel.starRating}
@@ -204,7 +207,7 @@ export const Itinerary: React.FC<{
                     href={activeHotel.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-accent hover:text-white transition-colors underline decoration-accent/30 hover:decoration-white"
+                    className="inline-flex items-center text-accent hover:text-foreground transition-colors underline decoration-accent/30 hover:decoration-foreground"
                   >
                     Open in new tab
                     <svg className="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -215,20 +218,46 @@ export const Itinerary: React.FC<{
               </SheetDescription>
             </SheetHeader>
           </div>
-          <div className="grow w-full bg-neutral-900 relative">
-            {activeHotel?.website ? (
-              <iframe
-                src={activeHotel.website}
-                className="w-full h-full border-0"
-                title={activeHotel.name}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            ) : (
-              <div className="flex items-center justify-center h-full text-foreground/50 text-xs">
-                No website link available for this hotel.
-              </div>
-            )}
+          <div className="grow w-full bg-zinc-50 dark:bg-neutral-950 overflow-y-auto px-6 pb-12">
+            <div className="max-w-2xl mx-auto flex flex-col gap-6 pt-6">
+              {/* Hotel Image */}
+              {activeHotel?.image && typeof activeHotel.image === 'object' && (
+                <div className="relative w-full aspect-16/10 overflow-hidden rounded-xs border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/5">
+                  <Media
+                    resource={activeHotel.image}
+                    className="w-full h-full object-cover"
+                    fill
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                </div>
+              )}
+
+              {/* Description */}
+              {activeHotel?.description && (
+                <div className="pt-4 border-t border-zinc-200 dark:border-white/10">
+                  <p className="text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed font-sans whitespace-pre-line">
+                    {activeHotel.description}
+                  </p>
+                </div>
+              )}
+
+              {/* Action Button: Visit Website */}
+              {activeHotel?.website && (
+                <div className="pt-6 border-t border-zinc-200 dark:border-white/10 flex">
+                  <a
+                    href={activeHotel.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent hover:bg-accent/90 text-slate-950 text-xs font-bold font-oswald uppercase tracking-wider rounded-xs transition-all hover:scale-105 active:scale-95 shadow-md shadow-accent/20 cursor-pointer border-none"
+                  >
+                    <span>Visit Hotel Website</span>
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+              )}
+            </div>
           </div>
         </SheetContent>
       </Sheet>
