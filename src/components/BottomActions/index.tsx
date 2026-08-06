@@ -90,7 +90,7 @@ export const BottomActions: React.FC<BottomActionsProps> = (props) => {
               exit={{ opacity: 0, y: 15, scale: 0.95, x: '-50%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 350 }}
               data-theme={isComponentDark ? 'dark' : 'light'}
-              className={`absolute bottom-full left-1/2 mb-4 w-72.5 sm:w-90 backdrop-blur-xl rounded-xs p-5 z-[130] transition-all duration-300 ${
+              className={`absolute bottom-full left-1/2 mb-4 w-80 sm:w-90 backdrop-blur-xl rounded-xs p-5 z-[130] transition-all duration-300 ${
                 isComponentDark
                   ? 'bg-white/95 border border-slate-200 shadow-xl'
                   : 'bg-slate-950/95 border border-white/40 shadow-2xl'
@@ -151,7 +151,7 @@ export const BottomActions: React.FC<BottomActionsProps> = (props) => {
                   <span
                     className={`text-[10px] font-oswald tracking-wider uppercase transition-colors duration-300 ${
                       isComponentDark
-                        ? 'text-slate-400 group-hover:text-slate-200'
+                        ? 'text-slate-600 group-hover:text-slate-200'
                         : 'text-slate-600 group-hover:text-slate-800'
                     }`}
                   >
@@ -174,7 +174,7 @@ export const BottomActions: React.FC<BottomActionsProps> = (props) => {
                   <span
                     className={`text-[10px] font-oswald tracking-wider uppercase transition-colors duration-300 ${
                       isComponentDark
-                        ? 'text-slate-400 group-hover:text-slate-200'
+                        ? 'text-slate-600 group-hover:text-slate-200'
                         : 'text-slate-600 group-hover:text-slate-800'
                     }`}
                   >
@@ -199,7 +199,7 @@ export const BottomActions: React.FC<BottomActionsProps> = (props) => {
                   <span
                     className={`text-[10px] font-oswald tracking-wider uppercase transition-colors duration-300 ${
                       isComponentDark
-                        ? 'text-slate-400 group-hover:text-slate-200'
+                        ? 'text-slate-600 group-hover:text-slate-200'
                         : 'text-slate-600 group-hover:text-slate-800'
                     }`}
                   >
@@ -223,7 +223,7 @@ export const BottomActions: React.FC<BottomActionsProps> = (props) => {
                   <span
                     className={`text-[10px] font-oswald tracking-wider uppercase transition-colors duration-300 ${
                       isComponentDark
-                        ? 'text-slate-400 group-hover:text-slate-200'
+                        ? 'text-slate-600 group-hover:text-slate-200'
                         : 'text-slate-600 group-hover:text-slate-800'
                     }`}
                   >
