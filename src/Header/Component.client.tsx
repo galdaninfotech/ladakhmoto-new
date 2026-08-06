@@ -398,7 +398,7 @@ export const HeaderClient: React.FC<{
         </div>
 
         {/* Mobile Search Bar */}
-        <div className="px-6 pt-5 pb-2">
+        {/* <div className="px-6 pt-5 pb-2">
           <form onSubmit={handleMobileSearch} className="relative w-full">
             <input
               type="text"
@@ -409,7 +409,7 @@ export const HeaderClient: React.FC<{
             />
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground stroke-2" />
           </form>
-        </div>
+        </div> */}
 
         {/* Navigation Items */}
         <div className="flex-1 overflow-y-auto px-6 py-4">
