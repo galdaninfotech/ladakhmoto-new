@@ -202,7 +202,7 @@ export const HeaderClient: React.FC<{
               onClick={() => setMenuState(!menuState)}
               aria-label={menuState ? 'Close Menu' : 'Open Menu'}
               className={cn(
-                'relative z-40 block cursor-pointer transition-colors duration-300',
+                'relative z-40 block cursor-pointer transition-colors duration-300 lg:hidden',
                 isHeaderDark ? 'text-white' : 'text-foreground',
               )}
             >
@@ -254,7 +254,7 @@ export const HeaderClient: React.FC<{
                 className={cn(
                   'flex items-center gap-4 md:hidden',
                   isScrolled
-                    ? 'md:flex'
+                    ? 'md:flex lg:hidden'
                     : 'hiddenzzzz',
                 )}
               >
