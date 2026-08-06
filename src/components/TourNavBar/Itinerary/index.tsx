@@ -95,7 +95,7 @@ export const Itinerary: React.FC<{
                     {/* Highlights Section */}
                     {itinerary.structuredHighlights && itinerary.structuredHighlights.length > 0 && (
                       <div className="flex flex-wrap gap-2 mb-4">
-                        <strong className="text-accent uppercase">Highlights:</strong>
+                        <strong className="text-primary uppercase">Highlights:</strong>
                         {itinerary.structuredHighlights.map((h, hIndex) => {
                           if (typeof h === 'object' && h !== null) {
                             return (
