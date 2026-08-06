@@ -16,6 +16,8 @@ import Link from 'next/link'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet'
 import { ArrowLeft } from 'lucide-react'
 import { useTheme } from '@/providers/Theme'
+import RichText from '@/components/RichText'
+import { HighlightGallery } from '@/components/HighlightGallery'
 
 type ItineraryType = {
   id?: string | number | null
@@ -33,6 +35,23 @@ type ItineraryType = {
   media?: number | MediaType | null | undefined
   hotel?: number | Hotel | null | undefined
 }
+const getHighlightStyle = (index: number): { bg: string; text: string } => {
+  const styles = [
+    { bg: 'bg-rose-600', text: 'text-white' },
+    { bg: 'bg-cyan-600', text: 'text-white' },
+    { bg: 'bg-amber-500', text: 'text-white' },
+    { bg: 'bg-purple-600', text: 'text-white' },
+    { bg: 'bg-emerald-600', text: 'text-white' },
+    { bg: 'bg-indigo-600', text: 'text-white' },
+    { bg: 'bg-orange-600', text: 'text-white' },
+    { bg: 'bg-teal-600', text: 'text-white' },
+    { bg: 'bg-sky-600', text: 'text-white' },
+    { bg: 'bg-violet-600', text: 'text-white' },
+    { bg: 'bg-fuchsia-600', text: 'text-white' },
+    { bg: 'bg-pink-600', text: 'text-white' },
+  ]
+  return styles[index % styles.length]
+}
 
 export const Itinerary: React.FC<{
   itineraries?: ItineraryType[] | null
@@ -41,6 +60,7 @@ export const Itinerary: React.FC<{
   const { theme } = useTheme()
   const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set())
   const [activeHotel, setActiveHotel] = useState<Hotel | null>(null)
+  const [activeHighlight, setActiveHighlight] = useState<Highlight | null>(null)
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '200px' })
 
@@ -94,18 +114,20 @@ export const Itinerary: React.FC<{
 
                     {/* Highlights Section */}
                     {itinerary.structuredHighlights && itinerary.structuredHighlights.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mb-4">
+                      <div className="flex flex-wrap items-center gap-2 mb-4">
                         <strong className="text-primary uppercase">Highlights:</strong>
                         {itinerary.structuredHighlights.map((h, hIndex) => {
                           if (typeof h === 'object' && h !== null) {
+                            const style = getHighlightStyle(hIndex)
                             return (
-                              <Link
+                              <button
                                 key={hIndex}
-                                href={`/highlights/${h.slug}`}
-                                className="inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-medium bg-accent/10 text-foreground/80 border border-accent/20 hover:bg-accent/20 transition-colors"
+                                type="button"
+                                onClick={() => setActiveHighlight(h as Highlight)}
+                                className={`${style.bg} ${style.text} font-oswald text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-[2px] shadow-md hover:opacity-90 transition-opacity cursor-pointer`}
                               >
                                 {h.title}
-                              </Link>
+                              </button>
                             )
                           }
                           return null
@@ -256,6 +278,88 @@ export const Itinerary: React.FC<{
                     </svg>
                   </a>
                 </div>
+              )}
+            </div>
+          </div>
+        </SheetContent>
+      </Sheet>
+
+      <Sheet open={!!activeHighlight} onOpenChange={(open) => !open && setActiveHighlight(null)}>
+        <SheetContent
+          side="right"
+          data-theme={theme}
+          className="w-full max-w-none sm:max-w-none bg-white dark:bg-neutral-950 border-none p-0 flex flex-col h-full z-99999 rounded-none text-zinc-900 dark:text-zinc-100"
+        >
+          <div className="p-6 border-b border-zinc-200 dark:border-white/10 flex flex-row items-start gap-6 relative">
+            <button
+              onClick={() => setActiveHighlight(null)}
+              className="flex items-center gap-2 px-3 py-1.5 border border-zinc-300 dark:border-white/10 hover:border-accent bg-zinc-50 dark:bg-white/5 hover:bg-accent text-zinc-900 dark:text-white hover:text-black dark:hover:text-black transition-all duration-300 font-oswald text-[11px] uppercase tracking-wider rounded-sm cursor-pointer shrink-0 mt-0.5"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Go Back</span>
+            </button>
+
+            <SheetHeader className="text-left">
+              <SheetTitle className="text-[18px] font-oswald tracking-wide text-zinc-900 dark:text-white uppercase">
+                {activeHighlight?.title}
+              </SheetTitle>
+              <SheetDescription className="text-zinc-500 dark:text-zinc-400 text-[11px] font-sans flex items-center gap-2">
+                Highlight Details
+                {activeHighlight?.slug && (
+                  <a
+                    href={`/highlights/${activeHighlight.slug}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-accent hover:text-foreground transition-colors underline decoration-accent/30 hover:decoration-foreground"
+                  >
+                    Open in new tab
+                    <svg className="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                )}
+              </SheetDescription>
+            </SheetHeader>
+          </div>
+          <div className="grow w-full bg-zinc-50 dark:bg-neutral-950 overflow-y-auto px-6 pb-12">
+            <div className="max-w-3xl mx-auto flex flex-col gap-6 pt-6">
+              {/* Highlight Hero/Image */}
+              {activeHighlight?.meta?.image && typeof activeHighlight.meta.image === 'object' && (
+                <div className="relative w-full aspect-video overflow-hidden rounded-xs border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/5">
+                  <Media
+                    resource={activeHighlight.meta.image}
+                    className="w-full h-full object-cover"
+                    fill
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                </div>
+              )}
+
+              {/* Intro */}
+              {activeHighlight?.intro && (
+                <div className="flex flex-col gap-4">
+                  <RichText
+                    className="text-md/7 text-zinc-600 dark:text-zinc-300 italic font-light border-l-2 border-accent pl-6"
+                    data={activeHighlight.intro}
+                    enableGutter={false}
+                  />
+                </div>
+              )}
+
+              {/* Description */}
+              {activeHighlight?.description && (
+                <div className="flex flex-col gap-4 pt-4 border-t border-zinc-200 dark:border-white/10">
+                  <RichText
+                    className="text-md/7 text-zinc-800 dark:text-zinc-200 leading-relaxed font-sans"
+                    data={activeHighlight.description}
+                    enableGutter={false}
+                  />
+                </div>
+              )}
+
+              {/* Gallery */}
+              {activeHighlight?.gallery && activeHighlight.gallery.length > 0 && (
+                <HighlightGallery gallery={activeHighlight.gallery as any} />
               )}
             </div>
           </div>
