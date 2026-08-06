@@ -387,13 +387,13 @@ export const HeaderClient: React.FC<{
           </Link>
           <div className="flex items-center gap-3">
             <ThemeSelector />
-            <button
+            {/* <button
               onClick={() => setMenuState(false)}
               aria-label="Close menu"
               className="p-2 text-foreground/70 hover:text-foreground hover:bg-muted/80 dark:hover:bg-muted/30 rounded-full transition-all duration-200 cursor-pointer"
             >
               <X className="w-5 h-5 transition-transform duration-200 hover:rotate-90" />
-            </button>
+            </button> */}
           </div>
         </div>
 
