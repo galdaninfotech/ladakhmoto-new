@@ -463,7 +463,7 @@ export const HeaderClient: React.FC<{
                         : 'max-h-0 opacity-0',
                     )}
                   >
-                    <div className="p-4 space-y-5">
+                    <div className="p-4 space-y-2.5">
                       {item.submenu.map((subItem, subIndex) => (
                         <div key={subIndex} className="space-y-2.5">
                           <Link
