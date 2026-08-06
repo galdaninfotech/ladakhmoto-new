@@ -143,7 +143,7 @@ export default async function Post({ params: paramsPromise }: Args) {
             gap-2 md:gap-3 lg:gap-4">
         {/* ScrollSpy */}
         <div className="col-span-4 md:col-span-8 lg:col-span-9">
-          <div className="sticky top-[56px] z-10">
+          <div className="sticky top-[70px] md:top-[70px] lg:top-[80px] z-10">
             <ScrollSpyNav
               items={[
                 { id: 'overview', label: 'Overview' },

@@ -106,7 +106,7 @@ export default async function Post({ params: paramsPromise }: Args) {
         <div className="col-span-4 sm:col-span-8 lg:col-span-9">
           <BikeTourTitleArea post={post} isUltimateAdventure={true} />
           {/* ScrollSpy */}
-          <div className="sticky top-[56px] lg:top-[68px] z-10">
+          <div className="sticky top-[70px] md:top-[70px] lg:top-[80px] z-10">
             <ScrollSpyNav
               items={[
                 { id: 'overview', label: 'Overview' },

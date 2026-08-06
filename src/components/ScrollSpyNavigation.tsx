@@ -31,7 +31,7 @@ const iconMap: Record<string, LucideIcon> = {
 
 export default function ScrollSpyNav({
   items,
-  // Adjusted rootMargin to account for the 71px sticky header
+  // Adjusted rootMargin to account for sticky header's height
   rootMargin = '-56px 0px -80% 0px',
   threshold = 0,
 }: ScrollSpyNavProps) {
