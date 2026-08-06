@@ -193,7 +193,7 @@ export const BottomActions: React.FC<BottomActionsProps> = (props) => {
                       : 'bg-slate-200 hover:bg-pink-50 border-slate-100 hover:border-pink-200'
                   }`}
                 >
-                  <div className="w-10 h-10 rounded-xs flex items-center justify-center mb-1.5 bg-gradient-to-tr from-yellow-500 via-pink-600 to-purple-600 text-white transition-transform duration-300 group-hover:scale-110">
+                  <div className="w-10 h-10 rounded-xs flex items-center justify-center mb-1.5 bg-linear-to-tr from-yellow-500 via-pink-600 to-purple-600 text-white transition-transform duration-300 group-hover:scale-110">
                     <LMInstagram className="w-5 h-5" />
                   </div>
                   <span
@@ -262,7 +262,7 @@ export const BottomActions: React.FC<BottomActionsProps> = (props) => {
             />
           </div>
 
-          <div className="flex items-center gap-2 w-[90%] sm:w-[auto]">
+          <div className="flex items-center justify-center gap-2 w-full sm:w-auto">
             <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
                 <Button
