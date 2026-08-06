@@ -229,10 +229,10 @@ export const HeaderClient: React.FC<{
             <div className="flex w-full justify-between lg:w-auto">
               <Link href="/" aria-label="home" 
                 className={cn(
-                  'flex items-center space-x-2',
+                  'flex items-center space-x-2 md:hidden',
                   isScrolled
-                    ? 'block'
-                    : 'hidden',
+                    ? 'md:flex'
+                    : 'hiddenzzzz',
                 )}
               >
                 {!menuState && (
@@ -250,14 +250,21 @@ export const HeaderClient: React.FC<{
                 )}
               </Link>
 
-              <div className="flex items-center gap-4 md:hidden">
+              <div 
+                className={cn(
+                  'flex items-center gap-4 md:hidden',
+                  isScrolled
+                    ? 'md:flex'
+                    : 'hiddenzzzz',
+                )}
+              >
+                <ThemeSelector />
                 <div
                   className={cn(
                     'flex items-center transition-colors duration-300 gap-4',
                     isHeaderDark ? 'text-white' : 'text-foreground',
                   )}
                 >
-                  {isScrolled && <ThemeSelector />}
                   <Link
                     href="/admin"
                     aria-label="Admin Login"
