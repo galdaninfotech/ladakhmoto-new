@@ -126,6 +126,7 @@ export const HeaderClient: React.FC<{
             pathname?.includes('/bike-tours') ||
             pathname?.includes('/holiday-packages') ||
             pathname?.includes('/destinations') ||
+            pathname?.includes('/highlights') ||
             pathname?.includes('/posts'),
           headerMarginHome: pathname === '/' || pathname === '/home',
           headerMarginDefault: !(
@@ -133,6 +134,7 @@ export const HeaderClient: React.FC<{
             pathname?.includes('/bike-tours') ||
             pathname?.includes('/holiday-packages') ||
             pathname?.includes('/destinations') ||
+            pathname?.includes('/highlights') ||
             pathname?.includes('/posts') ||
             pathname === '/' ||
             pathname === '/home'
