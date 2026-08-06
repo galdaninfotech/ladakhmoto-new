@@ -262,7 +262,7 @@ export const BottomActions: React.FC<BottomActionsProps> = (props) => {
             />
           </div>
 
-          <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="flex items-center gap-2 w-[90%] sm:w-[auto]">
             <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
                 <Button
@@ -275,7 +275,7 @@ export const BottomActions: React.FC<BottomActionsProps> = (props) => {
               </SheetTrigger>
               <SheetContent
                 data-theme={isComponentDark ? 'dark' : 'light'}
-                className={`overflow-y-auto w-full sm:max-w-md transition-all duration-300 ${
+                className={`overflow-y-auto w-[90%] sm:max-w-md transition-all duration-300 ${
                   isComponentDark
                     ? 'bg-white text-slate-950 border-l border-slate-200'
                     : 'bg-slate-950 text-white border-l border-white/10'
