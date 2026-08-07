@@ -13,7 +13,13 @@ import { handleAccordionScrollIntoView } from '@/utilities/handleAccordionScroll
 import { useState, useRef } from 'react'
 import { useInView } from 'framer-motion'
 import Link from 'next/link'
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet'
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from '@/components/ui/sheet'
 import { ArrowLeft } from 'lucide-react'
 import { useTheme } from '@/providers/Theme'
 import RichText from '@/components/RichText'
@@ -109,46 +115,49 @@ export const Itinerary: React.FC<{
                         <div className="content-media my-4">
                           <Media resource={itinerary.media} />
                         </div>
-                    )}
-
+                      )}
 
                     {/* Highlights Section */}
-                    {itinerary.structuredHighlights && itinerary.structuredHighlights.length > 0 && (
-                      <div className="flex flex-wrap items-center gap-2 mb-4">
-                        <strong className="text-primary uppercase">Highlights:</strong>
-                        {itinerary.structuredHighlights.map((h, hIndex) => {
-                          if (typeof h === 'object' && h !== null) {
-                            const style = getHighlightStyle(hIndex)
-                            return (
-                              <button
-                                key={hIndex}
-                                type="button"
-                                onClick={() => setActiveHighlight(h as Highlight)}
-                                className={`${style.bg} ${style.text} font-oswald text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-[2px] shadow-md hover:opacity-90 transition-opacity cursor-pointer`}
-                              >
-                                {h.title}
-                              </button>
-                            )
-                          }
-                          return null
-                        })}
-                      </div>
-                    )}
-
+                    {itinerary.structuredHighlights &&
+                      itinerary.structuredHighlights.length > 0 && (
+                        <div className="flex flex-wrap items-center gap-2 mb-4">
+                          <strong className="text-primary uppercase">Highlights:</strong>
+                          {itinerary.structuredHighlights.map((h, hIndex) => {
+                            if (typeof h === 'object' && h !== null) {
+                              const style = getHighlightStyle(hIndex)
+                              return (
+                                <button
+                                  key={hIndex}
+                                  type="button"
+                                  onClick={() => setActiveHighlight(h as Highlight)}
+                                  className={`${style.bg} ${style.text} font-oswald text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-[2px] shadow-md hover:opacity-90 transition-opacity cursor-pointer`}
+                                >
+                                  {h.title}
+                                </button>
+                              )
+                            }
+                            return null
+                          })}
+                        </div>
+                      )}
 
                     {/* Activity */}
                     <ul className="space-y-2">
                       {itinerary.activity && (
                         <li>
                           {' '}
-                          <strong className="text-primary uppercase">Activity:</strong> {itinerary.activity}{' '}
+                          <strong className="text-primary uppercase">Activity:</strong>{' '}
+                          {itinerary.activity}{' '}
                         </li>
                       )}
-                      {itinerary.description && <li className="text-foreground/90">{itinerary.description} </li>}
+                      {itinerary.description && (
+                        <li className="text-foreground/90">{itinerary.description} </li>
+                      )}
                       {itinerary.overnight && (
                         <li>
                           {' '}
-                          <strong className="text-primary uppercase">Overnight:</strong> {itinerary.overnight}{' '}
+                          <strong className="text-primary uppercase">Overnight:</strong>{' '}
+                          {itinerary.overnight}{' '}
                         </li>
                       )}
                     </ul>
@@ -156,21 +165,24 @@ export const Itinerary: React.FC<{
                     {typeof itinerary.hotel === 'object' && itinerary.hotel !== null && (
                       <div className="mt-6 p-4 border border-border/30 rounded-xs bg-muted/10">
                         <div className="flex flex-col sm:flex-row gap-4">
-                          {typeof itinerary.hotel.image === 'object' && itinerary.hotel.image !== null && (
-                            <div className="w-full sm:w-32 lg:w-40 shrink-0">
-                              <Media
-                                resource={itinerary.hotel.image}
-                                className="w-full h-32 sm:h-24 lg:h-28 object-cover rounded-xs"
-                              />
-                            </div>
-                          )}
+                          {typeof itinerary.hotel.image === 'object' &&
+                            itinerary.hotel.image !== null && (
+                              <div className="w-full sm:w-32 lg:w-40 shrink-0 relative aspect-16/10 sm:aspect-auto sm:h-24 lg:h-28 overflow-hidden rounded-xs">
+                                <Media
+                                  resource={itinerary.hotel.image}
+                                  fill
+                                  className="w-full h-full"
+                                  imgClassName="object-cover w-full h-full"
+                                />
+                              </div>
+                            )}
                           <div className="flex flex-col justify-center">
-                            <div className="flex items-center gap-2 mb-1">
+                            <div className="flex items-center gap-2 mb-1 flex-wrap">
                               <h4 className="font-oswald text-base text-foreground uppercase tracking-wider">
                                 {itinerary.hotel.name}
                               </h4>
                               {itinerary.hotel.starRating && (
-                                <span className="text-[10px] bg-accent/20 text-accent px-1.5 py-0.5 rounded-full font-medium">
+                                <span className="text-[10px] bg-accent/20 text-accent px-1.5 py-0.5 rounded-full font-medium whitespace-nowrap">
                                   {itinerary.hotel.starRating.length === 1
                                     ? `${itinerary.hotel.starRating} Star`
                                     : itinerary.hotel.starRating}
@@ -221,7 +233,9 @@ export const Itinerary: React.FC<{
               <SheetDescription className="text-zinc-500 dark:text-zinc-400 text-[11px] font-sans flex items-center gap-2">
                 {activeHotel?.starRating && (
                   <span className="inline-block text-accent font-medium px-1.5 py-0.5 bg-accent/10 rounded-sm">
-                    {activeHotel.starRating.length === 1 ? `${activeHotel.starRating} Star` : activeHotel.starRating}
+                    {activeHotel.starRating.length === 1
+                      ? `${activeHotel.starRating} Star`
+                      : activeHotel.starRating}
                   </span>
                 )}
                 {activeHotel?.website && (
@@ -232,8 +246,18 @@ export const Itinerary: React.FC<{
                     className="inline-flex items-center text-accent hover:text-foreground transition-colors underline decoration-accent/30 hover:decoration-foreground"
                   >
                     Open in new tab
-                    <svg className="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    <svg
+                      className="w-3 h-3 ml-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
                     </svg>
                   </a>
                 )}
@@ -245,11 +269,7 @@ export const Itinerary: React.FC<{
               {/* Hotel Image */}
               {activeHotel?.image && typeof activeHotel.image === 'object' && (
                 <div className="relative w-full aspect-16/10 overflow-hidden rounded-xs border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/5">
-                  <Media
-                    resource={activeHotel.image}
-                    className="w-full h-full object-cover"
-                    fill
-                  />
+                  <Media resource={activeHotel.image} className="w-full h-full object-cover" fill />
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
                 </div>
               )}
@@ -274,7 +294,12 @@ export const Itinerary: React.FC<{
                   >
                     <span>Visit Hotel Website</span>
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
                     </svg>
                   </a>
                 </div>
@@ -313,8 +338,18 @@ export const Itinerary: React.FC<{
                     className="inline-flex items-center text-accent hover:text-foreground transition-colors underline decoration-accent/30 hover:decoration-foreground"
                   >
                     Open in new tab
-                    <svg className="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    <svg
+                      className="w-3 h-3 ml-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
                     </svg>
                   </a>
                 )}
