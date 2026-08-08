@@ -119,12 +119,12 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
   }
 
   const tabs = [
+    { id: 'hotels', label: 'Hotels', icon: Building, show: hasHotels },
+    { id: 'highlights', label: 'Highlights', icon: Sparkles, show: hasHighlights },
     { id: 'image', label: 'Image', icon: ImageIcon, show: hasImage },
     { id: 'gallery', label: 'Gallery', icon: LayoutGridIcon, show: hasGallery },
     { id: 'video', label: 'Video', icon: VideoIcon, show: hasVideo },
     { id: 'map', label: 'Map', icon: Map, show: hasMap },
-    { id: 'hotels', label: 'Hotels', icon: Building, show: hasHotels },
-    { id: 'highlights', label: 'Highlights', icon: Sparkles, show: hasHighlights },
   ].filter((tab) => tab.show)
 
   useEffect(() => {
