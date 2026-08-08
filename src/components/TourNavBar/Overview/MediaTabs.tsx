@@ -246,8 +246,8 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
                 </div>
               )}
               
-              <div className="p-5 flex flex-col flex-grow">
-                <div className="flex justify-between items-start mb-2">
+              <div className="p-2 flex flex-col flex-grow">
+                <div className="flex justify-between items-start mb-1">
                   <h4 className="text-[14px] font-oswald tracking-wide text-foreground uppercase truncate pr-4">
                     {hotel.name}
                   </h4>
@@ -261,7 +261,7 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
                 </div>
 
                 {hotel.description && (
-                  <p className="text-foreground/70 text-[11px] leading-relaxed line-clamp-3 mb-4 flex-grow font-sans">
+                  <p className="text-foreground/70 text-[11px] leading-relaxed line-clamp-3 flex-grow font-sans">
                     {hotel.description}
                   </p>
                 )}
@@ -272,9 +272,6 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
                     className="inline-flex items-center text-[10px] font-medium text-accent hover:text-white transition-colors mt-auto w-fit border-b border-accent/30 hover:border-white pb-0.5 cursor-pointer bg-transparent border-none p-0"
                   >
                     View Details
-                    <svg className="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
                   </button>
                 )}
               </div>
