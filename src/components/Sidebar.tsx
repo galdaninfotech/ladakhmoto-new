@@ -104,12 +104,12 @@ const Sidebar: React.FC<IconsDataType> = () => {
             <span className="w-1 h-5 bg-accent rounded-full" />
             Book With Confidence!
           </h3>
-          <div className="stripe-line !my-2 opacity-80"></div>
+          <div className="stripe-line my-2! opacity-80"></div>
         </div>
         
-        <ul className="space-y-1">
+        <ul>
           {[
-            "No-Hassle Best Price Guarantee",
+            "No-Hassle, Best Price Guarantee",
             "Local Operator",
             "Safety Backup",
             "Hand-Picked Tours & Activities",
@@ -121,7 +121,7 @@ const Sidebar: React.FC<IconsDataType> = () => {
           ].map((benefit, index) => (
             <li 
               key={index} 
-              className="group flex items-start gap-3 text-xs text-muted-foreground hover:text-foreground transition-colors duration-300 py-2 border-b border-border/10 last:border-0"
+              className="group flex items-start gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors duration-300 py-1.5 border-b border-border/10 last:border-0"
             >
               <LMDoneSqaure className="text-success shrink-0 size-3.5 mt-0.5 group-hover:scale-110 transition-transform duration-300" />
               <span className="font-light leading-snug">{benefit}</span>
