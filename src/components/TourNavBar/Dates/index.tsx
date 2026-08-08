@@ -1,4 +1,5 @@
 'use client'
+import LMHand from '@/components/Icons/LMHand';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from '@/components/ui/accordion'
 import { handleAccordionScrollIntoView } from '@/utilities/handleAccordionScrollIntoView';
 import { cn } from '@/utilities/ui';
@@ -120,7 +121,7 @@ export const Dates: React.FC<{
 
                   {/* Optional note row */}
                   <div className="px-4 py-3 text-xs text-muted-foreground border-t border-border flex gap-2 items-start">
-                    <span className="text-lg leading-none text-accent">👉</span>
+                    <LMHand className="text-lg leading-none text-accent" />
                     <ul className="note-list list-disc ml-5 space-y-1">
                       <li>Closing soon. Grab your seat with special discount</li>
                       <li>If you are more than 7 person, we can arrange new slot.</li>

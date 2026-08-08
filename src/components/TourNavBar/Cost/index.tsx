@@ -1,3 +1,4 @@
+import LMHand from '@/components/Icons/LMHand'
 import type { CostCondition } from '@/payload-types'
 
 import { getCachedGlobal } from '@/utilities/getGlobals'
@@ -138,11 +139,13 @@ export const Cost = async (props: CostProps) => {
                 colSpan={3}
                 className="text-xs text-foreground sm:text-md font-light sm:font-medium px-2 py-3 sm:px-6 sm:py-4 space-y-2 bg-muted/5"
               >
-                <p className="mb-2 text-[0.7rem] font-semibold uppercase tracking-[1px] text-primary">
-                  Cost Conditions
-                </p>
                 <div className="flex items-start gap-2">
-                  <span className="animated-arrow text-primary">👉</span>{' '}
+                  <LMHand className="text-lg leading-none text-accent" />
+                  <p className="mb-2 text-[0.7rem] font-semibold uppercase tracking-[1px] text-primary">
+                    Cost Conditions
+                  </p>
+                </div>
+                <div className="flex items-start gap-2">
                   <span className="text-muted-foreground">
                     Private room upgrade: Extra{' '}
                     <span className="text-primary font-bold">
@@ -151,7 +154,6 @@ export const Cost = async (props: CostProps) => {
                   </span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="animated-arrow text-accent">👉</span>
                   <span className="text-muted-foreground">
                     Bike (Himalayan 452) upgrade: Extra{' '}
                     <span className="text-primary font-bold">{formatCurrency(bikeUpgradeNum)}</span>
@@ -160,10 +162,9 @@ export const Cost = async (props: CostProps) => {
 
                 
                 {costConditions.length > 0 && (
-                  <ul className="space-y-1">
+                  <ul className="space-y-1 list-disc">
                     {costConditions.map((condition, index) => (
                       <li key={`${condition}-${index}`} className="flex items-start gap-2">
-                        <span className="animated-arrow text-accent">👉</span>
                         <span className="text-muted-foreground">{condition}</span>
                       </li>
                     ))}
