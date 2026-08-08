@@ -145,26 +145,32 @@ export const Cost = async (props: CostProps) => {
                     Cost Conditions
                   </p>
                 </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-muted-foreground">
-                    Private room upgrade: Extra{' '}
-                    <span className="text-primary font-bold">
-                      {formatCurrency(privateRoomUpgradeNum)}
-                    </span>
-                  </span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-muted-foreground">
-                    Bike (Himalayan 452) upgrade: Extra{' '}
-                    <span className="text-primary font-bold">{formatCurrency(bikeUpgradeNum)}</span>
-                  </span>
-                </div>
 
+                <ul className="space-y-1.5 list-disc ml-8 -mt-1">
+                  <li>
+                    <div className="flex items-start gap-2">
+                      <span className="text-muted-foreground">
+                        Private room upgrade: Extra{' '}
+                        <span className="text-primary font-bold">
+                          {formatCurrency(privateRoomUpgradeNum)}
+                        </span>
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="flex items-start gap-2">
+                      <span className="text-muted-foreground">
+                        Bike (Himalayan 452) upgrade: Extra{' '}
+                        <span className="text-primary font-bold">{formatCurrency(bikeUpgradeNum)}</span>
+                      </span>
+                    </div>
+                  </li>
+                </ul>
                 
                 {costConditions.length > 0 && (
-                  <ul className="space-y-1 list-disc">
+                  <ul className="space-y-1.5 list-disc ml-8">
                     {costConditions.map((condition, index) => (
-                      <li key={`${condition}-${index}`} className="flex items-start gap-2">
+                      <li key={`${condition}-${index}`}>
                         <span className="text-muted-foreground">{condition}</span>
                       </li>
                     ))}
