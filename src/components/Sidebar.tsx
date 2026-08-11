@@ -34,7 +34,40 @@ const Sidebar: React.FC<IconsDataType> = () => {
     <div id='sidebar' className='mb-8 space-y-8' style={{position: 'sticky', top: '110px'}}>
       <hr className='my-8 lg:hidden mb-26 border-border/20' />
 
-      {/* Card 1: Adventure Booking & Actions Card */}
+      {/* Card 1: Trust Card ("Book With Confidence!") */}
+      <div className="py-6 px-3 bg-card/45 dark:bg-card/20 backdrop-blur-md border border-border/40 dark:border-border/10 rounded-sm shadow-sm space-y-5">
+        <div className="space-y-1">
+          <h3 className="font-oswald text-base font-normal text-foreground uppercase tracking-[2px] flex items-center gap-2">
+            <span className="w-1 h-5 bg-accent rounded-full" />
+            Book With Confidence!
+          </h3>
+          <div className="stripe-line my-2! opacity-80"></div>
+        </div>
+        
+        <ul>
+          {[
+            "No-Hassle, Best Price Guarantee",
+            "Local Operator",
+            "Safety Backup",
+            "Hand-Picked Tours & Activities",
+            "RE Himalayan Bike With Fuel",
+            "Handpicked Accommodation",
+            "Includes Lodging, Meal & Fuel",
+            "Oxygen / Mechanic Support",
+            "Customer Care Available 24/7"
+          ].map((benefit, index) => (
+            <li 
+              key={index} 
+              className="group flex items-start gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors duration-300 py-1.5 border-b border-border/10 last:border-0"
+            >
+              <LMDoneSqaure className="text-success shrink-0 size-3.5 mt-0.5 group-hover:scale-110 transition-transform duration-300" />
+              <span className="font-light leading-snug">{benefit}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Card 2: Adventure Booking & Actions Card */}
       <div className="p-6 bg-card/60 dark:bg-card/35 backdrop-blur-md border border-accent/20 dark:border-accent/10 rounded-sm shadow-lg space-y-6 relative overflow-hidden group">
         {/* Subtle decorative glow */}
         <div className="absolute -right-16 -top-16 w-32 h-32 bg-accent/5 rounded-full blur-2xl group-hover:bg-accent/10 transition-all duration-700" />
@@ -97,38 +130,7 @@ const Sidebar: React.FC<IconsDataType> = () => {
         </div>
       </div>
 
-      {/* Card 2: Trust Card ("Book With Confidence!") */}
-      <div className="py-6 px-3 bg-card/45 dark:bg-card/20 backdrop-blur-md border border-border/40 dark:border-border/10 rounded-sm shadow-sm space-y-5">
-        <div className="space-y-1">
-          <h3 className="font-oswald text-base font-normal text-foreground uppercase tracking-[2px] flex items-center gap-2">
-            <span className="w-1 h-5 bg-accent rounded-full" />
-            Book With Confidence!
-          </h3>
-          <div className="stripe-line my-2! opacity-80"></div>
-        </div>
-        
-        <ul>
-          {[
-            "No-Hassle, Best Price Guarantee",
-            "Local Operator",
-            "Safety Backup",
-            "Hand-Picked Tours & Activities",
-            "RE Himalayan Bike With Fuel",
-            "Handpicked Accommodation",
-            "Includes Lodging, Meal & Fuel",
-            "Oxygen / Mechanic Support",
-            "Customer Care Available 24/7"
-          ].map((benefit, index) => (
-            <li 
-              key={index} 
-              className="group flex items-start gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors duration-300 py-1.5 border-b border-border/10 last:border-0"
-            >
-              <LMDoneSqaure className="text-success shrink-0 size-3.5 mt-0.5 group-hover:scale-110 transition-transform duration-300" />
-              <span className="font-light leading-snug">{benefit}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      
 
       {/* Card 3: Traveler Support Card */}
       <div className="p-6 bg-card/45 dark:bg-card/20 backdrop-blur-md border border-border/40 dark:border-border/10 rounded-sm shadow-sm space-y-5">
