@@ -16,6 +16,11 @@ export const fossilResort: (args: PostArgs) => RequiredDataFromCollectionSlug<'h
     starRating: "3",
     updatedAt: "2026-06-21T10:26:03.491Z",
     createdAt: "2026-06-21T10:26:03.491Z",
-    image: mediaMap['fossil-resort.webp'],
+    gallery: [
+      {
+        image: mediaMap['fossil-resort.webp'],
+        caption: 'Fossil Resort',
+      },
+    ],
   }
 }

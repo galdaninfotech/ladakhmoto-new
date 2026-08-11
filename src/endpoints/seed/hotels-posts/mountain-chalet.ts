@@ -16,6 +16,11 @@ export const mountainChalet: (args: PostArgs) => RequiredDataFromCollectionSlug<
     starRating: "3",
     updatedAt: "2026-06-21T10:26:03.491Z",
     createdAt: "2026-06-21T10:26:03.491Z",
-    image: mediaMap['mountain-chalet.webp'],
+    gallery: [
+      {
+        image: mediaMap['mountain-chalet.webp'],
+        caption: 'Mountain Chalet',
+      },
+    ],
   }
 }

@@ -32,10 +32,30 @@ export const Hotels: CollectionConfig = {
       },
     },
     {
-      name: 'image',
-      type: 'upload',
-      relationTo: 'media',
-      required: true,
+      name: 'gallery',
+      type: 'array',
+      label: 'Image Gallery',
+      labels: {
+        singular: 'Image',
+        plural: 'Images',
+      },
+      maxRows: 12,
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
+        {
+          name: 'caption',
+          type: 'text',
+        },
+      ],
+      admin: {
+        description: 'Add up to 12 images. The first image will be used as the primary image.',
+        initCollapsed: true,
+      },
     },
     {
       name: 'starRating',

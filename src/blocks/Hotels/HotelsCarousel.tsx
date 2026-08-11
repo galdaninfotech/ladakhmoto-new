@@ -3,16 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Star, Globe } from 'lucide-react'
 import { Media } from '@/components/Media'
-import type { Media as MediaType } from '@/payload-types'
-
-export type Hotel = {
-  id: number
-  name: string
-  description?: string | null
-  website?: string | null
-  image: number | MediaType
-  starRating?: '1' | '2' | '3' | '4' | '5' | 'luxury' | 'standard' | 'basic' | null
-}
+import type { Media as MediaType, Hotel } from '@/payload-types'
 
 interface HotelsCarouselProps {
   hotels: Hotel[]
@@ -173,17 +164,20 @@ export function HotelsCarousel({ hotels }: HotelsCarouselProps) {
             >
               <div className="group relative overflow-hidden w-full h-[380px] bg-black rounded-[2px] transition-all duration-500 shadow-lg">
                 {/* Background Hotel Image */}
-                {typeof hotel.image === 'object' && hotel.image !== null && (
-                  <div className="absolute inset-0 w-full h-full overflow-hidden">
-                    <Media
-                      resource={hotel.image}
-                      alt={hotel.name}
-                      fill
-                      pictureClassName="absolute inset-0 w-full h-full"
-                      imgClassName="h-full w-full object-cover transition-all duration-700 ease-in-out scale-100 origin-left group-hover:scale-150 blur-[1px] group-hover:blur-none"
-                    />
-                  </div>
-                )}
+                {(() => {
+                  const primaryImage = hotel.gallery?.[0]?.image
+                  return typeof primaryImage === 'object' && primaryImage !== null ? (
+                    <div className="absolute inset-0 w-full h-full overflow-hidden">
+                      <Media
+                        resource={primaryImage}
+                        alt={hotel.name}
+                        fill
+                        pictureClassName="absolute inset-0 w-full h-full"
+                        imgClassName="h-full w-full object-cover transition-all duration-700 ease-in-out scale-100 origin-left group-hover:scale-150 blur-[1px] group-hover:blur-none"
+                      />
+                    </div>
+                  ) : null
+                })()}
 
                 {/* Dark Overlay for Text Readability */}
                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-black/70 opacity-40 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10" />

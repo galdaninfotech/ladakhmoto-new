@@ -21,6 +21,7 @@
     "test:e2e": "cross-env NODE_OPTIONS=\"--no-deprecation --no-experimental-strip-types\" pnpm exec playwright test --config=playwright.config.ts",
     "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
     "seed": "dotenv -e .env -- tsx src/seed.ts",
+    "seed:hotels": "cross-env NODE_OPTIONS=--no-deprecation tsx src/seed-hotels.ts",
     "upgrade": "cross-env NODE_OPTIONS=--no-deprecation rm -rf .next && pnpm --ignore-workspace install && pnpm -s tsc --noEmit"
   },
   "dependencies": {

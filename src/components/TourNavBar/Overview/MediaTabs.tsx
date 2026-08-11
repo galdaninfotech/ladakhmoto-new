@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ImageIcon, LayoutGridIcon, VideoIcon, Map, Building, Sparkles, ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react'
+import { ImageIcon, LayoutGridIcon, VideoIcon, Map, Building, Sparkles, ChevronLeft, ChevronRight, ArrowLeft, Images } from 'lucide-react'
 import { cn } from '@/utilities/ui'
 import { Media as MediaType, Hotel, Highlight } from '@/payload-types'
 import { Media } from '@/components/Media'
@@ -230,53 +230,80 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
           onScroll={updateHotelsScrollState}
           className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-4"
         >
-          {hotels.map((hotel) => (
-            <div
-              key={hotel.id}
-              className="hotel-card w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)] shrink-0 snap-start bg-white/[0.03] border border-white/10 rounded-sm overflow-hidden flex flex-col group relative hover:border-accent/40 transition-colors duration-300"
-            >
-              {typeof hotel.image === 'object' && hotel.image !== null && (
-                <div className="relative aspect-[4/3] w-full overflow-hidden">
-                  <Media
-                    resource={hotel.image}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    fill
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                </div>
-              )}
-              
-              <div className="p-2 flex flex-col flex-grow">
-                <div className="flex justify-between items-start mb-1">
-                  <h4 className="text-[14px] font-oswald tracking-wide text-foreground uppercase truncate pr-4">
-                    {hotel.name}
-                  </h4>
-                  {hotel.starRating && (
-                    <div className="flex items-center text-accent shrink-0">
-                      <span className="text-[10px] font-medium px-1.5 py-0.5 bg-accent/10 rounded-sm whitespace-nowrap">
-                        {hotel.starRating.length === 1 ? `${hotel.starRating} Star` : hotel.starRating}
-                      </span>
-                    </div>
+          {hotels.map((hotel) => {
+            const primaryImage = hotel.gallery?.[0]?.image
+            const galleryCount = hotel.gallery?.length || 0
+
+            return (
+              <div
+                key={hotel.id}
+                className="hotel-card w-full sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)] shrink-0 snap-start bg-white/[0.03] border border-white/10 rounded-sm overflow-hidden flex flex-col group relative hover:border-accent/40 transition-colors duration-300 cursor-pointer"
+                onClick={() => setActiveHotel(hotel)}
+              >
+                {typeof primaryImage === 'object' && primaryImage !== null && (
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <Media
+                      resource={primaryImage}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      fill
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    
+                    {galleryCount > 1 && (
+                      <div className="absolute top-2 right-2 flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-xs border border-white/10 text-white text-[10px] font-sans font-medium">
+                        <Images className="w-3 h-3 text-accent" />
+                        <span>{galleryCount} photos</span>
+                      </div>
+                    )}
+                  </div>
+                )}
+                
+                <div className="p-2 flex flex-col flex-grow">
+                  <div className="flex justify-between items-start mb-1">
+                    <h4 className="text-[14px] font-oswald tracking-wide text-foreground uppercase truncate pr-4">
+                      {hotel.name}
+                    </h4>
+                    {hotel.starRating && (
+                      <div className="flex items-center text-accent shrink-0">
+                        <span className="text-[10px] font-medium px-1.5 py-0.5 bg-accent/10 rounded-sm whitespace-nowrap">
+                          {hotel.starRating.length === 1 ? `${hotel.starRating} Star` : hotel.starRating}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {hotel.description && (
+                    <p className="text-foreground/70 text-[11px] leading-relaxed line-clamp-3 flex-grow font-sans">
+                      {hotel.description}
+                    </p>
                   )}
+
+                  <div className="mt-auto pt-2 flex items-center justify-between">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setActiveHotel(hotel)
+                      }}
+                      className="inline-flex items-center text-[10px] font-medium text-accent hover:text-white transition-colors border-b border-accent/30 hover:border-white pb-0.5 cursor-pointer bg-transparent border-none p-0"
+                    >
+                      View Details
+                    </button>
+                    {hotel.website && (
+                      <a
+                        href={hotel.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-[10px] text-foreground/50 hover:text-accent transition-colors"
+                      >
+                        Website ↗
+                      </a>
+                    )}
+                  </div>
                 </div>
-
-                {hotel.description && (
-                  <p className="text-foreground/70 text-[11px] leading-relaxed line-clamp-3 flex-grow font-sans">
-                    {hotel.description}
-                  </p>
-                )}
-
-                {hotel.website && (
-                  <button
-                    onClick={() => setActiveHotel(hotel)}
-                    className="inline-flex items-center text-[10px] font-medium text-accent hover:text-white transition-colors mt-auto w-fit border-b border-accent/30 hover:border-white pb-0.5 cursor-pointer bg-transparent border-none p-0"
-                  >
-                    View Details
-                  </button>
-                )}
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     )
@@ -672,18 +699,21 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
             </SheetHeader>
           </div>
           <div className="grow w-full bg-zinc-50 dark:bg-neutral-950 overflow-y-auto px-6 pb-12">
-            <div className="max-w-2xl mx-auto flex flex-col gap-6 pt-6">
+            <div className="max-w-3xl mx-auto flex flex-col gap-6 pt-6">
               {/* Hotel Image */}
-              {activeHotel?.image && typeof activeHotel.image === 'object' && (
-                <div className="relative w-full aspect-16/10 overflow-hidden rounded-xs border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/5">
-                  <Media
-                    resource={activeHotel.image}
-                    className="w-full h-full object-cover"
-                    fill
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-                </div>
-              )}
+              {(() => {
+                const primaryImage = activeHotel?.gallery?.[0]?.image
+                return primaryImage && typeof primaryImage === 'object' ? (
+                  <div className="relative w-full aspect-16/10 overflow-hidden rounded-xs border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/5">
+                    <Media
+                      resource={primaryImage}
+                      className="w-full h-full object-cover"
+                      fill
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                  </div>
+                ) : null
+              })()}
 
               {/* Description */}
               {activeHotel?.description && (
@@ -692,6 +722,11 @@ export const MediaTabs: React.FC<MediaTabsProps> = ({
                     {activeHotel.description}
                   </p>
                 </div>
+              )}
+
+              {/* Hotel Gallery */}
+              {activeHotel?.gallery && activeHotel.gallery.length > 0 && (
+                <HighlightGallery gallery={activeHotel.gallery as any} />
               )}
 
               {/* Action Button: Visit Website */}

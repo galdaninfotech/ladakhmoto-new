@@ -1203,7 +1203,16 @@ export interface Hotel {
    * URL to the hotel website or booking page
    */
   website?: string | null;
-  image: number | Media;
+  /**
+   * Add up to 12 images. The first image will be used as the primary image.
+   */
+  gallery?:
+    | {
+        image: number | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   starRating?: ('1' | '2' | '3' | '4' | '5' | 'luxury' | 'standard' | 'basic') | null;
   updatedAt: string;
   createdAt: string;
@@ -2599,7 +2608,13 @@ export interface HotelsSelect<T extends boolean = true> {
   name?: T;
   description?: T;
   website?: T;
-  image?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        caption?: T;
+        id?: T;
+      };
   starRating?: T;
   updatedAt?: T;
   createdAt?: T;

@@ -16,6 +16,11 @@ export const kenilworthInternational: (args: PostArgs) => RequiredDataFromCollec
     starRating: "3",
     updatedAt: "2026-06-21T10:26:03.491Z",
     createdAt: "2026-06-21T10:26:03.491Z",
-    image: mediaMap['kenilworth-international.webp'],
+    gallery: [
+      {
+        image: mediaMap['kenilworth-international.webp'],
+        caption: 'kenilworthInternational',
+      },
+    ],
   }
 }

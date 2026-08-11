@@ -20,7 +20,7 @@ import {
   SheetTitle,
   SheetDescription,
 } from '@/components/ui/sheet'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Images } from 'lucide-react'
 import { useTheme } from '@/providers/Theme'
 import RichText from '@/components/RichText'
 import { HighlightGallery } from '@/components/HighlightGallery'
@@ -163,20 +163,32 @@ export const Itinerary: React.FC<{
                     </ul>
 
                     {typeof itinerary.hotel === 'object' && itinerary.hotel !== null && (
-                      <div className="mt-6 p-4 border border-border/30 rounded-xs bg-muted/10">
+                      <div
+                        className="mt-6 p-4 border border-border/30 rounded-xs bg-muted/10 hover:border-accent/30 transition-colors cursor-pointer"
+                        onClick={() => setActiveHotel(itinerary.hotel as Hotel)}
+                      >
                         <div className="flex flex-col sm:flex-row gap-4">
-                          {typeof itinerary.hotel.image === 'object' &&
-                            itinerary.hotel.image !== null && (
+                          {(() => {
+                            const primaryImage = itinerary.hotel.gallery?.[0]?.image
+                            const galleryCount = itinerary.hotel.gallery?.length || 0
+                            return typeof primaryImage === 'object' && primaryImage !== null ? (
                               <div className="w-full sm:w-32 lg:w-40 shrink-0 relative aspect-16/10 sm:aspect-auto sm:h-24 lg:h-28 overflow-hidden rounded-xs">
                                 <Media
-                                  resource={itinerary.hotel.image}
+                                  resource={primaryImage}
                                   fill
                                   className="w-full h-full"
                                   imgClassName="object-cover w-full h-full"
                                 />
+                                {galleryCount > 1 && (
+                                  <div className="absolute top-1.5 right-1.5 flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-black/70 backdrop-blur-xs border border-white/10 text-white text-[9px] font-sans font-medium">
+                                    <Images className="w-2.5 h-2.5 text-accent" />
+                                    <span>{galleryCount}</span>
+                                  </div>
+                                )}
                               </div>
-                            )}
-                          <div className="flex flex-col justify-center">
+                            ) : null
+                          })()}
+                          <div className="flex flex-col justify-center grow">
                             <div className="flex items-center gap-2 mb-1 flex-wrap">
                               <h4 className="font-oswald text-base text-foreground uppercase tracking-wider">
                                 {itinerary.hotel.name}
@@ -189,17 +201,33 @@ export const Itinerary: React.FC<{
                                 </span>
                               )}
                             </div>
-                            <p className="text-xs text-foreground/70 line-clamp-2 mb-2 italic">
-                              {itinerary.hotel.description}
-                            </p>
-                            {itinerary.hotel.website && (
+                            {itinerary.hotel.description && (
+                              <p className="text-xs text-foreground/70 line-clamp-2 mb-2 italic">
+                                {itinerary.hotel.description}
+                              </p>
+                            )}
+                            <div className="flex items-center gap-4 mt-auto">
                               <button
-                                onClick={() => setActiveHotel(itinerary.hotel as Hotel)}
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  setActiveHotel(itinerary.hotel as Hotel)
+                                }}
                                 className="text-accent hover:underline text-[11px] uppercase tracking-tighter inline-flex items-center gap-1 w-fit cursor-pointer bg-transparent border-none p-0"
                               >
                                 View Details <span className="text-xs">→</span>
                               </button>
-                            )}
+                              {itinerary.hotel.website && (
+                                <a
+                                  href={itinerary.hotel.website}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="text-foreground/50 hover:text-accent text-[11px] tracking-tighter transition-colors"
+                                >
+                                  Website ↗
+                                </a>
+                              )}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -265,14 +293,17 @@ export const Itinerary: React.FC<{
             </SheetHeader>
           </div>
           <div className="grow w-full bg-zinc-50 dark:bg-neutral-950 overflow-y-auto px-6 pb-12">
-            <div className="max-w-2xl mx-auto flex flex-col gap-6 pt-6">
+            <div className="max-w-3xl mx-auto flex flex-col gap-6 pt-6">
               {/* Hotel Image */}
-              {activeHotel?.image && typeof activeHotel.image === 'object' && (
-                <div className="relative w-full aspect-16/10 overflow-hidden rounded-xs border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/5">
-                  <Media resource={activeHotel.image} className="w-full h-full object-cover" fill />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-                </div>
-              )}
+              {(() => {
+                const primaryImage = activeHotel?.gallery?.[0]?.image
+                return primaryImage && typeof primaryImage === 'object' ? (
+                  <div className="relative w-full aspect-16/10 overflow-hidden rounded-xs border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/5">
+                    <Media resource={primaryImage} className="w-full h-full object-cover" fill />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                  </div>
+                ) : null
+              })()}
 
               {/* Description */}
               {activeHotel?.description && (
@@ -281,6 +312,11 @@ export const Itinerary: React.FC<{
                     {activeHotel.description}
                   </p>
                 </div>
+              )}
+
+              {/* Hotel Gallery */}
+              {activeHotel?.gallery && activeHotel.gallery.length > 0 && (
+                <HighlightGallery gallery={activeHotel.gallery as any} />
               )}
 
               {/* Action Button: Visit Website */}

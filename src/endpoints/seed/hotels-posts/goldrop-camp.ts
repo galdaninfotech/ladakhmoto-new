@@ -16,6 +16,11 @@ export const goldropCamp: (args: PostArgs) => RequiredDataFromCollectionSlug<'ho
     starRating: "3",
     updatedAt: "2026-06-21T10:26:03.491Z",
     createdAt: "2026-06-21T10:26:03.491Z",
-    image: mediaMap['goldrop-camp.webp'],
+    gallery: [
+      {
+        image: mediaMap['goldrop-camp.webp'],
+        caption: 'Goldrop Camp',
+      },
+    ],
   }
 }

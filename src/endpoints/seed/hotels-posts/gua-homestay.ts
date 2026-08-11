@@ -16,6 +16,11 @@ export const guaHomestay: (args: PostArgs) => RequiredDataFromCollectionSlug<'ho
     starRating: "3",
     updatedAt: "2026-06-21T10:26:03.491Z",
     createdAt: "2026-06-21T10:26:03.491Z",
-    image: mediaMap['gua-homestay.webp'],
+    gallery: [
+      {
+        image: mediaMap['gua-homestay.webp'],
+        caption: 'Gua Homestay',
+      },
+    ],
   }
 }

@@ -16,6 +16,11 @@ export const mandalchanHotel: (args: PostArgs) => RequiredDataFromCollectionSlug
     starRating: "3",
     updatedAt: "2026-06-21T10:26:03.491Z",
     createdAt: "2026-06-21T10:26:03.491Z",
-    image: mediaMap['mandalchan-hotel.webp'],
+    gallery: [
+      {
+        image: mediaMap['mandalchan-hotel.webp'],
+        caption: 'Mandalchan Hotel',
+      },
+    ],
   }
 }
