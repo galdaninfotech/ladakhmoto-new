@@ -92,8 +92,9 @@ export const SearchBar: React.FC = () => {
       />
 
       {/* Search Button */}
-      <button
+       <button
         type="submit"
+        aria-label="Search"
         className="h-full px-3.5 flex items-center justify-center text-white hover:bg-black/10 transition-colors duration-200 cursor-pointer"
       >
         <Search className="w-3.5 h-3.5 stroke-[2.5]" />
